@@ -7,6 +7,7 @@ package com.ads.projetoIntegrador.business;
 
 import com.ads.projetoIntegrador.dao.AbstractDAO;
 import com.ads.projetoIntegrador.dao.IAbstractDAO;
+import com.ads.projetoIntegrador.dto.AbstractDTO;
 import com.ads.projetoIntegrador.utils.HibernateUtil;
 import java.io.Serializable;
 import java.util.List;
@@ -14,31 +15,31 @@ import java.util.List;
 import javax.ws.rs.core.GenericEntity;
 
 /**
+ * Class for generic business.
  *
  * @author Yago Ferreira
  * @param <T>
  * @param <IdType>
  */
-public class BusinessManager<T extends GenericEntity, IdType extends Serializable>
+public class BusinessManager<T extends AbstractDTO, IdType extends Serializable>
         implements IBusinessManager<T, IdType> {
 
-	private Class<T> classOfEntity;
-	
+    private Class<T> classOfEntity;
+
     @Override
     public void doValidate(T t) throws IllegalArgumentException {
         if (t == null) {
             throw new IllegalArgumentException("Null Object for parameter");
         }
     }
-    
+
     public BusinessManager(Class<T> classOfEntity) {
-		this.classOfEntity = classOfEntity;
-	}
-    
+        this.classOfEntity = classOfEntity;
+    }
+
     @Override
     public IAbstractDAO<T, IdType> getDAO() {
-        return new AbstractDAO<T, IdType>(HibernateUtil.getSessionFactory().getCurrentSession(), 
-        		classOfEntity);
+        return new AbstractDAO<>(HibernateUtil.getSessionFactory().getCurrentSession(), classOfEntity);
     }
 
     @Override

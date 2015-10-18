@@ -7,6 +7,7 @@ package com.ads.projetoIntegrador.dao;
  */
 
 
+import com.ads.projetoIntegrador.dto.AbstractDTO;
 import java.util.List;
 
 /**
@@ -15,7 +16,7 @@ import java.util.List;
  * @param <T>
  * @param <IdType>
  */
-public interface IAbstractDAO<T, IdType> {
+public interface IAbstractDAO<T extends AbstractDTO, IdType> {
 
     public abstract T find(IdType id);
 
