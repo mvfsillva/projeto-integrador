@@ -11,7 +11,9 @@ import com.ads.projetoIntegrador.dto.AbstractDTO;
 import java.io.Serializable;
 import java.util.List;
 
-import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 
 /**
@@ -20,65 +22,49 @@ import org.hibernate.Session;
  * @param <T>
  * @param <IdType>
  */
-public class AbstractDAO<T extends AbstractDTO, IdType extends Serializable> implements 
-		IAbstractDAO<T, IdType> {
+public class AbstractDAO<T extends AbstractDTO, IdType extends Serializable> 
+    extends HibernateDaoSupport implements IAbstractDAO<T, IdType> {
 
-    protected Session session;
-    
     protected Class<T> classOfEntity;    
     
-    public AbstractDAO(Session session, Class<T>classOfEntity) {
-        this.session = session;
+    public AbstractDAO(Class<T>classOfEntity) {
         this.classOfEntity = classOfEntity;
     }
-
-    public Session getSession() {
-        return session;
+    
+    @Autowired
+    public void setupSessionFactory(SessionFactory sessionFactory) {
+        setSessionFactory(sessionFactory);
     }
-
+    
     @Override
     public int save(T t) {
-        getSession().beginTransaction();
-        getSession().save(t);
-        getSession().flush();
-        getSession().getTransaction().commit();
+        getHibernateTemplate().save(t);
         return 0;
     }
 
     @Override
     public int update(T t) {
-        getSession().beginTransaction();
-        getSession().update(t);
-        getSession().flush();
-        getSession().getTransaction().commit();
+        getHibernateTemplate().update(t);
         return 0;
     }
 
     @Override
     public int delete(T t) {
-        getSession().beginTransaction();
-        getSession().delete(t);
-        getSession().flush();
-        getSession().getTransaction().commit();
+       getHibernateTemplate().delete(t);
         return 0;
     }
 
-    @SuppressWarnings("unchecked")
-	@Override
+    @Override
     public T find(IdType id) {
-        getSession().beginTransaction();
-        T entity = (T) getSession().get(classOfEntity, id);
-        getSession().flush();        
-        return entity;
+        String className = classOfEntity.getName();
+        List<T> result = getHibernateTemplate().find("from " + className + " where id_" + className + " = ?", id);
+	return (T) result.get(0);
     }
 
-    @SuppressWarnings("unchecked")
-	@Override
+    @Override
     public List<T> find() {
-        getSession().beginTransaction();
-        List<T> list = (List<T>) getSession().createQuery("from " + classOfEntity.getName()).list();
-        getSession().flush();
-        return list;
+        List<T> result = getHibernateTemplate().find("from " + classOfEntity.getName());
+	return result;
     }
 
 }

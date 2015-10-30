@@ -8,7 +8,6 @@ package com.ads.projetoIntegrador.business;
 import com.ads.projetoIntegrador.dao.AbstractDAO;
 import com.ads.projetoIntegrador.dao.IAbstractDAO;
 import com.ads.projetoIntegrador.dto.AbstractDTO;
-import com.ads.projetoIntegrador.utils.HibernateUtil;
 import java.io.Serializable;
 import java.util.List;
 
@@ -39,7 +38,7 @@ public class BusinessManager<T extends AbstractDTO, IdType extends Serializable>
 
     @Override
     public IAbstractDAO<T, IdType> getDAO() {
-        return new AbstractDAO<>(HibernateUtil.getSessionFactory().getCurrentSession(), classOfEntity);
+        return new AbstractDAO<T, IdType>(classOfEntity);
     }
 
     @Override

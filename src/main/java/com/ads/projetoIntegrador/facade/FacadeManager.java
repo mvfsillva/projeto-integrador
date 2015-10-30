@@ -27,7 +27,7 @@ public class FacadeManager<T extends AbstractDTO, IdType extends Serializable> i
 	
     @Override
     public IBusinessManager<T, IdType> getBusinessManager() {
-        return new BusinessManager<>(classOfEntity);
+        return new BusinessManager<T, IdType>(classOfEntity);
     }
 
     @Override
