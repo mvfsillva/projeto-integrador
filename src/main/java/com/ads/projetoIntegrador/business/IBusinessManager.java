@@ -6,6 +6,7 @@
 package com.ads.projetoIntegrador.business;
 
 import com.ads.projetoIntegrador.dao.IAbstractDAO;
+import com.ads.projetoIntegrador.dto.AbstractDTO;
 import java.io.Serializable;
 import java.util.List;
 
@@ -16,7 +17,7 @@ import java.util.List;
  * @param <T>
  * @param <IdType>
  */
-public interface IBusinessManager<T, IdType extends Serializable> {
+public interface IBusinessManager<T extends AbstractDTO, IdType extends Serializable> {
 
     public void doValidate(T t) throws IllegalArgumentException;
 

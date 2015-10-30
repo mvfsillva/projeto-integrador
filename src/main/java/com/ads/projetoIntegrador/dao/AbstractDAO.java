@@ -7,12 +7,12 @@ package com.ads.projetoIntegrador.dao;
  */
 
 
+import com.ads.projetoIntegrador.dto.AbstractDTO;
 import java.io.Serializable;
 import java.util.List;
 
 import org.hibernate.Session;
 
-import javax.ws.rs.core.GenericEntity;
 
 /**
  *
@@ -20,7 +20,7 @@ import javax.ws.rs.core.GenericEntity;
  * @param <T>
  * @param <IdType>
  */
-public class AbstractDAO<T extends GenericEntity, IdType extends Serializable> implements 
+public class AbstractDAO<T extends AbstractDTO, IdType extends Serializable> implements 
 		IAbstractDAO<T, IdType> {
 
     protected Session session;

@@ -6,6 +6,7 @@
 package com.ads.projetoIntegrador.facade;
 
 import com.ads.projetoIntegrador.business.IBusinessManager;
+import com.ads.projetoIntegrador.dto.AbstractDTO;
 import java.io.Serializable;
 import java.util.List;
 
@@ -15,7 +16,7 @@ import java.util.List;
  * @param <T>
  * @param <IdType>
  */
-public interface IFacadeManager<T, IdType extends Serializable> {
+public interface IFacadeManager<T extends AbstractDTO, IdType extends Serializable> {
 
     public IBusinessManager<T, IdType> getBusinessManager();
 

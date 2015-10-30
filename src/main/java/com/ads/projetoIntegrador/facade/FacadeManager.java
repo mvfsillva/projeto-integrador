@@ -7,10 +7,9 @@ package com.ads.projetoIntegrador.facade;
 
 import com.ads.projetoIntegrador.business.BusinessManager;
 import com.ads.projetoIntegrador.business.IBusinessManager;
+import com.ads.projetoIntegrador.dto.AbstractDTO;
 import java.io.Serializable;
 import java.util.List;
-
-import javax.ws.rs.core.GenericEntity;
 
 /**
  *
@@ -18,17 +17,17 @@ import javax.ws.rs.core.GenericEntity;
  * @param <T>
  * @param <IdType>
  */
-public class FacadeManager<T extends GenericEntity, IdType extends Serializable> implements IFacadeManager<T, IdType> {
+public class FacadeManager<T extends AbstractDTO, IdType extends Serializable> implements IFacadeManager<T, IdType> {
 
-	private Class<T> classOfEntity;
+    private Class<T> classOfEntity;
+
+    public FacadeManager(Class<T> classOfEntity) {
+            this.classOfEntity = classOfEntity;
+    }
 	
-	public FacadeManager(Class<T> classOfEntity) {
-		this.classOfEntity = classOfEntity;
-	}
-	
-	@Override
+    @Override
     public IBusinessManager<T, IdType> getBusinessManager() {
-        return new BusinessManager<T, IdType>(classOfEntity);
+        return new BusinessManager<>(classOfEntity);
     }
 
     @Override
