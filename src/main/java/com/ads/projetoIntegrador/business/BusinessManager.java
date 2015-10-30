@@ -12,7 +12,7 @@ import com.ads.projetoIntegrador.utils.HibernateUtil;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.ws.rs.core.GenericEntity;
+
 
 /**
  * Class for generic business.
