@@ -1,0 +1,9 @@
+language: java
+notifications:
+ email:
+  recipients:
+   - marcusvinicius30798@gmail.com
+   - yagolasse@gmail.com
+   - arthur1503@gmail.com
+
+  on_success: always
