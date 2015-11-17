@@ -5,13 +5,9 @@
  */
 package com.ads.projetoIntegrador.business;
 
-import com.ads.projetoIntegrador.dao.AbstractDAO;
-import com.ads.projetoIntegrador.dao.IAbstractDAO;
 import com.ads.projetoIntegrador.dto.AbstractDTO;
 import java.io.Serializable;
 import java.util.List;
-
-
 
 /**
  * Class for generic business.
@@ -20,25 +16,14 @@ import java.util.List;
  * @param <T>
  * @param <IdType>
  */
-public class BusinessManager<T extends AbstractDTO, IdType extends Serializable>
+public abstract class BusinessManager<T extends AbstractDTO, IdType extends Serializable>
         implements IBusinessManager<T, IdType> {
-
-    private Class<T> classOfEntity;
 
     @Override
     public void doValidate(T t) throws IllegalArgumentException {
         if (t == null) {
             throw new IllegalArgumentException("Null Object for parameter");
         }
-    }
-
-    public BusinessManager(Class<T> classOfEntity) {
-        this.classOfEntity = classOfEntity;
-    }
-
-    @Override
-    public IAbstractDAO<T, IdType> getDAO() {
-        return new AbstractDAO<T, IdType>(classOfEntity);
     }
 
     @Override

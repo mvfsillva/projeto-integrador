@@ -21,7 +21,7 @@ public interface IBusinessManager<T extends AbstractDTO, IdType extends Serializ
 
     public void doValidate(T t) throws IllegalArgumentException;
 
-    public IAbstractDAO getDAO();
+    public IAbstractDAO<T, IdType> getDAO();
 
     public T find(IdType id);
 

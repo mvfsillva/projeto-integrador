@@ -5,12 +5,16 @@
  */
 package com.ads.projetoIntegrador.dto;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Yago Ferreira
  * @param <KeyType>
  */
-public abstract class AbstractDTO<KeyType> {
+public abstract class AbstractDTO<KeyType> implements Serializable {
     
     public abstract KeyType getId();
+    
+    public abstract void setId(KeyType id);
 }

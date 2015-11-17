@@ -5,16 +5,12 @@ package com.ads.projetoIntegrador.dao;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
 import com.ads.projetoIntegrador.dto.AbstractDTO;
+import com.ads.projetoIntegrador.utils.HibernateUtils;
 import java.io.Serializable;
 import java.util.List;
-
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
-
+import org.hibernate.Query;
+import org.hibernate.Session;
 
 /**
  *
@@ -22,49 +18,58 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
  * @param <T>
  * @param <IdType>
  */
-public class AbstractDAO<T extends AbstractDTO, IdType extends Serializable> 
-    extends HibernateDaoSupport implements IAbstractDAO<T, IdType> {
+public class AbstractDAO<T extends AbstractDTO, IdType extends Serializable> implements IAbstractDAO<T, IdType> {
 
-    protected Class<T> classOfEntity;    
-    
-    public AbstractDAO(Class<T>classOfEntity) {
+    protected Class<T> classOfEntity;
+
+    public AbstractDAO(Class<T> classOfEntity) {
         this.classOfEntity = classOfEntity;
     }
-    
-    @Autowired
-    public void setupSessionFactory(SessionFactory sessionFactory) {
-        setSessionFactory(sessionFactory);
-    }
-    
+
     @Override
-    public int save(T t) {
-        getHibernateTemplate().save(t);
-        return 0;
+    public Session getSession() {
+        return HibernateUtils.getSession();
     }
 
     @Override
-    public int update(T t) {
-        getHibernateTemplate().update(t);
-        return 0;
+    public void save(T t) {
+        getSession().beginTransaction();
+        getSession().save(t);
+        if (!getSession().getTransaction().wasCommitted())
+            getSession().getTransaction().commit();
+        getSession().clear();
     }
 
     @Override
-    public int delete(T t) {
-       getHibernateTemplate().delete(t);
-        return 0;
+    public void update(T t) {
+        getSession().beginTransaction();
+        getSession().update(t);
+        if (!getSession().getTransaction().wasCommitted())
+            getSession().getTransaction().commit();
+        getSession().clear();
+    }
+
+    @Override
+    public void delete(T t) {
+        getSession().beginTransaction();
+        getSession().delete(t);
+        if (!getSession().getTransaction().wasCommitted())
+            getSession().getTransaction().commit();
+        getSession().clear();
     }
 
     @Override
     public T find(IdType id) {
         String className = classOfEntity.getName();
-        List<T> result = getHibernateTemplate().find("from " + className + " where id_" + className + " = ?", id);
-	return (T) result.get(0);
+        Query query = getSession().createQuery("from " + className + " where id_" + className.replace("DTO", "") + " = :id");
+        query.setProperties(id);
+        return (T) query.uniqueResult();
     }
 
     @Override
     public List<T> find() {
-        List<T> result = getHibernateTemplate().find("from " + classOfEntity.getName());
-	return result;
+        Query query = getSession().createQuery("from " + classOfEntity.getName());
+        return (List<T>) query.list();
     }
 
 }

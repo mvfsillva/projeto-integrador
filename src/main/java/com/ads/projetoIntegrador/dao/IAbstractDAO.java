@@ -5,10 +5,9 @@ package com.ads.projetoIntegrador.dao;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
 import com.ads.projetoIntegrador.dto.AbstractDTO;
 import java.util.List;
+import org.hibernate.Session;
 
 /**
  *
@@ -20,11 +19,13 @@ public interface IAbstractDAO<T extends AbstractDTO, IdType> {
 
     public abstract T find(IdType id);
 
+    public abstract Session getSession();
+
     public abstract List<T> find();
 
-    public abstract int save(T t);
+    public abstract void save(T t);
 
-    public abstract int update(T t);
+    public abstract void update(T t);
 
-    public abstract int delete(T t);
+    public abstract void delete(T t);
 }
