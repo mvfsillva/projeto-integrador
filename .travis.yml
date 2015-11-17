@@ -1,0 +1,14 @@
+language: java
+
+before_script:
+ - npm install -g gulp
+ - npm install
+
+notifications:
+ email:
+  recipients:
+   - marcusvinicius30798@gmail.com
+   - yagolasse@gmail.com
+   - arthur1503@gmail.com
+
+  on_success: always
