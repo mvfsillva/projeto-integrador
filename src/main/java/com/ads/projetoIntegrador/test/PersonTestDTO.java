@@ -5,7 +5,7 @@
  */
 package com.ads.projetoIntegrador.test;
 
-import com.ads.projetoIntegrador.dto.AbstractDTO;
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,23 +20,21 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "person", schema = "public")
-public class PersonTestDTO extends AbstractDTO<Integer> {
+public class PersonTestDTO implements Serializable {
 
     @Id
     @Column(name = "id_person", nullable = false, unique = true)
-    @SequenceGenerator(name="id_person", sequenceName="sq_person_id")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_person")
+    @SequenceGenerator(name = "id_person_sq", sequenceName = "sq_person_id")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_person_sq")
     private Integer id;
 
     @Column(name = "name", nullable = false)
     private String name;
-    
-    @Override
+
     public Integer getId() {
         return this.id;
     }
 
-    @Override
     public void setId(Integer id) {
         this.id = id;
     }
@@ -48,5 +46,9 @@ public class PersonTestDTO extends AbstractDTO<Integer> {
     public void setName(String name) {
         this.name = name;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Name: " + this.name;
+    }
 }

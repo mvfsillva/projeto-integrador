@@ -5,7 +5,7 @@ package com.ads.projetoIntegrador.dao;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import com.ads.projetoIntegrador.dto.AbstractDTO;
+import java.io.Serializable;
 import java.util.List;
 import org.hibernate.Session;
 
@@ -15,7 +15,7 @@ import org.hibernate.Session;
  * @param <T>
  * @param <IdType>
  */
-public interface IAbstractDAO<T extends AbstractDTO, IdType> {
+public interface IAbstractDAO<T extends Serializable, IdType> {
 
     public abstract T find(IdType id);
 

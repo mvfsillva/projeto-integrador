@@ -5,12 +5,16 @@ package com.ads.projetoIntegrador.dao;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import com.ads.projetoIntegrador.dto.AbstractDTO;
 import com.ads.projetoIntegrador.utils.HibernateUtils;
 import java.io.Serializable;
+import java.lang.annotation.Annotation;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import javax.persistence.Table;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 /**
  *
@@ -18,10 +22,10 @@ import org.hibernate.Session;
  * @param <T>
  * @param <IdType>
  */
-public class AbstractDAO<T extends AbstractDTO, IdType extends Serializable> implements IAbstractDAO<T, IdType> {
+public class AbstractDAO<T extends Serializable, IdType extends Serializable> implements IAbstractDAO<T, IdType> {
 
     protected Class<T> classOfEntity;
-
+    
     public AbstractDAO(Class<T> classOfEntity) {
         this.classOfEntity = classOfEntity;
     }
@@ -33,43 +37,66 @@ public class AbstractDAO<T extends AbstractDTO, IdType extends Serializable> imp
 
     @Override
     public void save(T t) {
-        getSession().beginTransaction();
-        getSession().save(t);
-        if (!getSession().getTransaction().wasCommitted())
-            getSession().getTransaction().commit();
-        getSession().clear();
+        Session s = getSession();
+        Transaction tx = s.beginTransaction();
+        s.persist(t);
+        tx.commit();
+        s.flush();
+        s.close();
     }
 
     @Override
     public void update(T t) {
-        getSession().beginTransaction();
-        getSession().update(t);
-        if (!getSession().getTransaction().wasCommitted())
-            getSession().getTransaction().commit();
-        getSession().clear();
+       Session s = getSession();
+        Transaction tx = s.beginTransaction();
+        s.update(t);
+        tx.commit();
+        s.flush();
+        s.close();
     }
 
     @Override
     public void delete(T t) {
-        getSession().beginTransaction();
-        getSession().delete(t);
-        if (!getSession().getTransaction().wasCommitted())
-            getSession().getTransaction().commit();
-        getSession().clear();
+        Session s = getSession();
+        Transaction tx = s.beginTransaction();
+        s.delete(t);
+        tx.commit();
+        s.flush();
+        s.close();
     }
 
     @Override
     public T find(IdType id) {
-        String className = classOfEntity.getName();
-        Query query = getSession().createQuery("from " + className + " where id_" + className.replace("DTO", "") + " = :id");
-        query.setProperties(id);
+        Session s = getSession();
+        String tn = getTableName();
+        Query query = s.createQuery("from " + tn + " where " + getIdFieldName() + " = :id");
+        Map<String, IdType> m = new HashMap<>();
+        m.put("id", id);
+        query.setProperties(m);
         return (T) query.uniqueResult();
     }
 
     @Override
     public List<T> find() {
-        Query query = getSession().createQuery("from " + classOfEntity.getName());
+        Session s = getSession();
+        String tn = getTableName();
+        Query query = s.createQuery("from ".concat(tn));
         return (List<T>) query.list();
     }
+    
+    private String getTableName() {
+        return classOfEntity.getName();
+    }
 
+    private String getIdFieldName() {
+        Annotation[] ann = classOfEntity.getAnnotations();
+        int i;
+        for(i = 0; i < ann.length; i++) {
+            if(ann[i].annotationType().equals(Table.class)) {
+                break;
+            }
+        }
+        if(i == ann.length) throw new IllegalArgumentException();
+        return "id_".concat(((Table) ann[i]).name());
+    }
 }

@@ -9,10 +9,11 @@
         <property name="hibernate.connection.username">postgres</property>
         <property name="hibernate.connection.password">15067892</property>
         <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/DataTest</property>
-        <property name="connection_pool_size">1</property>
-        <property name="hbm2ddl.auto">create</property>
-        <property name="show_sql">true</property>
-        <mapping class="com.ads.projetoIntegrador.test.PersonTestDTO"/>
+        <property name="hibernate.connection.pool_size">1</property>
+        <property name="hibernate.hbm2ddl.auto">create</property>
+        <property name="hibernate.format_sql">true</property>
+        <property name="hibernate.show_sql">true</property>
+        <mapping class="com.ads.projetoIntegrador.test.PersonTestDTO"></mapping>
 <!--        <mapping resource="Employee.hbm.xml"/>-->
     </session-factory>
 </hibernate-configuration>
