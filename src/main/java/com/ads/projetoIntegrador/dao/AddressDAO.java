@@ -5,16 +5,16 @@
  */
 package com.ads.projetoIntegrador.dao;
 
-import com.ads.projetoIntegrador.dto.EnderecoDTO;
+import com.ads.projetoIntegrador.dto.AddressDTO;
 
 
 /**
  *
  * @author arthur.hage
  */
-public class EnderecoDAO extends AbstractDAO<EnderecoDTO, Integer> {
+public class AddressDAO extends AbstractDAO<AddressDTO, Integer> {
 
-    public EnderecoDAO() {
-        super(EnderecoDTO.class);
+    public AddressDAO() {
+        super(AddressDTO.class);
     }
 }
