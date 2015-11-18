@@ -61,6 +61,10 @@ public class EnderecoDTO implements Serializable{
     public String getCidade() {
         return cidade;
     }
+    
+     public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
 
     public String getEstado() {
         return estado;
@@ -108,10 +112,6 @@ public class EnderecoDTO implements Serializable{
 
     public void setTelefone_secndario(String telefone_secndario) {
         this.telefone_secndario = telefone_secndario;
-    }
-
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
     }
     
     @Override
