@@ -29,7 +29,7 @@ public class Test {
         endereco.setState("Bahia");
         endereco.setNeighborhood("Imbui");
         endereco.setStreet("A");
-        endereco.setCep("123456");
+        endereco.setPostal_code("123456");
         endereco.setPrimary_phone("12345689");
         endereco.setSecondary_phone("12345689");
         end.save(endereco);
@@ -41,7 +41,7 @@ public class Test {
         endereco2.setState("Bahia");
         endereco2.setNeighborhood("Imbui");
         endereco2.setStreet("A");
-        endereco2.setCep("123456");
+        endereco2.setPostal_code("123456");
         endereco2.setPrimary_phone("12345689");
         end2.save(endereco2);
     }

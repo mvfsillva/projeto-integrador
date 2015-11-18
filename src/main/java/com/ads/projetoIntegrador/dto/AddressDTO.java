@@ -41,8 +41,8 @@ public class AddressDTO implements Serializable{
     @Column(name = "address_street", nullable = false)
     private String street;
     
-    @Column(name = "address_cep", nullable = false)
-    private String cep;
+    @Column(name = "address_postal_code", nullable = false)
+    private String postal_code;
     
     @Column(name = "address_primary_phone", nullable = false)
     private String primary_phone;
@@ -90,12 +90,12 @@ public class AddressDTO implements Serializable{
         this.street = street;
     }
 
-    public String getCep() {
-        return cep;
+    public String getPostal_code() {
+        return postal_code;
     }
 
-    public void setCep(String cep) {
-        this.cep = cep;
+    public void setPostal_code(String postal_code) {
+        this.postal_code = postal_code;
     }
 
     public String getPrimary_phone() {
@@ -117,7 +117,7 @@ public class AddressDTO implements Serializable{
     @Override
     public String toString() {
         return "Cidade: " + this.city + " Estado: " + this.state + " Bairro: " + this.neighborhood
-                + " Rua: " + this.street + " Cep: " + this.cep + " Telefone Primario: " + this.primary_phone 
+                + " Rua: " + this.street + " Cep: " + this.postal_code + " Telefone Primario: " + this.primary_phone 
                 + " Telefone Secundario: " + this.secondary_phone ;
     }
     
