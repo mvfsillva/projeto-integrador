@@ -15,6 +15,7 @@
         <property name="hibernate.show_sql">true</property>
         <mapping class="com.ads.projetoIntegrador.test.PersonTestDTO"></mapping>
         <mapping class="com.ads.projetoIntegrador.dto.AddressDTO"></mapping>
+        <mapping class="com.ads.projetoIntegrador.dto.NecessityDTO"></mapping>
 <!--        <mapping resource="Employee.hbm.xml"/>-->
     </session-factory>
 </hibernate-configuration>
