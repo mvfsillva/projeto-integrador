@@ -5,7 +5,6 @@
  */
 package com.ads.projetoIntegrador.facade;
 
-import com.ads.projetoIntegrador.dto.AbstractDTO;
 import java.io.Serializable;
 import java.util.List;
 
@@ -15,7 +14,7 @@ import java.util.List;
  * @param <T>
  * @param <IdType>
  */
-public abstract class FacadeManager<T extends AbstractDTO, IdType extends Serializable> implements IFacadeManager<T, IdType> {
+public abstract class FacadeManager<T extends Serializable, IdType extends Serializable> implements IFacadeManager<T, IdType> {
 
 
     @Override

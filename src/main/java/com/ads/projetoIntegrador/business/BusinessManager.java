@@ -5,7 +5,6 @@
  */
 package com.ads.projetoIntegrador.business;
 
-import com.ads.projetoIntegrador.dto.AbstractDTO;
 import java.io.Serializable;
 import java.util.List;
 
@@ -16,7 +15,7 @@ import java.util.List;
  * @param <T>
  * @param <IdType>
  */
-public abstract class BusinessManager<T extends AbstractDTO, IdType extends Serializable>
+public abstract class BusinessManager<T extends Serializable, IdType extends Serializable>
         implements IBusinessManager<T, IdType> {
 
     @Override
