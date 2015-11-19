@@ -26,7 +26,7 @@ public class AddressDTO implements Serializable{
     @Id
     @Column(name = "id_address", nullable = false, unique = true)
     @SequenceGenerator(name = "id_address_sq", sequenceName = "sq_address_id")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_address_sq")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "id_address_sq")
     private Integer id;
     
     @Column(name = "address_city", nullable = false)
