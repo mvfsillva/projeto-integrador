@@ -1,6 +1,4 @@
 
-import com.ads.projetoIntegrador.dao.AddressDAO;
-import com.ads.projetoIntegrador.dto.AddressDTO;
 import com.ads.projetoIntegrador.test.PersonDAO;
 import com.ads.projetoIntegrador.test.PersonTestDTO;
 
