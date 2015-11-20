@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ads.projetoIntegrador.test;
+package com.ads.projetoIntegrador.dto;
 
 import java.io.Serializable;
 import javax.persistence.Column;
@@ -20,7 +20,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "person", schema = "public")
-public class PersonTestDTO implements Serializable {
+public class PersonDTO implements Serializable {
 
     @Id
     @Column(name = "id_person", nullable = false, unique = true)

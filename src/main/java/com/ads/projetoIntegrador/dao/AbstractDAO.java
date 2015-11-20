@@ -84,11 +84,11 @@ public class AbstractDAO<T extends Serializable, IdType extends Serializable> im
         return (List<T>) query.list();
     }
     
-    private String getTableName() {
+    protected String getTableName() {
         return classOfEntity.getName();
     }
 
-    private String getIdFieldName() {
+    protected String getIdFieldName() {
         Annotation[] ann = classOfEntity.getAnnotations();
         int i;
         for(i = 0; i < ann.length; i++) {
