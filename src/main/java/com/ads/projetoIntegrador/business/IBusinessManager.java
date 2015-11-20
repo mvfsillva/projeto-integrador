@@ -18,7 +18,7 @@ import java.util.List;
  */
 public interface IBusinessManager<T extends Serializable, IdType extends Serializable> {
 
-    public void doValidate(T t) throws IllegalArgumentException;
+    public void validate(T t) throws IllegalArgumentException;
 
     public IAbstractDAO<T, IdType> getDAO();
 

@@ -5,6 +5,7 @@
  */
 package com.ads.projetoIntegrador.business;
 
+import com.ads.projetoIntegrador.dao.IAbstractDAO;
 import java.io.Serializable;
 import java.util.List;
 
@@ -18,8 +19,10 @@ import java.util.List;
 public abstract class BusinessManager<T extends Serializable, IdType extends Serializable>
         implements IBusinessManager<T, IdType> {
 
+    protected IAbstractDAO dao;
+    
     @Override
-    public void doValidate(T t) throws IllegalArgumentException {
+    public void validate(T t) throws IllegalArgumentException {
         if (t == null) {
             throw new IllegalArgumentException("Null Object for parameter");
         }
@@ -37,14 +40,14 @@ public abstract class BusinessManager<T extends Serializable, IdType extends Ser
 
     @Override
     public int save(T t) {
-        doValidate(t);
+        validate(t);
         getDAO().save(t);
         return 0;
     }
 
     @Override
     public int update(T t) {
-        doValidate(t);
+        validate(t);
         getDAO().update(t);
         return 0;
     }
