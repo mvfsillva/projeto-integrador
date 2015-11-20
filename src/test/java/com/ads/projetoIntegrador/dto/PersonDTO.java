@@ -25,7 +25,7 @@ public class PersonDTO implements Serializable {
     @Id
     @Column(name = "id_person", nullable = false, unique = true)
     @SequenceGenerator(name = "id_person_sq", sequenceName = "sq_person_id")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_person_sq")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "id_person_sq")
     private Integer id;
 
     @Column(name = "name", nullable = false)

@@ -47,7 +47,7 @@ public class AbstractDAO<T extends Serializable, IdType extends Serializable> im
 
     @Override
     public void update(T t) {
-       Session s = getSession();
+        Session s = getSession();
         Transaction tx = s.beginTransaction();
         s.update(t);
         tx.commit();
