@@ -30,6 +30,8 @@ public class UserDTO implements Serializable {
 
     @Transient
     public static final String FIND_BY_EMAIL_AND_PASS = "findByEmailAndPass";
+    @Transient
+    public static final String LOGGED_IN_USER = "loggedInUser";
 
     @Id
     @Column(name = "id_address", nullable = false, unique = true)
