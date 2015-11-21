@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ads.projetoIntegrador.business;
+package com.ads.projetoIntegrador.test;
 
+import com.ads.projetoIntegrador.business.UserBusiness;
 import com.ads.projetoIntegrador.dto.UserDTO;
 import org.junit.After;
 import static org.junit.Assert.assertTrue;
