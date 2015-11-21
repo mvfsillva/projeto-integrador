@@ -26,9 +26,9 @@ public interface IBusinessManager<T extends Serializable, IdType extends Seriali
 
     public List<T> find();
 
-    public int save(T t);
+    public void save(T t);
 
-    public int update(T t);
+    public void update(T t);
 
-    public int delete(T t);
+    public void delete(T t);
 }

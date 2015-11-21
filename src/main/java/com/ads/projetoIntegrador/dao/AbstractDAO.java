@@ -66,11 +66,19 @@ public class AbstractDAO<T extends Serializable, IdType extends Serializable> im
     }
 
     @Override
+    public List<T> find(String namedQuery, Map<String, Object> params) {
+        Session s = getSession();
+        Query query = s.getNamedQuery(namedQuery);
+        query.setProperties(params);
+        return query.list();
+    }
+    
+    @Override
     public T find(IdType id) {
         Session s = getSession();
         String tn = getTableName();
         Query query = s.createQuery("from " + tn + " where " + getIdFieldName() + " = :id");
-        Map<String, IdType> m = new HashMap<>();
+        Map<String, IdType> m = new HashMap<String, IdType>();
         m.put("id", id);
         query.setProperties(m);
         return (T) query.uniqueResult();

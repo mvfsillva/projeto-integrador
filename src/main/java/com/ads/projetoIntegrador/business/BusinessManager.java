@@ -39,23 +39,20 @@ public abstract class BusinessManager<T extends Serializable, IdType extends Ser
     }
 
     @Override
-    public int save(T t) {
+    public void save(T t) {
         validate(t);
         getDAO().save(t);
-        return 0;
     }
 
     @Override
-    public int update(T t) {
+    public void update(T t) {
         validate(t);
         getDAO().update(t);
-        return 0;
     }
 
     @Override
-    public int delete(T t) {
+    public void delete(T t) {
         getDAO().delete(t);
-        return 0;
     }
 
 }

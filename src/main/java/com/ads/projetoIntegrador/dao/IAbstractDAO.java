@@ -7,6 +7,7 @@ package com.ads.projetoIntegrador.dao;
  */
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 import org.hibernate.Session;
 
 /**
@@ -16,12 +17,14 @@ import org.hibernate.Session;
  * @param <IdType>
  */
 public interface IAbstractDAO<T extends Serializable, IdType> {
-
+    
     public abstract T find(IdType id);
 
     public abstract Session getSession();
 
     public abstract List<T> find();
+    
+    public abstract List<T> find(String namedQuery, Map<String, Object> params);
 
     public abstract void save(T t);
 

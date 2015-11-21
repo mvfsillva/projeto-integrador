@@ -5,6 +5,7 @@
  */
 package com.ads.projetoIntegrador.facade;
 
+import com.ads.projetoIntegrador.business.IBusinessManager;
 import java.io.Serializable;
 import java.util.List;
 
@@ -14,9 +15,11 @@ import java.util.List;
  * @param <T>
  * @param <IdType>
  */
-public abstract class FacadeManager<T extends Serializable, IdType extends Serializable> implements IFacadeManager<T, IdType> {
+public abstract class FacadeManager<T extends Serializable, IdType extends Serializable> 
+        implements IFacadeManager<T, IdType> {
 
-
+    protected IBusinessManager bo;
+    
     @Override
     public T find(IdType id) {
         return (T) getBusinessManager().find(id);
@@ -28,18 +31,18 @@ public abstract class FacadeManager<T extends Serializable, IdType extends Seria
     }
 
     @Override
-    public int save(T t) {
-        return getBusinessManager().save(t);
+    public void save(T t) {
+        getBusinessManager().save(t);
     }
 
     @Override
-    public int update(T t) {
-        return getBusinessManager().update(t);
+    public void update(T t) {
+        getBusinessManager().update(t);
     }
 
     @Override
-    public int delete(T t) {
-        return getBusinessManager().delete(t);
+    public void delete(T t) {
+        getBusinessManager().delete(t);
     }
 
 }

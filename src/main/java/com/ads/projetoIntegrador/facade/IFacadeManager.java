@@ -23,10 +23,10 @@ public interface IFacadeManager<T extends Serializable, IdType extends Serializa
 
     public abstract List<T> find();
 
-    public abstract int save(T t);
+    public abstract void save(T t);
 
-    public abstract int update(T t);
+    public abstract void update(T t);
 
-    public abstract int delete(T t);
+    public abstract void delete(T t);
 
 }
