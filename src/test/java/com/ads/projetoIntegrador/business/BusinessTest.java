@@ -62,7 +62,7 @@ public class BusinessTest {
     }
     
     @Test(expected = IllegalArgumentException.class)
-    public void when_4_tryingToSaveAEntityWithEmptyName() {
+    public void when_5_tryingToSaveAEntityWithEmptyName() {
         PersonDTO p = new PersonDTO();
         p.setName("");
         bo.save(p);
