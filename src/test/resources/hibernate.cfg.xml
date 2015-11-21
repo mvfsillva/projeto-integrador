@@ -15,5 +15,7 @@
         <property name="hibernate.show_sql">false</property>
         
         <mapping class="com.ads.projetoIntegrador.dto.PersonDTO"></mapping>
+        <mapping class="com.ads.projetoIntegrador.dto.UserDTO"></mapping>
+        
     </session-factory>
 </hibernate-configuration>
