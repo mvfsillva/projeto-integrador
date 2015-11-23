@@ -50,6 +50,16 @@ public class AddressDTO implements Serializable{
     @Column(name = "address_secondary_phone")
     private String secondary_phone;
 
+    public AddressDTO(String city, String state, String neighborhood, String street, String postal_code, String primary_phone, String secondary_phone) {
+        this.city = city;
+        this.state = state;
+        this.neighborhood = neighborhood;
+        this.street = street;
+        this.postal_code = postal_code;
+        this.primary_phone = primary_phone;
+        this.secondary_phone = secondary_phone;
+    }
+    
     public Integer getId() {
         return id;
     }
