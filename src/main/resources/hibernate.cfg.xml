@@ -17,5 +17,6 @@
         <mapping class="com.ads.projetoIntegrador.dto.AddressDTO"></mapping>
         <mapping class="com.ads.projetoIntegrador.dto.NecessityDTO"></mapping>
         <mapping class="com.ads.projetoIntegrador.dto.UserDTO"></mapping>
+        <mapping class="com.ads.projetoIntegrador.dto.OngDTO"></mapping>
     </session-factory>
 </hibernate-configuration>
