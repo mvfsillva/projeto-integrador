@@ -24,7 +24,7 @@ import javax.persistence.Transient;
 @Entity
 @NamedQueries(value = {
     @NamedQuery(name = "findByEmailAndPass",
-            query = "SELECT c FROM user c WHERE c.username = :username AND c.password = :password")})
+            query = "SELECT c FROM UserDTO c WHERE c.username = :username AND c.password = :password")})
 @Table(name = "system_user")
 public class UserDTO implements Serializable {
 
