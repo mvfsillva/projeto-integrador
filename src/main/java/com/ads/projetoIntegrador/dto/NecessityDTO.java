@@ -6,14 +6,20 @@
 package com.ads.projetoIntegrador.dto;
 
 import java.io.Serializable;
-//import java.util.Date;
+import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -39,9 +45,28 @@ public class NecessityDTO implements Serializable{
     @Column(name = "necessity_priority", nullable = false)
     private String priority;
     
-    @Column(name = "necessity_date", nullable = false)
-    private String date;
-//    private Date date;
+    @Temporal(TemporalType.DATE)
+    @Column(name = "necessity_date", nullable = false, length = 10)
+    private Date date;
+    
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name="ong_id")
+    private OngDTO ong;
+
+    public NecessityDTO(String description, String title, String priority, Date date) {
+        this.description = description;
+        this.title = title;
+        this.priority = priority;
+        this.date = date;
+    }
+    
+    public OngDTO getOng() {
+        return this.ong;
+    }
+
+    public void setOng(OngDTO ong) {
+        this.ong = ong;
+    }
 
     public Integer getId() {
         return id;
@@ -75,11 +100,11 @@ public class NecessityDTO implements Serializable{
         this.priority = priority;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
     
