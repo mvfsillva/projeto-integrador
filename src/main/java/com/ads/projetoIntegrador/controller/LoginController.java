@@ -25,7 +25,7 @@ public class LoginController {
     private UserBusiness bo;
     
     public UserDTO getLoggedInUser() {
-        return (UserDTO) SessionContext.getInstance().getLoggedInUser();
+        return SessionContext.getInstance().getLoggedInUser();
     }
 
     private IBusinessManager getUserBusiness() {
