@@ -11,8 +11,34 @@
       imagemin    = require('gulp-imagemin'),
       cp          = require('child_process');
 
-  gulp.task('less', function(){
-    gulp.src('./_src/less/main.less')
-    .pipe(less({ compress: true }))
-    .pipe(gulp.dest('./assets/css'))
+
+  gulp.task('stylus', function(){
+  		gulp.src('_src/stylus/main.styl')
+  		.pipe(plumber())
+  		.pipe(stylus({
+  			use:[koutoSwiss(), prefixer(), jeet(),rupture()],
+  			compress: true
+  		}))
+  		.pipe(gulp.dest('assets/css'))
   });
+
+  gulp.task('js', function(){
+	   return gulp.src('src/js/**/*.js')
+		.pipe(plumber())
+		.pipe(concat('main.js'))
+		.pipe(uglify())
+		.pipe(gulp.dest('assets/js/'))
+  });
+
+gulp.task('imagemin', function() {
+	return gulp.src('src/img/**/*.{jpg,png,gif}')
+		.pipe(plumber())
+		.pipe(imagemin({ optimizationLevel: 3, progressive: true, interlaced: true }))
+		.pipe(gulp.dest('assets/img/'));
+});
+
+gulp.task('watch', function () {
+	gulp.watch('src/styl/**/*.styl', ['stylus']);
+	gulp.watch('src/js/**/*.js', ['js']);
+	gulp.watch('src/img/**/*.{jpg,png,gif}', ['imagemin']);
+});
