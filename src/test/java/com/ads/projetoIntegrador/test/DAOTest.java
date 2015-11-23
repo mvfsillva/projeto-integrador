@@ -1,5 +1,6 @@
-package com.ads.projetoIntegrador.dao;
+package com.ads.projetoIntegrador.test;
 
+import com.ads.projetoIntegrador.dao.PersonDAO;
 import com.ads.projetoIntegrador.dto.PersonDTO;
 import java.util.List;
 import static org.junit.Assert.assertTrue;

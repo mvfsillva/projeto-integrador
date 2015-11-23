@@ -8,6 +8,7 @@ package com.ads.projetoIntegrador.business;
 import com.ads.projetoIntegrador.dao.IAbstractDAO;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Class for generic business.
@@ -39,23 +40,25 @@ public abstract class BusinessManager<T extends Serializable, IdType extends Ser
     }
 
     @Override
-    public int save(T t) {
+    public List<T> find(String namedQuery, Map<String, Object> params) {
+        return getDAO().find(namedQuery, params);
+    }
+    
+    @Override
+    public void save(T t) {
         validate(t);
         getDAO().save(t);
-        return 0;
     }
 
     @Override
-    public int update(T t) {
+    public void update(T t) {
         validate(t);
         getDAO().update(t);
-        return 0;
     }
 
     @Override
-    public int delete(T t) {
+    public void delete(T t) {
         getDAO().delete(t);
-        return 0;
     }
 
 }
