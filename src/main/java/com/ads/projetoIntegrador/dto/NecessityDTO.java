@@ -7,19 +7,9 @@ package com.ads.projetoIntegrador.dto;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 /**
  *
@@ -49,15 +39,28 @@ public class NecessityDTO implements Serializable{
     @Column(name = "necessity_date", nullable = false, length = 10)
     private Date date;
     
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name="ong_id")
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name="ong_id", insertable=true, updatable=true)
+    @Fetch(FetchMode.JOIN)
     private OngDTO ong;
+
+    public NecessityDTO() {
+    }
 
     public NecessityDTO(String description, String title, String priority, Date date) {
         this.description = description;
         this.title = title;
         this.priority = priority;
         this.date = date;
+    }
+    
+     public NecessityDTO(String description, String title, String priority
+             , Date date, OngDTO ong) {
+        this.description = description;
+        this.title = title;
+        this.priority = priority;
+        this.date = date;
+        this.ong = ong;
     }
     
     public OngDTO getOng() {
