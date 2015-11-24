@@ -38,8 +38,8 @@
 // });
 
 gulp.task('watch', function () {
-	gulp.watch('assets/stylus/main.styl', ['stylus']);
-	gulp.watch('/_src/javascript/**/*.js', ['js']);
+	gulp.watch('assets/stylus/**/*.styl', ['stylus']);
+	gulp.watch('assets/javascript/**/*.js', ['js']);
 	// gulp.watch('./_src/images/**/*.{jpg,png,gif}', ['imagemin']);
 });
 
