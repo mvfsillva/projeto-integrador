@@ -45,6 +45,10 @@ public class OngDTO implements Serializable{
     @OneToMany(fetch = FetchType.LAZY, mappedBy="ong")
     @Cascade(CascadeType.ALL)
     private Collection<NecessityDTO> necessities;
+    
+    @OneToMany(fetch = FetchType.LAZY, mappedBy="ong")
+    @Cascade(CascadeType.ALL)
+    private Collection<EventsDTO> events;
 
     public Integer getId() {
         return id;
@@ -100,6 +104,14 @@ public class OngDTO implements Serializable{
 
     public void setWebsite(String website) {
         this.website = website;
+    }
+    
+    public Collection<EventsDTO> getEvents() {
+        return events;
+    }
+
+    public void setEvents(Collection<EventsDTO> events) {
+        this.events = events;
     }
     
 }

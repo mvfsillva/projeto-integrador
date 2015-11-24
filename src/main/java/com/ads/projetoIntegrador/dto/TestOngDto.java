@@ -39,10 +39,20 @@ public class TestOngDto {
         NecessityDTO nec3 = new NecessityDTO("brinquedos", "Precisamos brinquedos", "media", new Date());
         nec3.setOng(ong);
         
+        EventsDTO ev1 = new EventsDTO("Senai Cimatec", "Evento", new Date());
+        ev1.setOng(ong);
+        
+        EventsDTO ev2 = new EventsDTO("Farol da Barra", "Evento", new Date());
+        ev2.setOng(ong);
+        
         ong.setNecessities(new HashSet<NecessityDTO>());
         ong.getNecessities().add(nec1);
         ong.getNecessities().add(nec2);
         ong.getNecessities().add(nec3);
+        
+        ong.setEvents(new HashSet<EventsDTO>());
+        ong.getEvents().add(ev1);
+        ong.getEvents().add(ev2);
         
         OngDao.save(ong);
     }
