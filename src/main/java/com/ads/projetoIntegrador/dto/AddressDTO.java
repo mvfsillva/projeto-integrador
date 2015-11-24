@@ -6,13 +6,7 @@
 package com.ads.projetoIntegrador.dto;
 
 import java.io.Serializable;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  *
@@ -50,7 +44,16 @@ public class AddressDTO implements Serializable{
     @Column(name = "address_secondary_phone")
     private String secondary_phone;
 
-    public AddressDTO(String city, String state, String neighborhood, String street, String postal_code, String primary_phone, String secondary_phone) {
+//    @PrimaryKeyJoinColumn;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="id_ong")
+    private OngDTO ong;
+
+    public AddressDTO() {
+    }
+
+    public AddressDTO(String city, String state, String neighborhood, String street
+            , String postal_code, String primary_phone, String secondary_phone) {
         this.city = city;
         this.state = state;
         this.neighborhood = neighborhood;
@@ -58,6 +61,18 @@ public class AddressDTO implements Serializable{
         this.postal_code = postal_code;
         this.primary_phone = primary_phone;
         this.secondary_phone = secondary_phone;
+    }
+    
+     public AddressDTO(String city, String state, String neighborhood, String street
+             , String postal_code, String primary_phone, String secondary_phone, OngDTO ong) {
+        this.city = city;
+        this.state = state;
+        this.neighborhood = neighborhood;
+        this.street = street;
+        this.postal_code = postal_code;
+        this.primary_phone = primary_phone;
+        this.secondary_phone = secondary_phone;
+        this.ong = ong;
     }
     
     public Integer getId() {
@@ -122,6 +137,14 @@ public class AddressDTO implements Serializable{
 
     public void setSecondary_phone(String secondary_phone) {
         this.secondary_phone = secondary_phone;
+    }
+    
+    public OngDTO getOng() {
+        return ong;
+    }
+
+    public void setOng(OngDTO ong) {
+        this.ong = ong;
     }
     
     @Override

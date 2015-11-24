@@ -24,6 +24,10 @@ public class LoginController {
     private UserDTO user;
     private UserBusiness bo;
     
+    public LoginController() {
+        this.user = new UserDTO();
+    }
+    
     public UserDTO getLoggedInUser() {
         return SessionContext.getInstance().getLoggedInUser();
     }
@@ -36,20 +40,22 @@ public class LoginController {
     }
     
     public String doLogin() {
-        try {
-            UserDTO userLoginResult = ((UserBusiness) getUserBusiness())
-                    .tryUserLogin(user.getUsername(), user.getPassword());
-            if (userLoginResult == null) {
-                FacesContext.getCurrentInstance().validationFailed();
-                return "";
-            }
-            SessionContext.getInstance().setAttribute(UserDTO.LOGGED_IN_USER, userLoginResult);
-            return "/index.xhtml?faces-redirect=true";
-        } catch (Exception e) {
-            FacesContext.getCurrentInstance().validationFailed();
-            e.printStackTrace();
-            return "";
-        }
+        System.out.print("logado");
+//        try {
+//            UserDTO userLoginResult = ((UserBusiness) getUserBusiness())
+//                    .tryUserLogin(user.getUsername(), user.getPassword());
+//            if (userLoginResult == null) {
+//                FacesContext.getCurrentInstance().validationFailed();
+//                return "";
+//            }
+//            SessionContext.getInstance().setAttribute(UserDTO.LOGGED_IN_USER, userLoginResult);
+//            return "/index.xhtml?faces-redirect=true";
+//        } catch (Exception e) {
+//            FacesContext.getCurrentInstance().validationFailed();
+//            e.printStackTrace();
+//            return "";
+//        }
+          return "/index.xhtml?faces-redirect=true";
     }
 
     public String doLogout() {
