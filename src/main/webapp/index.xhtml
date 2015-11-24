@@ -1,11 +1,17 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
-<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html">
-    <h:head>
-        <title>Facelet Title</title>
-    </h:head>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <ui:insert name="head">
+        <ui:include src="templates/_head.xhtml" />
+    </ui:insert>
     <h:body>
-        Hello from Facelets
+        <ui:insert>
+            <ui:include src="templates/_header.xhtml"/>
+            <ui:include src="templates/_menu.xhtml"/>
+        </ui:insert>
+        <ui:insert name="footer">
+            <ui:include src="templates/_footer.xhtml" />
+        </ui:insert>
     </h:body>
 </html>
 
