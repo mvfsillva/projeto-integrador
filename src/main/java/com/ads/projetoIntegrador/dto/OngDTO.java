@@ -5,22 +5,11 @@
  */
 package com.ads.projetoIntegrador.dto;
 
-import com.ads.projetoIntegrador.dto.NecessityDTO;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import java.util.Collection;
+import javax.persistence.*;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType; 
 
 /**
  *
@@ -36,13 +25,13 @@ public class OngDTO implements Serializable{
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "id_ong_sq")
     private Integer id;
     
-    @Column(name = "ong_cnpj", nullable = false, unique = true)
     //CNPJ  – Brazilian Registration of Corporate Taxpayers
+    @Column(name = "ong_cnpj", nullable = false, unique = true)
     private String cnpj;
     
-    @OneToOne(cascade=CascadeType.PERSIST)
-    @JoinColumn(name="ong_address_id")
-    private AddressDTO ong_address;
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "ong")
+    @Cascade(CascadeType.ALL)
+    private AddressDTO address;
     
     @Column(name = "ong_name", nullable = false)
     private String name;
@@ -53,9 +42,13 @@ public class OngDTO implements Serializable{
     @Column(name = "ong_website", nullable = false)
     private String website;
     
-    //necessity
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, targetEntity = NecessityDTO.class, mappedBy="ong")
-    private Set<NecessityDTO> necessities = new HashSet<>(0);
+    @OneToMany(fetch = FetchType.LAZY, mappedBy="ong")
+    @Cascade(CascadeType.ALL)
+    private Collection<NecessityDTO> necessities;
+    
+    @OneToMany(fetch = FetchType.LAZY, mappedBy="ong")
+    @Cascade(CascadeType.ALL)
+    private Collection<EventsDTO> events;
 
     public Integer getId() {
         return id;
@@ -73,12 +66,12 @@ public class OngDTO implements Serializable{
         this.cnpj = cnpj;
     }
 
-    public AddressDTO getOng_address() {
-        return ong_address;
+    public AddressDTO getAddress() {
+        return address;
     }
 
-    public void setOng_address(AddressDTO ong_address) {
-        this.ong_address = ong_address;
+    public void setAddress(AddressDTO address) {
+        this.address = address;
     }
 
     public String getName() {
@@ -97,11 +90,11 @@ public class OngDTO implements Serializable{
         this.email = email;
     }
     
-    public Set<NecessityDTO> getNecessities() {
+    public Collection<NecessityDTO> getNecessities() {
         return necessities;
     }
 
-    public void setNecessities(Set<NecessityDTO> necessities) {
+    public void setNecessities(Collection<NecessityDTO> necessities) {
         this.necessities = necessities;
     }
 
@@ -111,6 +104,14 @@ public class OngDTO implements Serializable{
 
     public void setWebsite(String website) {
         this.website = website;
+    }
+    
+    public Collection<EventsDTO> getEvents() {
+        return events;
+    }
+
+    public void setEvents(Collection<EventsDTO> events) {
+        this.events = events;
     }
     
 }

@@ -5,13 +5,9 @@
  */
 package com.ads.projetoIntegrador.dto;
 
-import com.ads.projetoIntegrador.dao.AddressDAO;
-import com.ads.projetoIntegrador.dao.NecessityDAO;
 import com.ads.projetoIntegrador.dao.OngDAO;
-import com.ads.projetoIntegrador.dto.AddressDTO;
-import com.ads.projetoIntegrador.dto.NecessityDTO;
-import com.ads.projetoIntegrador.dto.OngDTO;
 import java.util.Date;
+import java.util.HashSet;
 
 /**
  *
@@ -24,28 +20,40 @@ public class TestOngDto {
         OngDAO OngDao = new OngDAO();
         OngDTO ong = new OngDTO();
         
-        AddressDAO AddressDao = new AddressDAO();
-        NecessityDAO NecessityDao = new NecessityDAO();
-        
         AddressDTO address = new AddressDTO("BA", "Imbui", "rua muito loca", "Salvador city", "41324567", "34568796", null);
-        NecessityDTO nec1 = new NecessityDTO("comida", "Precisamos comer", "max", new Date());
-        NecessityDTO nec2 = new NecessityDTO("roupa", "Precisamos roupas", "max", new Date());
-        NecessityDTO nec3 = new NecessityDTO("brinquedos", "Precisamos brinquedos", "media", new Date());
         
         ong.setName("Ong teste");
         ong.setCnpj("12345678");
         ong.setEmail("ongTeste@email.com");
         ong.setWebsite("www.ongTeste.com.br");
-        ong.setOng_address(address);
+       
+        address.setOng(ong);
+        ong.setAddress(address);
         
+        NecessityDTO nec1 = new NecessityDTO("comida", "Precisamos comer", "max", new Date());
         nec1.setOng(ong);
+        
+        NecessityDTO nec2 = new NecessityDTO("roupa", "Precisamos roupas", "max", new Date());
         nec2.setOng(ong);
+        
+        NecessityDTO nec3 = new NecessityDTO("brinquedos", "Precisamos brinquedos", "media", new Date());
         nec3.setOng(ong);
         
-        AddressDao.save(address);
-        NecessityDao.save(nec1);
-        NecessityDao.save(nec2);
-        NecessityDao.save(nec3);
+        EventsDTO ev1 = new EventsDTO("Senai Cimatec", "Evento", new Date());
+        ev1.setOng(ong);
+        
+        EventsDTO ev2 = new EventsDTO("Farol da Barra", "Evento", new Date());
+        ev2.setOng(ong);
+        
+        ong.setNecessities(new HashSet<NecessityDTO>());
+        ong.getNecessities().add(nec1);
+        ong.getNecessities().add(nec2);
+        ong.getNecessities().add(nec3);
+        
+        ong.setEvents(new HashSet<EventsDTO>());
+        ong.getEvents().add(ev1);
+        ong.getEvents().add(ev2);
+        
         OngDao.save(ong);
     }
 }
