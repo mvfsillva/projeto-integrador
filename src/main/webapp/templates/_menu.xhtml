@@ -1,8 +1,9 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui">
     <section role="navigation">
-        <h:form>
+        <h:form>              
             <p:menubar id="menu" styleClass="menu js-menu">
-                <p:menuitem styleClass="menu-title" value="Cadastrar Ong" url="#" />
+                <p:menuitem styleClass="menu-title" value="Cadastrar Ong" action="/ong/listOng.xhtml?faces-redirect=true" />
+                
                 <p:menuitem styleClass="menu-title" value="Doações"       url="#" />
                 <p:menuitem styleClass="menu-title" value="Eventos"       url="#" />
                 <p:menuitem styleClass="menu-title" value="Voluntarios"   url="#" />
