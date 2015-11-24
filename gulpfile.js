@@ -7,38 +7,41 @@
       plumber     = require('gulp-plumber'),
       jeet        = require('jeet'),
       koutoSwiss  = require('kouto-swiss'),
+      rupture      = require('rupture'),
       prefixer    = require('autoprefixer-stylus'),
       imagemin    = require('gulp-imagemin'),
       cp          = require('child_process');
 
 
   gulp.task('stylus', function(){
-  		gulp.src('_src/stylus/main.styl')
+  		gulp.src('./_src/stylus/main.styl')
   		.pipe(plumber())
   		.pipe(stylus({
   			use:[koutoSwiss(), prefixer(), jeet(),rupture()],
   			compress: true
   		}))
-  		.pipe(gulp.dest('assets/css'))
+  		.pipe(gulp.dest('./assets/css'))
   });
 
   gulp.task('js', function(){
-	   return gulp.src('src/js/**/*.js')
+	   return gulp.src('./_src/js/**/*.js')
 		.pipe(plumber())
 		.pipe(concat('main.js'))
 		.pipe(uglify())
-		.pipe(gulp.dest('assets/js/'))
+		.pipe(gulp.dest('./assets/js/'))
   });
 
-gulp.task('imagemin', function() {
-	return gulp.src('src/img/**/*.{jpg,png,gif}')
-		.pipe(plumber())
-		.pipe(imagemin({ optimizationLevel: 3, progressive: true, interlaced: true }))
-		.pipe(gulp.dest('assets/img/'));
-});
+// gulp.task('imagemin', function() {
+// 	return gulp.src('./_src/images/**/*.{jpg,png,gif}')
+// 		.pipe(plumber())
+// 		.pipe(imagemin({ optimizationLevel: 3, progressive: true, interlaced: true }))
+// 		.pipe(gulp.dest('assets/img/'));
+// });
 
 gulp.task('watch', function () {
-	gulp.watch('src/styl/**/*.styl', ['stylus']);
-	gulp.watch('src/js/**/*.js', ['js']);
-	gulp.watch('src/img/**/*.{jpg,png,gif}', ['imagemin']);
+	gulp.watch('./_src/stylus/**/*.styl', ['stylus']);
+	gulp.watch('./_src/javascript/**/*.js', ['js']);
+	// gulp.watch('./_src/images/**/*.{jpg,png,gif}', ['imagemin']);
 });
+
+gulp.task('default', ['js', 'stylus', 'watch']);
