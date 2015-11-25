@@ -25,9 +25,9 @@ public class PersonDAO extends AbstractDAO<PersonDTO, Integer> {
     public PersonDTO find(String name) {
         Session s = getSession();
         String tn = getTableName();
-        Query query = s.createQuery("from " + tn + " where name = :id");
+        Query query = s.createQuery("from " + tn + " where name = :name");
         Map<String, String> m = new HashMap<>();
-        m.put("id", name);
+        m.put("name", name);
         query.setProperties(m);
         return (PersonDTO) query.uniqueResult();
     }

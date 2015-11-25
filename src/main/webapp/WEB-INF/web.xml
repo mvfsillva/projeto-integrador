@@ -23,9 +23,9 @@
     </filter> 
     <filter-mapping> 
         <filter-name>LoginFilter</filter-name> 
-        <url-pattern>/restricted/*</url-pattern> 
+        <url-pattern>/event/*</url-pattern> 
     </filter-mapping>
     <welcome-file-list>
-        <welcome-file>index.xhtml</welcome-file>
+        <welcome-file>/event/event.xhtml</welcome-file>
     </welcome-file-list>
 </web-app>
