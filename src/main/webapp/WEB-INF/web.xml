@@ -29,6 +29,4 @@
         <filter-name>LoginFilter</filter-name> 
         <url-pattern>/event/*</url-pattern> 
     </filter-mapping>  
-        
-        <welcome-file>index.xhtml</welcome-file>
 </web-app>
