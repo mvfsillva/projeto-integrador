@@ -1,2 +1,0 @@
-CREATE USER doandodba WITH PASSWORD 'doandodbpassword';
-CREATE SCHEMA IF NOT EXISTS test AUTHORIZATION doandodba;
