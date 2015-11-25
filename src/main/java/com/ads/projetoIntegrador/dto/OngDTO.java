@@ -50,6 +50,30 @@ public class OngDTO implements Serializable{
     @Cascade(CascadeType.ALL)
     private Collection<EventsDTO> events;
 
+    public OngDTO() {
+    }
+
+    public OngDTO(String cnpj, String name, String email, String website, Collection<NecessityDTO> necessities
+            , Collection<EventsDTO> events) {
+        this.cnpj = cnpj;
+        this.name = name;
+        this.email = email;
+        this.website = website;
+        this.necessities = necessities;
+        this.events = events;
+    }
+
+    public OngDTO(String cnpj, AddressDTO address, String name, String email, String website
+            , Collection<NecessityDTO> necessities, Collection<EventsDTO> events) {
+        this.cnpj = cnpj;
+        this.address = address;
+        this.name = name;
+        this.email = email;
+        this.website = website;
+        this.necessities = necessities;
+        this.events = events;
+    }
+    
     public Integer getId() {
         return id;
     }
