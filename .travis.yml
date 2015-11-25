@@ -8,7 +8,7 @@ addons:
 
 before_script:
   - psql -c 'create database doando_test;' -U postgres
-  - cp config/database.yml.travis config/database.yml
+  - psql -U postgres doando_test < dataTest.sql
 
 notifications:
  email:
