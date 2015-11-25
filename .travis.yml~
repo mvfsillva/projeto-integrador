@@ -7,8 +7,8 @@ addons:
   - postgresql: "9.3"
 
 before_script:
-  - psql -c 'create database doando-test;' -U postgres
-  - psql -U postgres doando-test < dataTest.sql
+  - psql -c 'create database doando_test;' -U postgres
+  - psql -U postgres doando_test < dataTest.sql
 
 notifications:
  email:
