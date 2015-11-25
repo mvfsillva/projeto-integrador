@@ -9,7 +9,7 @@
         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
         <property name="hibernate.connection.username">postgres</property>
         <property name="hibernate.connection.password">123456</property>
-        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/doando-test</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/doando_test</property>
         <property name="hibernate.connection.pool_size">1</property>
         <property name="hibernate.hbm2ddl.auto">create-drop</property>
         <property name="hibernate.format_sql">true</property>
