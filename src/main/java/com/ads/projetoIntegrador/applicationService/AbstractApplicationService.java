@@ -6,14 +6,18 @@ import java.util.Map;
 
 import org.hibernate.Session;
 
-import com.ads.projetoIntegrador.repository.IRepository;
+import com.ads.projetoIntegrador.business.IBusinessManager;
 import com.ads.projetoIntegrador.utils.HibernateUtils;
 
 public class AbstractApplicationService<T extends Serializable, IdType extends Serializable> 
 		implements IApplicationService<T, IdType> {
 
 	private Session session;
-	private IRepository<T, IdType> repository;
+	protected IBusinessManager<T, IdType> business;
+	
+	public AbstractApplicationService() {
+		session = HibernateUtils.getSession();
+	}
 	
 	public Session getSession() {
 		if(!session.isConnected() || !session.isOpen()) {
@@ -23,7 +27,7 @@ public class AbstractApplicationService<T extends Serializable, IdType extends S
 	}
 	
 	protected void initialize() {
-		repository.setSession(getSession());
+		business.setSession(getSession());
 	}
 	
 	protected void beginTransaction() {
@@ -42,7 +46,7 @@ public class AbstractApplicationService<T extends Serializable, IdType extends S
 	@Override
 	public T find(IdType id) {
 		initialize();
-		T t = repository.find(id);
+		T t = business.find(id);
 		cleanUp();
 		return t;
 	}
@@ -50,7 +54,7 @@ public class AbstractApplicationService<T extends Serializable, IdType extends S
 	@Override
 	public List<T> find() {
 		initialize();
-		List<T> list = repository.find();
+		List<T> list = business.find();
 		cleanUp();
 		return list;
 	}
@@ -58,7 +62,7 @@ public class AbstractApplicationService<T extends Serializable, IdType extends S
 	@Override
 	public List<T> find(String namedQuery, Map<String, Object> params) {
 		initialize();
-		List<T> list = repository.find(namedQuery, params);
+		List<T> list = business.find(namedQuery, params);
 		cleanUp();
 		return list;
 	}
@@ -67,7 +71,7 @@ public class AbstractApplicationService<T extends Serializable, IdType extends S
 	public void save(T t) {
 		initialize();
 		beginTransaction();
-		repository.save(t);
+		business.save(t);
 		commit();
 		cleanUp();
 	}
@@ -76,7 +80,7 @@ public class AbstractApplicationService<T extends Serializable, IdType extends S
 	public void save(List<T> tList) {
 		initialize();
 		beginTransaction();
-		repository.save(tList);
+		business.save(tList);
 		commit();
 		cleanUp();
 	}
@@ -85,7 +89,7 @@ public class AbstractApplicationService<T extends Serializable, IdType extends S
 	public void update(T t) {
 		initialize();
 		beginTransaction();
-		repository.update(t);
+		business.update(t);
 		commit();
 		cleanUp();
 	}
@@ -94,7 +98,7 @@ public class AbstractApplicationService<T extends Serializable, IdType extends S
 	public void delete(T t) {
 		initialize();
 		beginTransaction();
-		repository.delete(t);
+		business.delete(t);
 		commit();
 		cleanUp();
 	}
@@ -103,7 +107,7 @@ public class AbstractApplicationService<T extends Serializable, IdType extends S
 	public void delete(List<T> tList) {
 		initialize();
 		beginTransaction();
-		repository.delete(tList);
+		business.delete(tList);
 		commit();
 		cleanUp();
 	}

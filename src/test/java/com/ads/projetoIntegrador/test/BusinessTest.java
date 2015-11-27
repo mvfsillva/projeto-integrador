@@ -88,7 +88,8 @@ public class BusinessTest {
     
     @Test(expected = IllegalArgumentException.class)
     public void when_4_tryingToSaveANullEntity() {
-        bo.save(null);
+    	PersonEntity p = null;
+        bo.save(p);
     }
     
     @Test(expected = IllegalArgumentException.class)

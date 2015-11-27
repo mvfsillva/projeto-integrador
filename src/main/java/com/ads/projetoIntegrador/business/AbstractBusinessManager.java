@@ -58,9 +58,16 @@ public abstract class AbstractBusinessManager<T extends Serializable, IdType ext
     }
     
     @Override
-    public void save(T t) {
+    public int save(T t) {
         validate(t);
-        getRepository().save(t);
+        return getRepository().save(t);
+    }
+    
+    @Override
+    public void save(List<T> tList) {
+    	for (T t : tList) {
+    		this.save(t);	
+		}
     }
 
     @Override

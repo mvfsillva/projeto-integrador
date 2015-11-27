@@ -34,7 +34,9 @@ public interface IBusinessManager<T extends Serializable, IdType extends Seriali
 
     public List<T> find(String namedQuery, Map<String, Object> params);
     
-    public void save(T t);
+    public int save(T t);
+    
+    public void save(List<T> t);
 
     public void update(T t);
 

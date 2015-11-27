@@ -24,10 +24,10 @@ public class UserBusiness extends AbstractBusinessManager<UserEntity, Integer> {
 	}
 
 	@Override
-	public void save(UserEntity t) {
+	public int save(UserEntity t) {
 		String oldPassword = t.getPassword();
 		t.setPassword(PasswordUtils.stringToMD5(oldPassword));
-		super.save(t);
+		return super.save(t);
 	}
 
 	@Override
