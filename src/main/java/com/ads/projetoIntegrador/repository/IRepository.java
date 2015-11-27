@@ -16,7 +16,7 @@ import org.hibernate.Session;
  * @param <T>
  * @param <IdType>
  */
-public interface IAbstractRepository<T extends Serializable, IdType> {
+public interface IRepository<T extends Serializable, IdType> {
 
     T find(IdType id);
     

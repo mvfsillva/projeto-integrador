@@ -6,14 +6,14 @@ import java.util.Map;
 
 import org.hibernate.Session;
 
-import com.ads.projetoIntegrador.repository.IAbstractRepository;
+import com.ads.projetoIntegrador.repository.IRepository;
 import com.ads.projetoIntegrador.utils.HibernateUtils;
 
 public class AbstractApplicationService<T extends Serializable, IdType extends Serializable> 
-		implements IAbstractApplicationService<T, IdType> {
+		implements IApplicationService<T, IdType> {
 
 	private Session session;
-	private IAbstractRepository<T, IdType> repository;
+	private IRepository<T, IdType> repository;
 	
 	public Session getSession() {
 		if(!session.isConnected() || !session.isOpen()) {

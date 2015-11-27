@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
-public interface IAbstractApplicationService<T extends Serializable, IdType extends Serializable> {
+public interface IApplicationService<T extends Serializable, IdType extends Serializable> {
 
 	T find(IdType id);
 

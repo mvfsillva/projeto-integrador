@@ -11,7 +11,7 @@ import java.util.Map;
 
 import org.hibernate.Session;
 
-import com.ads.projetoIntegrador.repository.IAbstractRepository;
+import com.ads.projetoIntegrador.repository.IRepository;
 
 
 /**
@@ -24,7 +24,7 @@ public interface IBusinessManager<T extends Serializable, IdType extends Seriali
 
     public void validate(T t) throws IllegalArgumentException;
 
-    public IAbstractRepository<T, IdType> getRepository();
+    public IRepository<T, IdType> getRepository();
 
     public void setSession(Session session);
     

@@ -11,7 +11,7 @@ import java.util.Map;
 
 import org.hibernate.Session;
 
-import com.ads.projetoIntegrador.repository.IAbstractRepository;
+import com.ads.projetoIntegrador.repository.IRepository;
 
 /**
  * Class for generic business.
@@ -20,10 +20,10 @@ import com.ads.projetoIntegrador.repository.IAbstractRepository;
  * @param <T>
  * @param <IdType>
  */
-public abstract class BusinessManager<T extends Serializable, IdType extends Serializable>
+public abstract class AbstractBusinessManager<T extends Serializable, IdType extends Serializable>
         implements IBusinessManager<T, IdType> {
 
-    protected IAbstractRepository<T, IdType> repository;
+    protected IRepository<T, IdType> repository;
     
     @Override
     public void validate(T t) throws IllegalArgumentException {
@@ -33,7 +33,7 @@ public abstract class BusinessManager<T extends Serializable, IdType extends Ser
     }
 
     @Override
-    public IAbstractRepository<T, IdType> getRepository() {
+    public IRepository<T, IdType> getRepository() {
     	return this.repository;
     }
     

@@ -18,7 +18,7 @@ import org.hibernate.Session;
  * @param <IdType>
  */
 public abstract class AbstractRepository<T extends Serializable, IdType extends Serializable> 
-		implements IAbstractRepository<T, IdType> {
+		implements IRepository<T, IdType> {
 
 	protected Class<T> classOfEntity;
 	private Session session;
