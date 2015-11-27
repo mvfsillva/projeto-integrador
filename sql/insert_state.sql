@@ -1,11 +1,27 @@
-﻿create table state ( 
-	id_state serial not null primary key,
-	description varchar(20) not null
-);
-
-create table city (
-	id_city serial not null primary key,
-	description varchar(40) not null,
-	id_state int not null,
-	constraint city_state_fk foreign key (id_state) references state (id_state)
-);
+INSERT INTO state VALUES ('Acre');
+INSERT INTO state VALUES ('Alagoas');
+INSERT INTO state VALUES ('Amazonas');
+INSERT INTO state VALUES ('Amapá');
+INSERT INTO state VALUES ('Bahia');
+INSERT INTO state VALUES ('Ceará');
+INSERT INTO state VALUES ('Distrito Federal');
+INSERT INTO state VALUES ('Espírito Santo');
+INSERT INTO state VALUES ('Goiás');
+INSERT INTO state VALUES ('Maranhão');
+INSERT INTO state VALUES ('Minas Gerais');
+INSERT INTO state VALUES ('Mato Grosso do Sul');
+INSERT INTO state VALUES ('Mato Grosso');
+INSERT INTO state VALUES ('Pará');
+INSERT INTO state VALUES ('Paraíba');
+INSERT INTO state VALUES ('Pernambuco');  
+INSERT INTO state VALUES ('Piauí');  
+INSERT INTO state VALUES ('Paraná');  
+INSERT INTO state VALUES ('Rio de Janeiro');  
+INSERT INTO state VALUES ('Rio Grande do Norte');  
+INSERT INTO state VALUES ('Rondônia');  
+INSERT INTO state VALUES ('Roraima');  
+INSERT INTO state VALUES ('Rio Grande do Sul');  
+INSERT INTO state VALUES ('Santa Catarina');  
+INSERT INTO state VALUES ('Sergipe');  
+INSERT INTO state VALUES ('São Paulo');  
+INSERT INTO state VALUES ('Tocantins');  
