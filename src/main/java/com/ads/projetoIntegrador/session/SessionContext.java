@@ -5,9 +5,10 @@
  */
 package com.ads.projetoIntegrador.session;
 
-import com.ads.projetoIntegrador.dto.UserDTO;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+
+import com.ads.projetoIntegrador.entity.UserEntity;
 
 /**
  *
@@ -37,11 +38,11 @@ public class SessionContext {
         }
     }
 
-    public UserDTO getLoggedInUser() {
-        return (UserDTO) getAttribute("loggedInUser");
+    public UserEntity getLoggedInUser() {
+        return (UserEntity) getAttribute("loggedInUser");
     }
 
-    public void setLoggedInUser(UserDTO user) {
+    public void setLoggedInUser(UserEntity user) {
         setAttribute("loggedInUser", user);
     }
 

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ads.projetoIntegrador.dto;
+package com.ads.projetoIntegrador.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -15,9 +15,14 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "tb_address", schema = "public")
-public class AddressDTO implements Serializable{
+public class AddressEntity implements Serializable{
     
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 3586592741276519852L;
+
+	@Id
     @Column(name = "id_address", nullable = false, unique = true)
     @SequenceGenerator(name = "id_address_sq", sequenceName = "sq_address_id")
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "id_address_sq")
@@ -47,12 +52,12 @@ public class AddressDTO implements Serializable{
 //    @PrimaryKeyJoinColumn;
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="id_ong")
-    private OngDTO ong;
+    private OngEntity ong;
 
-    public AddressDTO() {
+    public AddressEntity() {
     }
 
-    public AddressDTO(String city, String state, String neighborhood, String street
+    public AddressEntity(String city, String state, String neighborhood, String street
             , String postal_code, String primary_phone, String secondary_phone) {
         this.city = city;
         this.state = state;
@@ -63,8 +68,8 @@ public class AddressDTO implements Serializable{
         this.secondary_phone = secondary_phone;
     }
     
-     public AddressDTO(String city, String state, String neighborhood, String street
-             , String postal_code, String primary_phone, String secondary_phone, OngDTO ong) {
+     public AddressEntity(String city, String state, String neighborhood, String street
+             , String postal_code, String primary_phone, String secondary_phone, OngEntity ong) {
         this.city = city;
         this.state = state;
         this.neighborhood = neighborhood;
@@ -139,11 +144,11 @@ public class AddressDTO implements Serializable{
         this.secondary_phone = secondary_phone;
     }
     
-    public OngDTO getOng() {
+    public OngEntity getOng() {
         return ong;
     }
 
-    public void setOng(OngDTO ong) {
+    public void setOng(OngEntity ong) {
         this.ong = ong;
     }
     

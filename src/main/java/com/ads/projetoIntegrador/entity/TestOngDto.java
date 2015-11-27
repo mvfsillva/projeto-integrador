@@ -3,11 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ads.projetoIntegrador.dto;
+package com.ads.projetoIntegrador.entity;
 
-import com.ads.projetoIntegrador.dao.OngDAO;
 import java.util.Date;
 import java.util.HashSet;
+
+import com.ads.projetoIntegrador.repository.OngRepository;
 
 /**
  *
@@ -15,12 +16,12 @@ import java.util.HashSet;
  */
 public class TestOngDto {
     
-    @SuppressWarnings("unchecked")
+    
     public static void main(String[] args) {
-        OngDAO OngDao = new OngDAO();
-        OngDTO ong = new OngDTO();
+        OngRepository OngDao = new OngRepository();
+        OngEntity ong = new OngEntity();
         
-        AddressDTO address = new AddressDTO("BA", "Imbui", "rua muito loca", "Salvador city", "41324567", "34568796", null);
+        AddressEntity address = new AddressEntity("BA", "Imbui", "rua muito loca", "Salvador city", "41324567", "34568796", null);
         
         ong.setName("Ong teste");
         ong.setCnpj("12345678");
@@ -30,27 +31,27 @@ public class TestOngDto {
         address.setOng(ong);
         ong.setAddress(address);
         
-        NecessityDTO nec1 = new NecessityDTO("comida", "Precisamos comer", "max", new Date());
+        NecessityEntity nec1 = new NecessityEntity("comida", "Precisamos comer", "max", new Date());
         nec1.setOng(ong);
         
-        NecessityDTO nec2 = new NecessityDTO("roupa", "Precisamos roupas", "max", new Date());
+        NecessityEntity nec2 = new NecessityEntity("roupa", "Precisamos roupas", "max", new Date());
         nec2.setOng(ong);
         
-        NecessityDTO nec3 = new NecessityDTO("brinquedos", "Precisamos brinquedos", "media", new Date());
+        NecessityEntity nec3 = new NecessityEntity("brinquedos", "Precisamos brinquedos", "media", new Date());
         nec3.setOng(ong);
         
-        EventsDTO ev1 = new EventsDTO("Senai Cimatec", "Evento", new Date());
+        EventsEntity ev1 = new EventsEntity("Senai Cimatec", "Evento", new Date());
         ev1.setOng(ong);
         
-        EventsDTO ev2 = new EventsDTO("Farol da Barra", "Evento", new Date());
+        EventsEntity ev2 = new EventsEntity("Farol da Barra", "Evento", new Date());
         ev2.setOng(ong);
         
-        ong.setNecessities(new HashSet<NecessityDTO>());
+        ong.setNecessities(new HashSet<NecessityEntity>());
         ong.getNecessities().add(nec1);
         ong.getNecessities().add(nec2);
         ong.getNecessities().add(nec3);
         
-        ong.setEvents(new HashSet<EventsDTO>());
+        ong.setEvents(new HashSet<EventsEntity>());
         ong.getEvents().add(ev1);
         ong.getEvents().add(ev2);
         

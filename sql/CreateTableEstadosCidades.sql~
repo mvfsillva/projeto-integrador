@@ -1,0 +1,11 @@
+create table state ( 
+	id_state serial not null primary key,
+	description varchar(20) not null,
+);
+
+create table city (
+	id_city serial not null primary key,
+	id_state int not null,
+	description varchar(20) not null,
+	constraint Cidades_Estados_FK FOREIGN KEY (idEstado) REFERENCES Estados (idEstado)
+);

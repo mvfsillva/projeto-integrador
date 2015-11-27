@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ads.projetoIntegrador.dto;
+package com.ads.projetoIntegrador.entity;
 
 import java.io.Serializable;
 import javax.persistence.Column;
@@ -24,9 +24,9 @@ import javax.persistence.Transient;
 @Entity
 @NamedQueries(value = {
     @NamedQuery(name = "findByEmailAndPass",
-            query = "SELECT c FROM UserDTO c WHERE c.username = :username AND c.password = :password")})
+            query = "SELECT c FROM UserEntity c WHERE c.username = :username AND c.password = :password")})
 @Table(name = "system_user")
-public class UserDTO implements Serializable {
+public class UserEntity implements Serializable {
 
     @Transient
     public static final String FIND_BY_EMAIL_AND_PASS = "findByEmailAndPass";

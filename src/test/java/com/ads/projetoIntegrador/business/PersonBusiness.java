@@ -5,34 +5,29 @@
  */
 package com.ads.projetoIntegrador.business;
 
-import com.ads.projetoIntegrador.dao.IAbstractDAO;
-import com.ads.projetoIntegrador.dao.PersonDAO;
-import com.ads.projetoIntegrador.dto.PersonDTO;
+import com.ads.projetoIntegrador.entity.PersonEntity;
+import com.ads.projetoIntegrador.repository.PersonRepository;
 
 /**
  *
  * @author yago
  */
-public class PersonBusiness extends BusinessManager<PersonDTO, Integer>{
+public class PersonBusiness extends BusinessManager<PersonEntity, Integer> {
 
-    @Override
-    public IAbstractDAO<PersonDTO, Integer> getDAO() {
-        if(dao == null) {
-            dao = new PersonDAO();
-        }
-        return dao;
-    }
-    
-    @Override
-    public void validate(PersonDTO t) {
-        super.validate(t);
-        if(t.getName().isEmpty()) {
-            throw new IllegalArgumentException("the name is empty");
-        }
-    }
-    
-    public PersonDTO find(String name) {
-        return ((PersonDAO) getDAO()).find(name);
-    }
-    
+	public PersonBusiness() {
+		this.repository = new PersonRepository();
+	}
+	
+	@Override
+	public void validate(PersonEntity t) {
+		super.validate(t);
+		if (t.getName().isEmpty()) {
+			throw new IllegalArgumentException("the name is empty");
+		}
+	}
+
+	public PersonEntity find(String name) {
+		return ((PersonRepository) getRepository()).find(name);
+	}
+
 }

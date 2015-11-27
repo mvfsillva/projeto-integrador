@@ -5,10 +5,13 @@
  */
 package com.ads.projetoIntegrador.business;
 
-import com.ads.projetoIntegrador.dao.IAbstractDAO;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
+
+import org.hibernate.Session;
+
+import com.ads.projetoIntegrador.repository.IAbstractRepository;
 
 
 /**
@@ -21,8 +24,10 @@ public interface IBusinessManager<T extends Serializable, IdType extends Seriali
 
     public void validate(T t) throws IllegalArgumentException;
 
-    public IAbstractDAO<T, IdType> getDAO();
+    public IAbstractRepository<T, IdType> getRepository();
 
+    public void setSession(Session session);
+    
     public T find(IdType id);
 
     public List<T> find();
@@ -34,4 +39,6 @@ public interface IBusinessManager<T extends Serializable, IdType extends Seriali
     public void update(T t);
 
     public void delete(T t);
+    
+    public void delete(List<T> tList);
 }

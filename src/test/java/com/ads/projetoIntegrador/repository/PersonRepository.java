@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ads.projetoIntegrador.dao;
+package com.ads.projetoIntegrador.repository;
 
-import com.ads.projetoIntegrador.dao.AbstractDAO;
-import com.ads.projetoIntegrador.dto.PersonDTO;
+import com.ads.projetoIntegrador.entity.PersonEntity;
+import com.ads.projetoIntegrador.repository.AbstractRepository;
+
 import java.util.HashMap;
 import java.util.Map;
 import org.hibernate.Query;
@@ -16,20 +17,20 @@ import org.hibernate.Session;
  *
  * @author Yago Ferreira
  */
-public class PersonDAO extends AbstractDAO<PersonDTO, Integer> {
+public class PersonRepository extends AbstractRepository<PersonEntity, Integer> {
 
-    public PersonDAO() {
-        super(PersonDTO.class);
+    public PersonRepository() {
+        super(PersonEntity.class);
     }
 
-    public PersonDTO find(String name) {
+    public PersonEntity find(String name) {
         Session s = getSession();
         String tn = getTableName();
         Query query = s.createQuery("from " + tn + " where name = :name");
         Map<String, String> m = new HashMap<>();
         m.put("name", name);
         query.setProperties(m);
-        return (PersonDTO) query.uniqueResult();
+        return (PersonEntity) query.uniqueResult();
     }
     
 }

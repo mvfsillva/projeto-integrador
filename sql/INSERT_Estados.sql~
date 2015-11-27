@@ -1,0 +1,32 @@
+/* 
+	No local de [NomeTabela] lembre de colocar o nome da sua tabela no banco de dados 
+*/
+
+
+INSERT INTO [NomeTabela] VALUES ('Acre')  
+INSERT INTO [NomeTabela] VALUES ('Alagoas')  
+INSERT INTO [NomeTabela] VALUES ('Amazonas')  
+INSERT INTO [NomeTabela] VALUES ('Amapá')  
+INSERT INTO [NomeTabela] VALUES ('Bahia')  
+INSERT INTO [NomeTabela] VALUES ('Ceará')  
+INSERT INTO [NomeTabela] VALUES ('Distrito Federal')  
+INSERT INTO [NomeTabela] VALUES ('Espírito Santo')  
+INSERT INTO [NomeTabela] VALUES ('Goiás')  
+INSERT INTO [NomeTabela] VALUES ('Maranhão')  
+INSERT INTO [NomeTabela] VALUES ('Minas Gerais')  
+INSERT INTO [NomeTabela] VALUES ('Mato Grosso do Sul')  
+INSERT INTO [NomeTabela] VALUES ('Mato Grosso')  
+INSERT INTO [NomeTabela] VALUES ('Pará')  
+INSERT INTO [NomeTabela] VALUES ('Paraíba')  
+INSERT INTO [NomeTabela] VALUES ('Pernambuco')  
+INSERT INTO [NomeTabela] VALUES ('Piauí')  
+INSERT INTO [NomeTabela] VALUES ('Paraná')  
+INSERT INTO [NomeTabela] VALUES ('Rio de Janeiro')  
+INSERT INTO [NomeTabela] VALUES ('Rio Grande do Norte')  
+INSERT INTO [NomeTabela] VALUES ('Rondônia')  
+INSERT INTO [NomeTabela] VALUES ('Roraima')  
+INSERT INTO [NomeTabela] VALUES ('Rio Grande do Sul')  
+INSERT INTO [NomeTabela] VALUES ('Santa Catarina')  
+INSERT INTO [NomeTabela] VALUES ('Sergipe')  
+INSERT INTO [NomeTabela] VALUES ('São Paulo')  
+INSERT INTO [NomeTabela] VALUES ('Tocantins')  

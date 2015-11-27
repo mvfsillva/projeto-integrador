@@ -7,7 +7,7 @@ package com.ads.projetoIntegrador.controller;
 
 import com.ads.projetoIntegrador.business.IBusinessManager;
 import com.ads.projetoIntegrador.business.UserBusiness;
-import com.ads.projetoIntegrador.dto.UserDTO;
+import com.ads.projetoIntegrador.entity.UserEntity;
 import com.ads.projetoIntegrador.session.SessionContext;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -21,18 +21,18 @@ import javax.faces.context.FacesContext;
 @SessionScoped
 public class LoginController {
 
-    private UserDTO user;
+    private UserEntity user;
     private UserBusiness bo;
     
     public LoginController() {
-        this.user = new UserDTO();
+        this.user = new UserEntity();
     }
     
-    public UserDTO getLoggedInUser() {
+    public UserEntity getLoggedInUser() {
         return SessionContext.getInstance().getLoggedInUser();
     }
 
-    private IBusinessManager getUserBusiness() {
+    private IBusinessManager<UserEntity, Integer> getUserBusiness() {
         if(bo == null) {
             bo = new UserBusiness();
         }
@@ -41,14 +41,14 @@ public class LoginController {
     
     public String doLogin() {
         try {
-            UserDTO userLoginResult = ((UserBusiness) getUserBusiness())
+            UserEntity userLoginResult = ((UserBusiness) getUserBusiness())
                     .tryUserLogin(user.getUsername(), user.getPassword());
             if (userLoginResult == null) {
                 FacesContext.getCurrentInstance().validationFailed();
                 return "";
             }
-            SessionContext.getInstance().setAttribute(UserDTO.LOGGED_IN_USER, userLoginResult);
-            return "/notAccess.xhtml?faces-redirect=true";
+            SessionContext.getInstance().setAttribute(UserEntity.LOGGED_IN_USER, userLoginResult);
+            return "/index.xhtml?faces-redirect=true";
         } catch (Exception e) {
             FacesContext.getCurrentInstance().validationFailed();
             e.printStackTrace();
@@ -69,11 +69,11 @@ public class LoginController {
 //        }
 //    }
 
-    public UserDTO getUser() {
+    public UserEntity getUser() {
         return user;
     }
 
-    public void setUser(UserDTO user) {
+    public void setUser(UserEntity user) {
         this.user = user;
     }
 

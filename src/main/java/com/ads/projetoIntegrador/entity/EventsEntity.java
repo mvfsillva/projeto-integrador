@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ads.projetoIntegrador.dto;
+package com.ads.projetoIntegrador.entity;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -17,9 +17,14 @@ import org.hibernate.annotations.FetchMode;
  */
 @Entity
 @Table(name = "tb_event", schema = "public")
-public class EventsDTO implements Serializable{
+public class EventsEntity implements Serializable{
     
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1369634611898263707L;
+
+	@Id
     @Column(name = "id_event", nullable = false, unique = true)
     @SequenceGenerator(name = "id_event_sq", sequenceName = "sq_event_id")
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "id_event_sq")
@@ -38,18 +43,18 @@ public class EventsDTO implements Serializable{
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name="ong_id", insertable=true, updatable=true)
     @Fetch(FetchMode.JOIN)
-    private OngDTO ong;
+    private OngEntity ong;
 
-    public EventsDTO() {
+    public EventsEntity() {
     }
 
-    public EventsDTO(String locality, String description, Date date) {
+    public EventsEntity(String locality, String description, Date date) {
         this.locality = locality;
         this.description = description;
         this.date = date;
     }
 
-    public EventsDTO(String locality, String description, Date date, OngDTO ong) {
+    public EventsEntity(String locality, String description, Date date, OngEntity ong) {
         this.locality = locality;
         this.description = description;
         this.date = date;
@@ -88,11 +93,11 @@ public class EventsDTO implements Serializable{
         this.date = date;
     }
 
-    public OngDTO getOng() {
+    public OngEntity getOng() {
         return ong;
     }
 
-    public void setOng(OngDTO ong) {
+    public void setOng(OngEntity ong) {
         this.ong = ong;
     }
     

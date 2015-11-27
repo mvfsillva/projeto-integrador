@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ads.projetoIntegrador.dto;
+package com.ads.projetoIntegrador.entity;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -18,9 +18,14 @@ import org.hibernate.annotations.FetchMode;
 
 @Entity
 @Table(name = "tb_necessity", schema = "public")
-public class NecessityDTO implements Serializable{
+public class NecessityEntity implements Serializable{
     
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 6255015039723910221L;
+
+	@Id
     @Column(name = "id_necessity", nullable = false, unique = true)
     @SequenceGenerator(name = "id_necessity_sq", sequenceName = "sq_necessity_id")
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "id_necessity_sq")
@@ -42,20 +47,20 @@ public class NecessityDTO implements Serializable{
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name="ong_id", insertable=true, updatable=true)
     @Fetch(FetchMode.JOIN)
-    private OngDTO ong;
+    private OngEntity ong;
 
-    public NecessityDTO() {
+    public NecessityEntity() {
     }
 
-    public NecessityDTO(String description, String title, String priority, Date date) {
+    public NecessityEntity(String description, String title, String priority, Date date) {
         this.description = description;
         this.title = title;
         this.priority = priority;
         this.date = date;
     }
     
-     public NecessityDTO(String description, String title, String priority
-             , Date date, OngDTO ong) {
+     public NecessityEntity(String description, String title, String priority
+             , Date date, OngEntity ong) {
         this.description = description;
         this.title = title;
         this.priority = priority;
@@ -63,11 +68,11 @@ public class NecessityDTO implements Serializable{
         this.ong = ong;
     }
     
-    public OngDTO getOng() {
+    public OngEntity getOng() {
         return this.ong;
     }
 
-    public void setOng(OngDTO ong) {
+    public void setOng(OngEntity ong) {
         this.ong = ong;
     }
 

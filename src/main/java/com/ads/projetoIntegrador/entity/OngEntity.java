@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ads.projetoIntegrador.dto;
+package com.ads.projetoIntegrador.entity;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -17,9 +17,14 @@ import org.hibernate.annotations.CascadeType;
  */
 @Entity
 @Table(name = "tb_ong", schema = "public")
-public class OngDTO implements Serializable{
+public class OngEntity implements Serializable{
     
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 8348124056614554485L;
+
+	@Id
     @Column(name = "id_ong", nullable = false, unique = true)
     @SequenceGenerator(name = "id_ong_sq", sequenceName = "sq_ong_id")
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "id_ong_sq")
@@ -31,7 +36,7 @@ public class OngDTO implements Serializable{
     
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "ong")
     @Cascade(CascadeType.ALL)
-    private AddressDTO address;
+    private AddressEntity address;
     
     @Column(name = "ong_name", nullable = false)
     private String name;
@@ -44,17 +49,17 @@ public class OngDTO implements Serializable{
     
     @OneToMany(fetch = FetchType.LAZY, mappedBy="ong")
     @Cascade(CascadeType.ALL)
-    private Collection<NecessityDTO> necessities;
+    private Collection<NecessityEntity> necessities;
     
     @OneToMany(fetch = FetchType.LAZY, mappedBy="ong")
     @Cascade(CascadeType.ALL)
-    private Collection<EventsDTO> events;
+    private Collection<EventsEntity> events;
 
-    public OngDTO() {
+    public OngEntity() {
     }
 
-    public OngDTO(String cnpj, String name, String email, String website, Collection<NecessityDTO> necessities
-            , Collection<EventsDTO> events) {
+    public OngEntity(String cnpj, String name, String email, String website, Collection<NecessityEntity> necessities
+            , Collection<EventsEntity> events) {
         this.cnpj = cnpj;
         this.name = name;
         this.email = email;
@@ -63,8 +68,8 @@ public class OngDTO implements Serializable{
         this.events = events;
     }
 
-    public OngDTO(String cnpj, AddressDTO address, String name, String email, String website
-            , Collection<NecessityDTO> necessities, Collection<EventsDTO> events) {
+    public OngEntity(String cnpj, AddressEntity address, String name, String email, String website
+            , Collection<NecessityEntity> necessities, Collection<EventsEntity> events) {
         this.cnpj = cnpj;
         this.address = address;
         this.name = name;
@@ -90,11 +95,11 @@ public class OngDTO implements Serializable{
         this.cnpj = cnpj;
     }
 
-    public AddressDTO getAddress() {
+    public AddressEntity getAddress() {
         return address;
     }
 
-    public void setAddress(AddressDTO address) {
+    public void setAddress(AddressEntity address) {
         this.address = address;
     }
 
@@ -114,11 +119,11 @@ public class OngDTO implements Serializable{
         this.email = email;
     }
     
-    public Collection<NecessityDTO> getNecessities() {
+    public Collection<NecessityEntity> getNecessities() {
         return necessities;
     }
 
-    public void setNecessities(Collection<NecessityDTO> necessities) {
+    public void setNecessities(Collection<NecessityEntity> necessities) {
         this.necessities = necessities;
     }
 
@@ -130,11 +135,11 @@ public class OngDTO implements Serializable{
         this.website = website;
     }
     
-    public Collection<EventsDTO> getEvents() {
+    public Collection<EventsEntity> getEvents() {
         return events;
     }
 
-    public void setEvents(Collection<EventsDTO> events) {
+    public void setEvents(Collection<EventsEntity> events) {
         this.events = events;
     }
     

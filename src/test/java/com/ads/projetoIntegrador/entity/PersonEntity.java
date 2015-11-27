@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ads.projetoIntegrador.dto;
+package com.ads.projetoIntegrador.entity;
 
 import java.io.Serializable;
 import javax.persistence.Column;
@@ -20,9 +20,14 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "person", schema = "public")
-public class PersonDTO implements Serializable {
+public class PersonEntity implements Serializable {
 
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -9194240484863396135L;
+
+	@Id
     @Column(name = "id_person", nullable = false, unique = true)
     @SequenceGenerator(name = "id_person_sq", sequenceName = "sq_person_id")
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "id_person_sq")
