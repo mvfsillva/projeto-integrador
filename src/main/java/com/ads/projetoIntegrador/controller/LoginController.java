@@ -58,7 +58,7 @@ public class LoginController {
 
     public String doLogout() {
         SessionContext.getInstance().endSession();
-        return "/security/form_login.xhtml?faces-redirect=true";
+        return "/security/login.xhtml?faces-redirect=true";
     }
 
 //    public void solicitarNovaSenha() {
