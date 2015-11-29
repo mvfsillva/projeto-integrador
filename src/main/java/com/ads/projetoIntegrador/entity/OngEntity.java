@@ -44,7 +44,7 @@ public class OngEntity implements Serializable{
     @Column(name = "ong_email", nullable = false)
     private String email;
     
-    @Column(name = "ong_website", nullable = false)
+    @Column(name = "ong_website")
     private String website;
     
     @OneToMany(fetch = FetchType.LAZY, mappedBy="ong")
