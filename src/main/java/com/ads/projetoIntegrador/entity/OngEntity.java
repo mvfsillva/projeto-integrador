@@ -22,9 +22,9 @@ public class OngEntity implements Serializable{
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = 8348124056614554485L;
+    private static final long serialVersionUID = 8348124056614554485L;
 
-	@Id
+    @Id
     @Column(name = "id_ong", nullable = false, unique = true)
     @SequenceGenerator(name = "id_ong_sq", sequenceName = "sq_ong_id")
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "id_ong_sq")
@@ -141,6 +141,12 @@ public class OngEntity implements Serializable{
 
     public void setEvents(Collection<EventsEntity> events) {
         this.events = events;
+    }
+    
+    @Override
+    public String toString(){
+        return "nome: " + this.name + " email: " + this.email + " cnpj " + this.cnpj
+                + " site " + this.website;
     }
     
 }

@@ -55,6 +55,12 @@
                     <p:outputLabel value="Site: " />
                     <p:inputText value="#{cadOngController.ong.website}"/>
                     
+                    <p:outputLabel value="Telefone Primario: " />
+                    <p:inputText value="#{cadOngController.address.primaryPhone}"/>
+                    
+                    <p:outputLabel value="Telefone Secundario: " />
+                    <p:inputText value="#{cadOngController.address.secondaryPhone}"/>
+                    
                     <h:commandButton value="Salvar" action="#{cadOngController.save()}" />
                 </h:panelGrid>
             </section>
