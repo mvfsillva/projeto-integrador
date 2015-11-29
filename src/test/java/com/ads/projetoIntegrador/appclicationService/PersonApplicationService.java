@@ -1,6 +1,6 @@
 package com.ads.projetoIntegrador.appclicationService;
 
-import com.ads.projetoIntegrador.applicationService.AbstractApplicationService;
+import com.ads.projetoIntegrador.appService.AbstractApplicationService;
 import com.ads.projetoIntegrador.business.PersonBusiness;
 import com.ads.projetoIntegrador.entity.PersonEntity;
 

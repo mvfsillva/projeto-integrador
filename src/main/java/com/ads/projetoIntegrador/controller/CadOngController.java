@@ -4,13 +4,15 @@
  * and open the template in the editor.
  */
 package com.ads.projetoIntegrador.controller;
-import com.ads.projetoIntegrador.entity.AddressEntity;
-import com.ads.projetoIntegrador.entity.OngEntity;
-import com.ads.projetoIntegrador.repository.AddressRepository;
-import com.ads.projetoIntegrador.repository.OngRepository;
 import java.util.List;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+
+import com.ads.projetoIntegrador.appService.AddressApplicationService;
+import com.ads.projetoIntegrador.entity.AddressEntity;
+import com.ads.projetoIntegrador.entity.OngEntity;
+import com.ads.projetoIntegrador.repository.OngRepository;
 
 /**
  *
@@ -20,7 +22,7 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class CadOngController {
     
-    private AddressRepository addressRepository = new AddressRepository();
+    private AddressApplicationService addressAppService = new AddressApplicationService();
     private OngRepository ongRepository = new OngRepository();
     private AddressEntity address;
     private OngEntity ong;

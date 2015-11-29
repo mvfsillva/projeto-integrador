@@ -40,14 +40,14 @@ public class AddressEntity implements Serializable{
     @Column(name = "address_street", nullable = false)
     private String street;
     
-    @Column(name = "address_postal_code", nullable = false)
-    private String postal_code;
+    @Column(name = "address_postalCode", nullable = false)
+    private String postalCode;
     
-    @Column(name = "address_primary_phone", nullable = false)
-    private String primary_phone;
+    @Column(name = "address_primaryPhone", nullable = false)
+    private String primaryPhone;
     
-    @Column(name = "address_secondary_phone")
-    private String secondary_phone;
+    @Column(name = "address_secondaryPhone")
+    private String secondaryPhone;
 
 //    @PrimaryKeyJoinColumn;
     @OneToOne(fetch = FetchType.LAZY)
@@ -58,25 +58,25 @@ public class AddressEntity implements Serializable{
     }
 
     public AddressEntity(String city, String state, String neighborhood, String street
-            , String postal_code, String primary_phone, String secondary_phone) {
+            , String postalCode, String primaryPhone, String secondaryPhone) {
         this.city = city;
         this.state = state;
         this.neighborhood = neighborhood;
         this.street = street;
-        this.postal_code = postal_code;
-        this.primary_phone = primary_phone;
-        this.secondary_phone = secondary_phone;
+        this.postalCode = postalCode;
+        this.primaryPhone = primaryPhone;
+        this.secondaryPhone = secondaryPhone;
     }
     
      public AddressEntity(String city, String state, String neighborhood, String street
-             , String postal_code, String primary_phone, String secondary_phone, OngEntity ong) {
+             , String postalCode, String primaryPhone, String secondaryPhone, OngEntity ong) {
         this.city = city;
         this.state = state;
         this.neighborhood = neighborhood;
         this.street = street;
-        this.postal_code = postal_code;
-        this.primary_phone = primary_phone;
-        this.secondary_phone = secondary_phone;
+        this.postalCode = postalCode;
+        this.primaryPhone = primaryPhone;
+        this.secondaryPhone = secondaryPhone;
         this.ong = ong;
     }
     
@@ -120,28 +120,28 @@ public class AddressEntity implements Serializable{
         this.street = street;
     }
 
-    public String getPostal_code() {
-        return postal_code;
+    public String getPostalCode() {
+        return postalCode;
     }
 
-    public void setPostal_code(String postal_code) {
-        this.postal_code = postal_code;
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
     }
 
-    public String getPrimary_phone() {
-        return primary_phone;
+    public String getPrimaryPhone() {
+        return primaryPhone;
     }
 
-    public void setPrimary_phone(String primary_phone) {
-        this.primary_phone = primary_phone;
+    public void setPrimaryPhone(String primaryPhone) {
+        this.primaryPhone = primaryPhone;
     }
 
-    public String getSecondary_phone() {
-        return secondary_phone;
+    public String getSecondaryPhone() {
+        return secondaryPhone;
     }
 
-    public void setSecondary_phone(String secondary_phone) {
-        this.secondary_phone = secondary_phone;
+    public void setSecondaryPhone(String secondaryPhone) {
+        this.secondaryPhone = secondaryPhone;
     }
     
     public OngEntity getOng() {
@@ -155,8 +155,8 @@ public class AddressEntity implements Serializable{
     @Override
     public String toString() {
         return "Cidade: " + this.city + " Estado: " + this.state + " Bairro: " + this.neighborhood
-                + " Rua: " + this.street + " Cep: " + this.postal_code + " Telefone Primario: " + this.primary_phone 
-                + " Telefone Secundario: " + this.secondary_phone ;
+                + " Rua: " + this.street + " Cep: " + this.postalCode + " Telefone Primario: " + this.primaryPhone 
+                + " Telefone Secundario: " + this.secondaryPhone ;
     }
     
 }

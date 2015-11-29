@@ -28,7 +28,11 @@ import javax.persistence.Transient;
 @Table(name = "system_user")
 public class UserEntity implements Serializable {
 
-    @Transient
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 986090517266847948L;
+	@Transient
     public static final String FIND_BY_EMAIL_AND_PASS = "findByEmailAndPass";
     @Transient
     public static final String LOGGED_IN_USER = "loggedInUser";

@@ -1,4 +1,4 @@
-package com.ads.projetoIntegrador.applicationService;
+package com.ads.projetoIntegrador.appService;
 
 import java.io.Serializable;
 import java.util.List;
