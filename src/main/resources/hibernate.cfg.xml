@@ -11,14 +11,14 @@
         <property name="hibernate.connection.password">123456</property>
         <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/doando-database</property>
         <property name="hibernate.connection.pool_size">1</property>
-        <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="hibernate.hbm2ddl.auto">create</property>
         <property name="hibernate.format_sql">false</property>
         <property name="hibernate.show_sql">false</property>
         
-        <mapping class="com.ads.projetoIntegrador.dto.AddressDTO"></mapping>
-        <mapping class="com.ads.projetoIntegrador.dto.NecessityDTO"></mapping>
-        <mapping class="com.ads.projetoIntegrador.dto.UserDTO"></mapping>
-        <mapping class="com.ads.projetoIntegrador.dto.OngDTO"></mapping>
-        <mapping class="com.ads.projetoIntegrador.dto.EventsDTO"></mapping>
+        <mapping class="com.ads.projetoIntegrador.entity.AddressEntity"></mapping>
+        <mapping class="com.ads.projetoIntegrador.entity.NecessityEntity"></mapping>
+        <mapping class="com.ads.projetoIntegrador.entity.UserEntity"></mapping>
+        <mapping class="com.ads.projetoIntegrador.entity.OngEntity"></mapping>
+        <mapping class="com.ads.projetoIntegrador.entity.EventsEntity"></mapping>
     </session-factory>
 </hibernate-configuration>
