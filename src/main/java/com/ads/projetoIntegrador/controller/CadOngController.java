@@ -15,8 +15,10 @@ import com.ads.projetoIntegrador.entity.EventsEntity;
 import com.ads.projetoIntegrador.entity.NecessityEntity;
 import com.ads.projetoIntegrador.entity.OngEntity;
 import com.ads.projetoIntegrador.repository.OngRepository;
+import com.ads.projetoIntegrador.utils.HibernateUtils;
 import java.sql.SQLException;
 import java.util.HashSet;
+import org.hibernate.Session;
 
 /**
  *
@@ -31,11 +33,27 @@ public class CadOngController {
     private OngRepository ongRepository;
     private AddressEntity address;
     private OngEntity ong;
+    private Session session;
     //private List<OngEntity> ongs;
 
     public CadOngController() {
         this.address = new AddressEntity();
         this.ong = new OngEntity();
+    }
+    
+    private void initialize() {
+        session = HibernateUtils.getSession();
+        session.beginTransaction();    	
+        ongRepository.setSession(session);
+    }
+    
+    private void commit() {
+    	session.getTransaction().commit();
+    }
+    
+    private void cleanUp() {
+    	session.flush();
+    	session.close();
     }
     
     public OngEntity getOng() {
@@ -47,24 +65,18 @@ public class CadOngController {
     }
     
     public void save () throws SQLException,  ClassNotFoundException{
-         /*
         ongRepository = new OngRepository();
-        
         address.setOng(ong);
         ong.setAddress(address);
         ong.setNecessities(new HashSet<NecessityEntity>());
         ong.setEvents(new HashSet<EventsEntity>());
         
-        System.out.println(ong);
-        System.out.println(address);
-        
         if(ong != null){
+            initialize();
             ongRepository.save(ong);
-            System.out.println("Salvou");
+            commit();
+            cleanUp();
         }
-        */
-        
-        System.out.println("salvou");
     }
     
 }
