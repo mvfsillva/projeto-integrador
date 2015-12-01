@@ -9,7 +9,6 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-import com.ads.projetoIntegrador.appService.AddressApplicationService;
 import com.ads.projetoIntegrador.entity.AddressEntity;
 import com.ads.projetoIntegrador.entity.EventsEntity;
 import com.ads.projetoIntegrador.entity.NecessityEntity;
@@ -28,13 +27,11 @@ import org.hibernate.Session;
 @SessionScoped
 public class CadOngController {
     
-    //private AddressApplicationService addressAppService = new AddressApplicationService();
-    //private OngRepository ongRepository = new OngRepository();
     private OngRepository ongRepository;
     private AddressEntity address;
     private OngEntity ong;
     private Session session;
-    //private List<OngEntity> ongs;
+    private List<OngEntity> ongs;
 
     public CadOngController() {
         this.address = new AddressEntity();
@@ -42,6 +39,7 @@ public class CadOngController {
     }
     
     private void initialize() {
+        ongRepository = new OngRepository();
         session = HibernateUtils.getSession();
         session.beginTransaction();    	
         ongRepository.setSession(session);
@@ -63,9 +61,21 @@ public class CadOngController {
     public AddressEntity getAddress() {
         return address;
     }
+
+    public List<OngEntity> getOngs() throws SQLException, ClassNotFoundException {
+        initialize();
+        if(ongs == null){
+            this.ongs = ongRepository.find();
+        }
+        cleanUp();
+        return ongs;
+    }
+
+    public void setOngs(List<OngEntity> ongs) {
+        this.ongs = ongs;
+    }
     
     public void save () throws SQLException,  ClassNotFoundException{
-        ongRepository = new OngRepository();
         address.setOng(ong);
         ong.setAddress(address);
         ong.setNecessities(new HashSet<NecessityEntity>());
