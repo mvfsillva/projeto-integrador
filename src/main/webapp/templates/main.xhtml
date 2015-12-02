@@ -2,12 +2,13 @@
 <html xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:head>
         <ui:include src="_head.xhtml"/>
+        <h:outputStylesheet name="css/main.css"/>  
     </h:head>
     <h:body>        
         <ui:include src="_header.xhtml"/>
         <ui:include src="_menu.xhtml"/>
         <main id="container" role="main" class="main main-container">
-            <p>Teste</p>
+            <ui:insert name="container" />
         </main>
         <ui:include src="_footer.xhtml"/>        
     </h:body>    
