@@ -17,6 +17,7 @@ import com.ads.projetoIntegrador.repository.OngRepository;
 import com.ads.projetoIntegrador.utils.HibernateUtils;
 import java.sql.SQLException;
 import java.util.HashSet;
+import java.util.List;
 import org.hibernate.Session;
 
 /**
@@ -31,7 +32,7 @@ public class CadOngController {
     //private OngRepository ongRepository = new OngRepository();
     private OngApplicationService ongAppService;
 
-    //private OngRepository ongRepository;
+    private OngRepository ongRepository;
 
     private AddressEntity address;
     private OngEntity ong;
