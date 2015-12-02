@@ -20,7 +20,7 @@ import com.ads.projetoIntegrador.repository.IRepository;
  * @param <T>
  * @param <IdType>
  */
-public abstract class AbstractBusinessManager<T extends Serializable, IdType extends Serializable>
+public abstract class AbstractBusiness<T extends Serializable, IdType extends Serializable>
         implements IBusinessManager<T, IdType> {
 
     protected IRepository<T, IdType> repository;

@@ -12,7 +12,7 @@ import com.ads.projetoIntegrador.repository.PersonRepository;
  *
  * @author yago
  */
-public class PersonBusiness extends AbstractBusinessManager<PersonEntity, Integer> {
+public class PersonBusiness extends AbstractBusiness<PersonEntity, Integer> {
 
 	public PersonBusiness() {
 		this.repository = new PersonRepository();

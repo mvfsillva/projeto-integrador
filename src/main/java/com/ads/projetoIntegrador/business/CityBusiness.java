@@ -5,7 +5,7 @@ import java.util.List;
 import com.ads.projetoIntegrador.entity.CityEntity;
 import com.ads.projetoIntegrador.repository.CityRepository;
 
-public class CityBusiness extends AbstractBusinessManager<CityEntity, Integer> {
+public class CityBusiness extends AbstractBusiness<CityEntity, Integer> {
 
 	public CityBusiness() {
 		this.repository = new CityRepository();

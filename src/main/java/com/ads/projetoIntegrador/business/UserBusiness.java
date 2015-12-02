@@ -17,7 +17,7 @@ import com.ads.projetoIntegrador.utils.PasswordUtils;
  *
  * @author yago
  */
-public class UserBusiness extends AbstractBusinessManager<UserEntity, Integer> {
+public class UserBusiness extends AbstractBusiness<UserEntity, Integer> {
 
 	public UserBusiness() {
 		this.repository = new UserRepository();
