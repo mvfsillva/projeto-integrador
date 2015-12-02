@@ -30,10 +30,13 @@ public class CadOngController {
     //private AddressApplicationService addressAppService = new AddressApplicationService();
     //private OngRepository ongRepository = new OngRepository();
     private OngApplicationService ongAppService;
+
+    //private OngRepository ongRepository;
+
     private AddressEntity address;
     private OngEntity ong;
     private Session session;
-    //private List<OngEntity> ongs;
+    private List<OngEntity> ongs;
 
     public CadOngController() {
         this.ongAppService = new OngApplicationService();
@@ -41,6 +44,22 @@ public class CadOngController {
         this.ong = new OngEntity();
     }
     
+    private void initialize() {
+        ongRepository = new OngRepository();
+        session = HibernateUtils.getSession();
+        session.beginTransaction();    	
+        ongRepository.setSession(session);
+    }
+    
+    private void commit() {
+    	session.getTransaction().commit();
+    }
+    
+    private void cleanUp() {
+    	session.flush();
+    	session.close();
+    }
+
     
     public OngEntity getOng() {
         return ong;
@@ -48,6 +67,19 @@ public class CadOngController {
 
     public AddressEntity getAddress() {
         return address;
+    }
+
+    public List<OngEntity> getOngs() throws SQLException, ClassNotFoundException {
+        initialize();
+        if(ongs == null){
+            this.ongs = ongRepository.find();
+        }
+        cleanUp();
+        return ongs;
+    }
+
+    public void setOngs(List<OngEntity> ongs) {
+        this.ongs = ongs;
     }
     
     public void save () throws SQLException,  ClassNotFoundException{

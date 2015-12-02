@@ -1,0 +1,19 @@
+//gerar btns para o projeto
+.generate-btn(@classname, @bgcolor, @color:#FFF, @border: @bgcolor, @paddingtb:6px, @paddinglr:12px,@paddingbtb:6px, @paddingrr:12px) {
+    .@{classname} {
+        background-color: @bgcolor;
+        color: @color;
+        border-color: @border;
+        transition: all 0.2s linear;
+        border-radius:0;
+        outline: none !important;
+        padding:@paddingtb @paddingrr @paddingbtb @paddinglr;
+        &:hover,&:focus,&:active,.active {
+            background-color:darken(@bgcolor,10%);
+            border-color:darken(@border,20%);
+            color: darken(@color,20%);
+            box-shadow: none;
+            outline: none;
+        }
+    }
+}
