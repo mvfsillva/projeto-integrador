@@ -14,20 +14,28 @@
                 </button>
                 <a class="navbar-brand" href="#">Doando.Org</a>
             </div>
-            <h:form>
+            
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <h:form>              
-                        <p:menubar id="menu" styleClass="nav navbar-nav navbar-right">
-                            <p:menuitem styleClass="page-scroll" value="ONG's"                    action="/ong/cadOng.xhtml?faces-redirect=true" />                
-                            <p:menuitem styleClass="page-scroll" value="Faça uma doação"          action="/ong/listOng.xhtml?faces-redirect=true" />
-                            <p:menuitem styleClass="page-scroll" value="Seja um Voluntario"       action="/voluntary/voluntary.xhtml?faces-redirect=true"/>                
-                            <p:menuitem styleClass="page-scroll" value="Eventos Beneficentes"     action="/event/event.xhtml?faces-redirect=true"/>
-                        </p:menubar>            
-                    
+                        <ul id="menu" class="nav navbar-nav navbar-right">
+                            <li class="page-scroll">
+                                <p:commandLink value="ONG's" action="/ong/cadOng.xhtml?faces-redirect=true" />                
+                            </li>
+                            <li class="page-scroll">
+                                <p:commandLink value="Faça uma doação"          action="/ong/listOng.xhtml?faces-redirect=true" />
+                            </li>
+                            <li class="page-scroll">
+                                <p:commandLink value="Seja um Voluntario"       action="/voluntary/voluntary.xhtml?faces-redirect=true"/>                
+                            </li>
+                            <li class="page-scroll">
+                                <p:commandLink value="Eventos Beneficentes"     action="/event/event.xhtml?faces-redirect=true"/>
+                            </li>
+                        </ul>            
+
                     </h:form>
                 </div>
-            </h:form>
+            
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container-fluid -->
