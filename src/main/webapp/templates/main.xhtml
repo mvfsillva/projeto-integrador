@@ -3,10 +3,14 @@
     <h:head>
         <ui:include src="_head.xhtml"/>
         <h:outputStylesheet name="css/main.css"/>  
+        <h:outputStylesheet name="css/bootstrap.css" />
+        <h:outputStylesheet name="css/freelancer.css" />
+        <h:outputStylesheet name="font-awesome/font-awesome.min.css" />
+        
     </h:head>
-    <h:body>        
+    <h:body id="page-top" class="index">        
         <ui:include src="_header.xhtml"/>
-        <ui:include src="_menu.xhtml"/>
+        
         <main id="container" role="main" class="main main-container">
             <ui:insert name="container" />
         </main>

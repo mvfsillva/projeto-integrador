@@ -10,50 +10,55 @@
         <ui:define name="container">
             <h:form>
                 <section>
-                    <h:panelGrid >
-                        <p:outputLabel value="Nome da instituição: " />
-                        <p:inputText value="#{cadOngController.ong.name}"/>
+                    <p:commandButton value="Cadastrar Ong" type="button" onclick="PF('ongModal').show();" />
+                    
+                    
+                    <p:dialog header="Cadastrar Nova ONG" widgetVar="dlg2" modal="true" height="400">
+                        <p:panelGrid columns="2" styleClass="" id="cadOng">
+                            <p:outputLabel value="Nome da instituição: " />
+                            <p:inputText value="#{cadOngController.ong.name}"/>
 
-                        <p:outputLabel value="E-mail: " />
-                        <p:inputText value="#{cadOngController.ong.email}"/>
+                            <p:outputLabel value="E-mail: " />
+                            <p:inputText value="#{cadOngController.ong.email}"/>
 
-                        <p:outputLabel value="Rua: " />
-                        <p:inputText value="#{cadOngController.address.street}"/>
+                            <p:outputLabel value="Rua: " />
+                            <p:inputText value="#{cadOngController.address.street}"/>
 
-                        <p:outputLabel value="Bairro: " />
-                        <p:inputText value="#{cadOngController.address.neighborhood}"/>
+                            <p:outputLabel value="Bairro: " />
+                            <p:inputText value="#{cadOngController.address.neighborhood}"/>
 
-                        <p:outputLabel value="CEP " />
-                        <p:inputText value="#{cadOngController.address.postalCode}"/>
+                            <p:outputLabel value="CEP " />
+                            <p:inputText value="#{cadOngController.address.postalCode}"/>
 
-                        <p:outputLabel value="Estado: " />
-                        <p:selectOneMenu id="estado" value="#{cadOngController.address.state}" styleClass="js-estado">
-                            <f:selectItem itemLabel="Bahia"     itemValue="Bahia" />
-                            <f:selectItem itemLabel="Recife"    itemValue="Recife" />
-                            <f:selectItem itemLabel="SÃ£o Paulo" itemValue="SÃ£o Paulo" />                    
-                        </p:selectOneMenu>
+                            <p:outputLabel value="Estado: " />
+                            <p:selectOneMenu id="estado" value="#{cadOngController.address.state}" styleClass="js-estado">
+                                <f:selectItem itemLabel="Bahia"     itemValue="Bahia" />
+                                <f:selectItem itemLabel="Recife"    itemValue="Recife" />
+                                <f:selectItem itemLabel="SÃ£o Paulo" itemValue="SÃ£o Paulo" />                    
+                            </p:selectOneMenu>
 
-                        <p:outputLabel value="Cidade: " />
-                        <p:selectOneMenu id="cidade" value="#{cadOngController.address.city}" styleClass="js-cidade">
-                            <f:selectItem itemLabel="Salvador"          itemValue="Salvador" />
-                            <f:selectItem itemLabel="Lauro de Freitas"  itemValue="Lauro de Freitas" />
-                            <f:selectItem itemLabel="Feira de Santana"  itemValue="Feira de Santana" />                    
-                        </p:selectOneMenu>
+                            <p:outputLabel value="Cidade: " />
+                            <p:selectOneMenu id="cidade" value="#{cadOngController.address.city}" styleClass="js-cidade">
+                                <f:selectItem itemLabel="Salvador"          itemValue="Salvador" />
+                                <f:selectItem itemLabel="Lauro de Freitas"  itemValue="Lauro de Freitas" />
+                                <f:selectItem itemLabel="Feira de Santana"  itemValue="Feira de Santana" />                    
+                            </p:selectOneMenu>
 
-                        <p:outputLabel value="CNPJ: " />
-                        <p:inputText value="#{cadOngController.ong.cnpj}"/>
+                            <p:outputLabel value="CNPJ: " />
+                            <p:inputText value="#{cadOngController.ong.cnpj}"/>
 
-                        <p:outputLabel value="Site: " />
-                        <p:inputText value="#{cadOngController.ong.website}"/>
+                            <p:outputLabel value="Site: " />
+                            <p:inputText value="#{cadOngController.ong.website}"/>
 
-                        <p:outputLabel value="Telefone Primario: " />
-                        <p:inputText value="#{cadOngController.address.primaryPhone}"/>
+                            <p:outputLabel value="Telefone Primario: " />
+                            <p:inputText value="#{cadOngController.address.primaryPhone}"/>
 
-                        <p:outputLabel value="Telefone Secundario: " />
-                        <p:inputText value="#{cadOngController.address.secondaryPhone}"/>
+                            <p:outputLabel value="Telefone Secundario: " />
+                            <p:inputText value="#{cadOngController.address.secondaryPhone}"/>
 
-                        <h:commandButton value="Salvar" action="#{cadOngController.save()}" />
-                    </h:panelGrid>
+                            <h:commandButton value="Salvar" action="#{cadOngController.save()}" />
+                        </p:panelGrid>
+                    </p:dialog>                    
                 </section>
             </h:form>
         </ui:define>

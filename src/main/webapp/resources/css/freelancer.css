@@ -336,6 +336,8 @@ form .row:first-child .floating-label-form-group {
 
 footer {
     color: #fff;
+    bottom: 0;
+    position: relative;
 }
 
 footer h3 {
