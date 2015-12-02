@@ -88,7 +88,7 @@ public class CadOngController {
         ong.setAddress(address);
         ong.setNecessities(new HashSet<NecessityEntity>());
         ong.setEvents(new HashSet<EventsEntity>());
-      
+        ongAppService.save(ong);
     }
     
 }

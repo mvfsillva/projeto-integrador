@@ -28,10 +28,11 @@ public class AddressEntity implements Serializable{
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "id_address_sq")
     private Integer id;
     
-    @Column(name = "address_city", nullable = false)
+    //tirando "nullable = false" de city e state pra teste do cadastro no modal
+    @Column(name = "address_city")
     private String city;
     
-    @Column(name = "address_state", nullable = false)
+    @Column(name = "address_state")
     private String state;
     
     @Column(name = "address_neighborhood", nullable = false)
