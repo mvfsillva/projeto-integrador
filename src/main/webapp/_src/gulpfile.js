@@ -7,7 +7,7 @@
       plumber     = require('gulp-plumber'),
       jeet        = require('jeet'),
       koutoSwiss  = require('kouto-swiss'),
-      rupture      = require('rupture'),
+      rupture     = require('rupture'),
       prefixer    = require('autoprefixer-stylus'),
       imagemin    = require('gulp-imagemin'),
       cp          = require('child_process');
@@ -19,15 +19,15 @@
             use:[jeet(), prefixer(), koutoSwiss(), rupture()],
               compress: true
           }))
-        .pipe(gulp.dest('../assets/css'))
+        .pipe(gulp.dest('../resources/css'))
     });
 
   gulp.task('js', function(){
-	   return gulp.src('/_src/js/**/*.js')
+	   return gulp.src('/_src/javascript/**/*.js')
 		.pipe(plumber())
 		.pipe(concat('main.js'))
 		.pipe(uglify())
-		.pipe(gulp.dest('/assets/js/'))
+		.pipe(gulp.dest('../resources/js/'))
   });
 
 // gulp.task('imagemin', function() {
