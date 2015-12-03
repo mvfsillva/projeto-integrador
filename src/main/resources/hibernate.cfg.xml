@@ -12,8 +12,9 @@
         <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/doando-database</property>
         <property name="hibernate.connection.pool_size">1</property>
         <property name="hibernate.hbm2ddl.auto">update</property>
-        <property name="hibernate.format_sql">false</property>
+        <property name="hibernate.format_sql">false</property>  
         <property name="hibernate.show_sql">false</property>
+        <property name="hibernate.current_session_context_class">thread</property>
         
         <mapping class="com.ads.projetoIntegrador.entity.AddressEntity"></mapping>
         <mapping class="com.ads.projetoIntegrador.entity.NecessityEntity"></mapping>
