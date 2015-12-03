@@ -31,9 +31,7 @@ public class CadOngController {
     //private AddressApplicationService addressAppService = new AddressApplicationService();
     //private OngRepository ongRepository = new OngRepository();
     private OngApplicationService ongAppService;
-
     private OngRepository ongRepository;
-
     private AddressEntity address;
     private OngEntity ong;
     private Session session;
@@ -60,7 +58,6 @@ public class CadOngController {
     	session.flush();
     	session.close();
     }
-
     
     public OngEntity getOng() {
         return ong;
@@ -83,12 +80,18 @@ public class CadOngController {
         this.ongs = ongs;
     }
     
+    public void clear (){
+        this.ong = null;
+        this.address = null;
+    }
+    
     public void save () throws SQLException,  ClassNotFoundException{
         address.setOng(ong);
         ong.setAddress(address);
         ong.setNecessities(new HashSet<NecessityEntity>());
         ong.setEvents(new HashSet<EventsEntity>());
         ongAppService.save(ong);
+        clear ();
     }
     
 }
