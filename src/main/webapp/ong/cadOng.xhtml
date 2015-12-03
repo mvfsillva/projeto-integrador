@@ -24,7 +24,7 @@
                         </div>
                         <div class="modal-body">
 
-                            <h:form styleClass="">
+                            <h:form id="formCadOng" styleClass="">
                                 <div class="form-group">
                                     <p:outputLabel value="Nome da instituição: " />
                                     <p:inputText styleClass="form-control" value="#{cadOngController.ong.name}"/>
@@ -74,7 +74,7 @@
                                     <p:inputText styleClass="form-control" value="#{cadOngController.address.secondaryPhone}"/> 
                                 </div>
                                 
-                                <h:commandButton value="Salvar" class="btn btn-success btn-lg" action="#{cadOngController.save()}" />
+                                <p:commandButton value="Salvar" styleClass="btn btn-success btn-lg" action="#{cadOngController.save()}" update="formCadOng" />
 
                             </h:form>
 
@@ -86,7 +86,33 @@
                 </div>
             </div>
         </div>
-
+        <div>
+            <h:form>
+                <p:dataScroller var="ong" value="#{cadOngController.ongs}">
+                    <f:facet name="header">
+                        Ongs
+                    </f:facet>
+                    
+                    <h:panelGrid columns="1">
+                        <p:outputPanel>
+                            <h:panelGrid columns="2" cellpadding="6">
+                                <h:outputText value="Nome: " />
+                                <h:outputText value=" #{ong.name}"/>
+                                
+                                <h:outputText value="Bairro: " />
+                                <h:outputText value=" #{ong.address.neighborhood}"/>
+                                
+                                <h:outputText value="Telefone: " />
+                                <h:outputText value=" #{ong.address.primaryPhone}"/>
+                                
+                                <h:outputText value="E-mail: " />
+                                <h:outputText value=" #{ong.email}"/>
+                            </h:panelGrid>
+                        </p:outputPanel>
+                    </h:panelGrid>
+                </p:dataScroller>
+            </h:form>
+        </div>
 
     </ui:define>
 </ui:composition>
