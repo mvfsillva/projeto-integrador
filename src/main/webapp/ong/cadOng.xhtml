@@ -9,140 +9,132 @@
     </ui:define>
     <ui:define name="container">
 
+        <section class="container">            
+                <button class="btn btn-success" data-toggle="modal" data-target="#myModal">Adicionar</button>
+                <hr />
+                <h3>Ongs Cadastradas</h3>
+                <h:form>
+                    <p:dataScroller>
+                        <f:facet name="header">Ongs</f:facet>
+                        <p:panelGrid columns="2" styleClass="">
+                            <h:outputText value="Nome:" />
+                            <h:outputText value=" #{ong.name}"/>
 
-        <div class="container">            
-            <button class="btn btn-success" data-toggle="modal" data-target="#myModal">Adicionar</button>
-            <hr class="line" style="background: #2C3E50;"/>
+                            <h:outputText value="Bairro: " />
+                            <h:outputText value=" #{ong.address.neighborhood}"/>
 
-            <!-- Modal -->
-            <div class="modal fade" id="myModal" role="dialog">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">x</button>
-                            <h4 class="modal-title">Nova ONG</h4>
-                            <small style="color:red;">Os campos com (*) são obrigatórios!</small>
-                        </div>
-                        <div class="modal-body">
-                            <h:form id="formCadOng" styleClass="">
-                                <div class="form-group row">
-                                    <div class="col-xs-8">
-                                        <span style="color:red; font-size: 1em;">* </span>
-                                        <p:outputLabel value="Nome da instituição: " /> 
-                                        <p:inputText placeholder="Ex: Acopamec" styleClass="form-control" value="#{cadOngController.ong.name}" required="true"/>
-                                    </div>
-                                    <div class="col-xs-4">                                        
-                                        <p:outputLabel value="E-mail: " />
-                                        <p:inputText type="email" placeholder="email@email.com" styleClass="form-control" value="#{cadOngController.ong.email}" required="true"/>
-                                    </div>
-                                </div>                                
-                                <div class="form-group row">
-                                    <div class="col-xs-4">
-                                        <span style="color:red; font-size: 1em;">* </span>
-                                        <p:outputLabel value="Rua: " />
-                                        <p:inputText  styleClass="form-control" value="#{cadOngController.address.street}" required="true"/>
-                                    </div>
-                                    <div class="col-xs-4">
-                                        <span style="color:red; font-size: 1em;">* </span>
-                                        <p:outputLabel value="Bairro: " />
-                                        <p:inputText styleClass="form-control" value="#{cadOngController.address.neighborhood}" required="true"/>
-                                    </div>
-                                    <div class="col-xs-4">
-                                        <span style="color:red; font-size: 1em;">* </span>
-                                        <p:outputLabel value="CEP " />
-                                        <p:inputText styleClass="form-control" value="#{cadOngController.address.postalCode}" required="true"/>
-                                    </div>
+                            <h:outputText value="Telefone: " />
+                            <h:outputText value=" #{ong.address.primaryPhone}"/>
+
+                            <h:outputText value="E-mail: " />
+                            <h:outputText value=" #{ong.email}"/>
+                        </p:panelGrid>
+                    </p:dataScroller>
+                </h:form>                          
+        </section>
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">x</button>
+                        <h4 class="modal-title">Nova ONG</h4>
+                        <small style="color:red;">Os campos com (*) são obrigatórios!</small>
+                    </div>
+                    <div class="modal-body">
+                        <h:form id="formCadOng" styleClass="">
+                            <div class="form-group row">
+                                <div class="col-xs-8">
+                                    <span style="color:red; font-size: 1em;">* </span>
+                                    <p:outputLabel value="Nome da instituição: " /> 
+                                    <p:inputText placeholder="Ex: Acopamec" styleClass="form-control" value="#{cadOngController.ong.name}" required="true"/>
                                 </div>
-
-                                <div class="form-group row">                                    
-                                    <div class="col-xs-6">
-                                        <span style="color:red; font-size: 1em;">* </span>
-                                        <p:outputLabel value="Estado: " />
-                                       <!-- <p:selectOneMenu id="state" value="#{cadOngController.address.state}" styleClass="form-control">
-                                            <p:ajax listener="#{cadOngController.address.city}" update="city" />
-                                            <f:selectItem itemLabel="Selecione o estado" itemValue="" noSelectionOption="true" />
-                                            <f:selectItems value="#{cadOngController.address.state}" />
-                                        </p:selectOneMenu> -->
-                                         <select class="form-control" id="estado">
-                                             <option>Selecione</option>
-                                             <option>Bahia</option>
-                                             <option>Rio de Janeiro</option>
-                                             <option>São Paulo</option>
-                                         </select>
-                                    </div>
-                                    <div class="col-xs-6">
-                                        <span style="color:red; font-size: 1em;">* </span>
-                                        <p:outputLabel value="Cidade: " />
-                                        <select class="form-control" id="cidade">
-                                            <option>Selecione</option>
-                                            <option>Salvador</option>
-                                            <option>Rio de Janeiro</option>
-                                            <option>São Paulo</option>
-                                        </select>
-                                    </div>  
-                                </div>    
-
-                                <div class="form-group row">
-                                    <div class="col-xs-6">
-                                        <span style="color:red; font-size: 1em;">* </span>
-                                        <p:outputLabel value="CNPJ: " />
-                                        <p:inputText styleClass="form-control" value="#{cadOngController.ong.cnpj}" required="true"/>
-                                    </div>                                    
-                                    <div class="col-xs-6">
-                                        <p:outputLabel value="Site: " />
-                                        <p:inputText styleClass="form-control" value="#{cadOngController.ong.website}"/>
-                                    </div>
+                                <div class="col-xs-4">                                        
+                                    <p:outputLabel value="E-mail: " />
+                                    <p:inputText type="email" placeholder="email@email.com" styleClass="form-control" value="#{cadOngController.ong.email}" required="true"/>
                                 </div>
-
-                                <div class="form-group row">
-                                    <div class="col-xs-6">
-                                        <span style="color:red; font-size: 1em;">* </span>
-                                        <p:outputLabel value="Telefone Primario: " />
-                                        <p:inputText styleClass="form-control" value="#{cadOngController.address.primaryPhone}" required="true"/>
-                                    </div>
-                                    <div class="col-xs-6">
-                                        <p:outputLabel value="Telefone Secundario: " />
-                                        <p:inputText styleClass="form-control" value="#{cadOngController.address.secondaryPhone}"/> 
-                                    </div>                                    
+                            </div>                                
+                            <div class="form-group row">
+                                <div class="col-xs-4">
+                                    <span style="color:red; font-size: 1em;">* </span>
+                                    <p:outputLabel value="Rua: " />
+                                    <p:inputText  styleClass="form-control" value="#{cadOngController.address.street}" required="true"/>
                                 </div>
-                                <div class="modal-footer">
-                                    <div class="pull-left">
-                                        <p:commandButton value="Salvar ONG" styleClass="btn btn-success" action="#{cadOngController.save()}" update="formCadOng" />
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                                    </div>
-                                </div>                                
-                            </h:form>
-                        </div>
+                                <div class="col-xs-4">
+                                    <span style="color:red; font-size: 1em;">* </span>
+                                    <p:outputLabel value="Bairro: " />
+                                    <p:inputText styleClass="form-control" value="#{cadOngController.address.neighborhood}" required="true"/>
+                                </div>
+                                <div class="col-xs-4">
+                                    <span style="color:red; font-size: 1em;">* </span>
+                                    <p:outputLabel value="CEP " />
+                                    <p:inputText styleClass="form-control" value="#{cadOngController.address.postalCode}" required="true"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">                                    
+                                <div class="col-xs-6">
+                                    <span style="color:red; font-size: 1em;">* </span>
+                                    <p:outputLabel value="Estado: " />
+                                   <!-- <p:selectOneMenu id="state" value="#{cadOngController.address.state}" styleClass="form-control">
+                                        <p:ajax listener="#{cadOngController.address.city}" update="city" />
+                                        <f:selectItem itemLabel="Selecione o estado" itemValue="" noSelectionOption="true" />
+                                        <f:selectItems value="#{cadOngController.address.state}" />
+                                    </p:selectOneMenu> -->
+                                    <select class="form-control" id="estado">
+                                        <option>Selecione</option>
+                                        <option>Bahia</option>
+                                        <option>Rio de Janeiro</option>
+                                        <option>São Paulo</option>
+                                    </select>
+                                </div>
+                                <div class="col-xs-6">
+                                    <span style="color:red; font-size: 1em;">* </span>
+                                    <p:outputLabel value="Cidade: " />
+                                    <select class="form-control" id="cidade">
+                                        <option>Selecione</option>
+                                        <option>Salvador</option>
+                                        <option>Rio de Janeiro</option>
+                                        <option>São Paulo</option>
+                                    </select>
+                                </div>  
+                            </div>    
+
+                            <div class="form-group row">
+                                <div class="col-xs-6">
+                                    <span style="color:red; font-size: 1em;">* </span>
+                                    <p:outputLabel value="CNPJ: " />
+                                    <p:inputText styleClass="form-control" value="#{cadOngController.ong.cnpj}" required="true"/>
+                                </div>                                    
+                                <div class="col-xs-6">
+                                    <p:outputLabel value="Site: " />
+                                    <p:inputText styleClass="form-control" value="#{cadOngController.ong.website}"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-xs-6">
+                                    <span style="color:red; font-size: 1em;">* </span>
+                                    <p:outputLabel value="Telefone Primario: " />
+                                    <p:inputText styleClass="form-control" value="#{cadOngController.address.primaryPhone}" required="true"/>
+                                </div>
+                                <div class="col-xs-6">
+                                    <p:outputLabel value="Telefone Secundario: " />
+                                    <p:inputText styleClass="form-control" value="#{cadOngController.address.secondaryPhone}"/> 
+                                </div>                                    
+                            </div>
+                            <div class="modal-footer">
+                                <div class="pull-left">
+                                    <p:commandButton value="Salvar ONG" styleClass="btn btn-success" action="#{cadOngController.save()}" update="formCadOng" />
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                </div>
+                            </div>                                
+                        </h:form>
                     </div>
                 </div>
             </div>
         </div>
-
-
-        <!--<div class="">
-               <h:form>
-                   <p:dataScroller var="ong" value="#{cadOngController.ongs}">
-                       <f:facet name="header"> Ongs </f:facet>                    
-                       <h:panelGrid columns="1">
-                           <p:outputPanel>
-                               <h:panelGrid columns="2" cellpadding="6">
-                                   <h:outputText value="Nome: " />
-                                   <h:outputText value=" #{ong.name}"/>
-
-                                   <h:outputText value="Bairro: " />
-                                   <h:outputText value=" #{ong.address.neighborhood}"/>
-
-                                   <h:outputText value="Telefone: " />
-                                   <h:outputText value=" #{ong.address.primaryPhone}"/>
-
-                                   <h:outputText value="E-mail: " />
-                                   <h:outputText value=" #{ong.email}"/>
-                               </h:panelGrid>
-                           </p:outputPanel>
-                       </h:panelGrid>
-                   </p:dataScroller>
-               </h:form>
-           </div>-->
 
     </ui:define>
 </ui:composition>
