@@ -12,7 +12,8 @@
 
         <div class="container">
             <!-- Divida Técnica -->
-            <button class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" style="position: relative; top: 100px;">Cadastrar nova Ong</button>
+            <button class="btn btn-success" data-toggle="modal" data-target="#myModal" style="position: relative; top: 100px;">Adicionar</button>
+            <hr class=""/>
 
             <!-- Modal -->
             <div class="modal fade" id="myModal" role="dialog">
@@ -20,99 +21,115 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">x</button>
-                            <h4 class="modal-title">Cadastrar nova Ong</h4>
+                            <h4 class="modal-title">Nova ONG</h4>
                         </div>
                         <div class="modal-body">
-
                             <h:form id="formCadOng" styleClass="">
-                                <div class="form-group">
-                                    <p:outputLabel value="Nome da instituição: " />
-                                    <p:inputText styleClass="form-control" value="#{cadOngController.ong.name}"/>
-                                </div>
-                                <div class="form-group">
-                                    <p:outputLabel value="E-mail: " />
-                                    <p:inputText styleClass="form-control" value="#{cadOngController.ong.email}"/>
-                                </div>
-                                <div class="form-group">
-                                    <p:outputLabel value="Rua: " />
-                                    <p:inputText styleClass="form-control" value="#{cadOngController.address.street}"/>
-                                </div>
-                                <div class="form-group">
-                                    <p:outputLabel value="Bairro: " />
-                                    <p:inputText styleClass="form-control" value="#{cadOngController.address.neighborhood}"/>
+                                <div class="form-group row">
+                                    <div class="col-xs-8">
+                                        <p:outputLabel value="Nome da instituição: " />
+                                        <p:inputText styleClass="form-control" value="#{cadOngController.ong.name}"/>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <p:outputLabel value="E-mail: " />
+                                        <p:inputText styleClass="form-control" value="#{cadOngController.ong.email}"/>
+                                    </div>
+                                </div>                                
+                                <div class="form-group row">
+                                    <div class="col-xs-4">
+                                        <p:outputLabel value="Rua: " />
+                                        <p:inputText styleClass="form-control" value="#{cadOngController.address.street}"/>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <p:outputLabel value="Bairro: " />
+                                        <p:inputText styleClass="form-control" value="#{cadOngController.address.neighborhood}"/>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <p:outputLabel value="CEP " />
+                                        <p:inputText styleClass="form-control" value="#{cadOngController.address.postalCode}"/>
+                                    </div>
                                 </div>
 
-                                <div class="form-group">
-                                    <p:outputLabel value="CEP " />
-                                    <p:inputText styleClass="form-control" value="#{cadOngController.address.postalCode}"/>
+                                <div class="form-group row">                                    
+                                    <div class="col-xs-6">
+                                        <p:outputLabel value="Estado: " />
+                                        <select class="form-control" id="estado">
+                                            <option>Selecione</option>
+                                            <option>Bahia</option>
+                                            <option>Rio de Janeiro</option>
+                                            <option>São Paulo</option>
+                                        </select>                                        
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <p:outputLabel value="Cidade: " />
+                                        <select class="form-control" id="cidade">
+                                            <option>Selecione</option>
+                                            <option>Salvador</option>
+                                            <option>Rio de Janeiro</option>
+                                            <option>São Paulo</option>
+                                        </select>
+                                    </div>  
+                                </div>    
+
+                                <div class="form-group row">
+                                    <div class="col-xs-6">
+                                        <p:outputLabel value="CNPJ: " />
+                                        <p:inputText styleClass="form-control" value="#{cadOngController.ong.cnpj}"/>
+                                    </div>                                    
+                                    <div class="col-xs-6">
+                                        <p:outputLabel value="Site: " />
+                                        <p:inputText styleClass="form-control" value="#{cadOngController.ong.website}"/>
+                                    </div>
                                 </div>
 
-                                <!--<div class="form-group">                                    
-                                    <p:outputLabel value="Estado: " />
-                                    <p:outputLabel value="Cidade: " />
-                                    <p:inputText styleClass="form-control" value=''/>
-                                    <p:inputText styleClass="form-control" value=""/>
-                                </div>-->
-
-                                <div class="form-group">
-                                    <p:outputLabel value="CNPJ: " />
-                                    <p:inputText styleClass="form-control" value="#{cadOngController.ong.cnpj}"/>
+                                <div class="form-group row">
+                                    <div class="col-xs-6">
+                                        <p:outputLabel value="Telefone Primario: " />
+                                        <p:inputText styleClass="form-control" value="#{cadOngController.address.primaryPhone}"/>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <p:outputLabel value="Telefone Secundario: " />
+                                        <p:inputText styleClass="form-control" value="#{cadOngController.address.secondaryPhone}"/> 
+                                    </div>                                    
                                 </div>
-                                
-                                <div class="form-group">
-                                    <p:outputLabel value="Site: " />
-                                    <p:inputText styleClass="form-control" value="#{cadOngController.ong.website}"/>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <p:outputLabel value="Telefone Primario: " />
-                                    <p:inputText styleClass="form-control" value="#{cadOngController.address.primaryPhone}"/>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <p:outputLabel value="Telefone Secundario: " />
-                                    <p:inputText styleClass="form-control" value="#{cadOngController.address.secondaryPhone}"/> 
-                                </div>
-                                
-                                <p:commandButton value="Salvar" styleClass="btn btn-success btn-lg" action="#{cadOngController.save()}" update="formCadOng" />
-
+                                <div class="modal-footer">
+                                    <div class="pull-left">
+                                        <p:commandButton value="Salvar ONG" styleClass="btn btn-success" action="#{cadOngController.save()}" update="formCadOng" />
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                    </div>
+                                </div>                                
                             </h:form>
-
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div>
-            <h:form>
-                <p:dataScroller var="ong" value="#{cadOngController.ongs}">
-                    <f:facet name="header">
-                        Ongs
-                    </f:facet>
-                    
-                    <h:panelGrid columns="1">
-                        <p:outputPanel>
-                            <h:panelGrid columns="2" cellpadding="6">
-                                <h:outputText value="Nome: " />
-                                <h:outputText value=" #{ong.name}"/>
-                                
-                                <h:outputText value="Bairro: " />
-                                <h:outputText value=" #{ong.address.neighborhood}"/>
-                                
-                                <h:outputText value="Telefone: " />
-                                <h:outputText value=" #{ong.address.primaryPhone}"/>
-                                
-                                <h:outputText value="E-mail: " />
-                                <h:outputText value=" #{ong.email}"/>
-                            </h:panelGrid>
-                        </p:outputPanel>
-                    </h:panelGrid>
-                </p:dataScroller>
-            </h:form>
-        </div>
+
+
+        <!--<div class="">
+               <h:form>
+                   <p:dataScroller var="ong" value="#{cadOngController.ongs}">
+                       <f:facet name="header"> Ongs </f:facet>                    
+                       <h:panelGrid columns="1">
+                           <p:outputPanel>
+                               <h:panelGrid columns="2" cellpadding="6">
+                                   <h:outputText value="Nome: " />
+                                   <h:outputText value=" #{ong.name}"/>
+
+                                   <h:outputText value="Bairro: " />
+                                   <h:outputText value=" #{ong.address.neighborhood}"/>
+
+                                   <h:outputText value="Telefone: " />
+                                   <h:outputText value=" #{ong.address.primaryPhone}"/>
+
+                                   <h:outputText value="E-mail: " />
+                                   <h:outputText value=" #{ong.email}"/>
+                               </h:panelGrid>
+                           </p:outputPanel>
+                       </h:panelGrid>
+                   </p:dataScroller>
+               </h:form>
+           </div>-->
 
     </ui:define>
 </ui:composition>
