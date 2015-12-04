@@ -10,27 +10,104 @@
     <ui:define name="container">
 
         <section class="container">            
-                <button class="btn btn-success" data-toggle="modal" data-target="#myModal">Adicionar</button>
-                <hr />
-                <h3>Ongs Cadastradas</h3>
-                <h:form>
-                    <p:dataScroller>
-                        <f:facet name="header">Ongs</f:facet>
-                        <p:panelGrid columns="2" styleClass="">
-                            <h:outputText value="Nome:" />
-                            <h:outputText value=" #{ong.name}"/>
+            <button class="btn btn-success" data-toggle="modal" data-target="#myModal">Adicionar</button>
+            <hr />
+            <h3>Ongs Cadastradas</h3>
 
-                            <h:outputText value="Bairro: " />
-                            <h:outputText value=" #{ong.address.neighborhood}"/>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th  class="text-center">Nome</th>
+                                    <th  class="text-center">Cidade</th>
+                                    <th  class="text-center">Bairro</th>
+                                    <th  class="text-center">Telefone</th>
+                                    <th  class="text-center">E-mail</th>
+                                    <th  class="text-center">Ações</th>
+                                </tr>
+                            </thead>
+                            <h:form> 
+                                <tbody>
+                                    <td>ACOMPAMEC</td>
+                                    <td>Salvador</td>
+                                    <td>Mata Escura</td>
+                                    <td>71 3333-4444</td>
+                                    <td>acompmec@email.org.br</td>
+                                    <td colspan="2">
+                                        <div class="text-center"> 
+                                            <button class="btn btn-info btn-sm">Editar</button>
+                                            <button class="btn btn-danger btn-sm">Deletar</button>
+                                        </div>    
+                                    </td>
+                                    <!--<td><h:outputText value="#{ong.name}"/></td>
+                                    <td><h:outputText value="#{ong.andress.city}" /></td>
+                                    <td><h:outputText value="#{ong.address.neighborhood}"/></td>
+                                    <td><h:outputText value="#{ong.address.primaryPhone}"/></td>
+                                    <td><h:outputText value="#{ong.email}"/></td>-->
+                                </tbody>
 
-                            <h:outputText value="Telefone: " />
-                            <h:outputText value=" #{ong.address.primaryPhone}"/>
-
-                            <h:outputText value="E-mail: " />
-                            <h:outputText value=" #{ong.email}"/>
-                        </p:panelGrid>
-                    </p:dataScroller>
-                </h:form>                          
+                                <tbody>
+                                    <td>ACOMPAMEC</td>
+                                    <td>Salvador</td>
+                                    <td>Mata Escura</td>
+                                    <td>71 3333-4444</td>
+                                    <td>acompmec@email.org.br</td>
+                                   <td colspan="2">
+                                        <div class="text-center"> 
+                                            <button class="btn btn-info btn-sm">Editar</button>
+                                            <button class="btn btn-danger btn-sm">Deletar</button>
+                                        </div>    
+                                    </td>
+                                </tbody>
+                                
+                                <tbody>
+                                    <td>ACOMPAMEC</td>
+                                    <td>Salvador</td>
+                                    <td>Mata Escura</td>
+                                    <td>71 3333-4444</td>
+                                    <td>acompmec@email.org.br</td>
+                                   <td colspan="2">
+                                        <div class="text-center"> 
+                                            <button class="btn btn-info btn-sm">Editar</button>
+                                            <button class="btn btn-danger btn-sm">Deletar</button>
+                                        </div>    
+                                    </td>
+                                </tbody>
+                                
+                                <tbody>
+                                    <td>ACOMPAMEC</td>
+                                    <td>Salvador</td>
+                                    <td>Mata Escura</td>
+                                    <td>71 3333-4444</td>
+                                    <td>acompmec@email.org.br</td>
+                                    <td colspan="2">
+                                        <div class="text-center"> 
+                                            <button class="btn btn-info btn-sm">Editar</button>
+                                            <button class="btn btn-danger btn-sm">Deletar</button>
+                                        </div>    
+                                    </td>
+                                </tbody>
+                                
+                                <tbody>
+                                    <td>ACOMPAMEC</td>
+                                    <td>Salvador</td>
+                                    <td>Mata Escura</td>
+                                    <td>71 3333-4444</td>
+                                    <td>acompmec@email.org.br</td>
+                                   <td colspan="2">
+                                        <div class="text-center"> 
+                                            <button class="btn btn-info btn-sm">Editar</button>
+                                            <button class="btn btn-danger btn-sm">Deletar</button>
+                                        </div>    
+                                    </td>
+                                </tbody>
+                            </h:form>
+                        </table>      
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- Modal -->
