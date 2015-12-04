@@ -1,10 +1,194 @@
-<!DOCTYPE html >
-<html  xmlns:h="http://java.sun.com/jsf/html">
-    <h:head>
-        <title>Facelet Title</title>
-    </h:head>
-    <h:body>
-        <h1>Seja um voluntario</h1>
-    </h:body>
-</html>
+<ui:composition 
+    template="../templates/main.xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+    <ui:define name="title">
+        <h:outputText value="Voluntarios" />
+    </ui:define>
+    <ui:define name="container">
 
+        <section id="need">            
+            <div class="container">
+                <button class="btn btn-success" data-toggle="modal" data-target="#myModal">Adicionar</button>
+                <hr />
+                <h3>Voluntarios Cadastrados</h3>       
+
+                <div class="row">
+                    <div class="col-sm-4 need-item">
+                        <a href="#needModal1" class="need-link" data-toggle="modal">
+                            <div class="caption">
+                                <div class="caption-content">
+                                    <i class="fa fa-search-plus fa-3x"></i>
+                                </div>
+                            </div>
+                            <img src="../_src/assets/images/need/cabin.png" class="img-responsive" alt="" />
+                        </a>
+                    </div>
+
+
+                    <div class="col-sm-4 need-item">
+                        <a href="#needModal2" class="need-link" data-toggle="modal">
+                            <div class="caption">
+                                <div class="caption-content">
+                                    <i class="fa fa-search-plus fa-3x"></i>
+                                </div>
+                            </div>
+                            <img src="../_src/assets/images/need/cake.png" class="img-responsive" alt="" />
+                        </a>
+                    </div>
+
+
+                    <div class="col-sm-4 need-item">
+                        <a href="#needModal1" class="need-link" data-toggle="modal">
+                            <div class="caption">
+                                <div class="caption-content">
+                                    <i class="fa fa-search-plus fa-3x"></i>
+                                </div>
+                            </div>
+                            <img src="../_src/assets/images/need/cabin.png" class="img-responsive" alt="" />
+                        </a>
+                    </div>
+
+
+                    <div class="col-sm-4 need-item">
+                        <a href="#needModal2" class="need-link" data-toggle="modal">
+                            <div class="caption">
+                                <div class="caption-content">
+                                    <i class="fa fa-search-plus fa-3x"></i>
+                                </div>
+                            </div>
+                            <img src="../_src/assets/images/need/cake.png" class="img-responsive" alt="" />
+                        </a>
+                    </div>
+
+                    <div class="col-sm-4 need-item">
+                        <a href="#needModal2" class="need-link" data-toggle="modal">
+                            <div class="caption">
+                                <div class="caption-content">
+                                    <i class="fa fa-search-plus fa-3x"></i>
+                                </div>
+                            </div>
+                            <img src="../_src/assets/images/need/cake.png" class="img-responsive" alt="" />
+                        </a>
+                    </div>
+
+
+                    <div class="col-sm-4 need-item">
+                        <a href="#needModal1" class="need-link" data-toggle="modal">
+                            <div class="caption">
+                                <div class="caption-content">
+                                    <i class="fa fa-search-plus fa-3x"></i>
+                                </div>
+                            </div>
+                            <img src="../_src/assets/images/need/cabin.png" class="img-responsive" alt="" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">x</button>
+                        <h4 class="modal-title">Novo Voluntario</h4>
+                        <small style="color:red;">Os campos com (*) são obrigatórios!</small>
+                    </div>
+                    <div class="modal-body">
+                        <h:form id="formCadOng" styleClass="">
+                            <div class="form-group row">
+                                <div class="col-xs-8">
+                                    <span style="color:red; font-size: 1em;">* </span>
+                                    <p:outputLabel value="Nome Completo " /> 
+                                    <p:inputText placeholder="Ex: José Yago" styleClass="form-control" value="" required="true"/>
+                                </div>
+                                <div class="col-xs-4">                                        
+                                    <p:outputLabel value="Sexo" />
+                                    <select class="form-control" id="sexo">
+                                        <option>Masculino</option>
+                                        <option>Feminino</option>                                        
+                                    </select>
+                                </div>
+                            </div>                                
+
+                            <div class="form-group row">
+                                <div class="col-xs-8">
+                                    <span style="color:red; font-size: 1em;">* </span>
+                                    <p:outputLabel value="E-mail " />
+                                    <p:inputText  styleClass="form-control" value="" required="true"/>
+                                </div>
+                                <div class="col-xs-4">
+                                    <span style="color:red; font-size: 1em;">* </span>
+                                    <p:outputLabel value="Telefone: " />
+                                    <p:inputText styleClass="form-control" value="" required="true"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">                                    
+                                <div class="col-xs-6">
+                                    <span style="color:red; font-size: 1em;">* </span>
+                                    <p:outputLabel value="Disponibilidade " />
+                                    <p:selectOneRadio id="disponibilidade" value="" styleClass="radio-inline">
+                                        <f:selectItem itemLabel="Manhã" itemValue="Manhã" />
+                                        <f:selectItem itemLabel="Tarde" itemValue="Tarde" />
+                                        <f:selectItem itemLabel="Noite" itemValue="Noite" />
+                                    </p:selectOneRadio>
+                                </div>    
+                            </div>
+
+                            <div class="form-group row">                                    
+                                <div class="col-xs-6">
+                                    <span style="color:red; font-size: 1em;">* </span>
+                                    <p:outputLabel value="Estado: " />
+                                   <!-- <p:selectOneMenu id="state" value="#{cadOngController.address.state}" styleClass="form-control">
+                                        <p:ajax listener="#{cadOngController.address.city}" update="city" />
+                                        <f:selectItem itemLabel="Selecione o estado" itemValue="" noSelectionOption="true" />
+                                        <f:selectItems value="#{cadOngController.address.state}" />
+                                    </p:selectOneMenu> -->
+                                    <select class="form-control" id="estado">
+                                        <option>Selecione</option>
+                                        <option>Bahia</option>
+                                        <option>Rio de Janeiro</option>
+                                        <option>São Paulo</option>
+                                    </select>
+                                </div>
+                                <div class="col-xs-6">
+                                    <span style="color:red; font-size: 1em;">* </span>
+                                    <p:outputLabel value="Cidade: " />
+                                    <select class="form-control" id="cidade">
+                                        <option>Selecione</option>
+                                        <option>Salvador</option>
+                                        <option>Rio de Janeiro</option>
+                                        <option>São Paulo</option>
+                                    </select>
+                                </div>  
+                            </div>  
+
+                            <div class="form-group row">                                    
+                                <div class="col-xs-6">                                    
+                                    <p:outputLabel value="Interesse " />                                   
+                                    <select class="form-control" id="interesse">
+                                        <option>Selecione</option>
+                                        <option>interesse 1</option>
+                                        <option>interesse 2</option>
+                                        <option>interesse 3</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <div class="pull-left">
+                                    <p:commandButton value="Salvar ONG" styleClass="btn btn-success" action="#{cadOngController.save()}" update="formCadOng" />
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                </div>
+                            </div>  
+                        </h:form>                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>
