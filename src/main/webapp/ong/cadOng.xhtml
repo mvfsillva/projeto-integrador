@@ -10,10 +10,9 @@
     <ui:define name="container">
 
 
-        <div class="container">
-            <!-- Divida Técnica -->
-            <button class="btn btn-success" data-toggle="modal" data-target="#myModal" style="position: relative; top: 100px;">Adicionar</button>
-            <hr class=""/>
+        <div class="container">            
+            <button class="btn btn-success" data-toggle="modal" data-target="#myModal">Adicionar</button>
+            <hr class="line" style="background: #2C3E50;"/>
 
             <!-- Modal -->
             <div class="modal fade" id="myModal" role="dialog">
@@ -53,12 +52,17 @@
                                 <div class="form-group row">                                    
                                     <div class="col-xs-6">
                                         <p:outputLabel value="Estado: " />
-                                        <select class="form-control" id="estado">
-                                            <option>Selecione</option>
-                                            <option>Bahia</option>
-                                            <option>Rio de Janeiro</option>
-                                            <option>São Paulo</option>
-                                        </select>                                        
+                                       <!-- <p:selectOneMenu id="state" value="#{cadOngController.address.state}" styleClass="form-control">
+                                            <p:ajax listener="#{cadOngController.address.city}" update="city" />
+                                            <f:selectItem itemLabel="Selecione o estado" itemValue="" noSelectionOption="true" />
+                                            <f:selectItems value="#{cadOngController.address.state}" />
+                                        </p:selectOneMenu> -->
+                                         <select class="form-control" id="estado">
+                                             <option>Selecione</option>
+                                             <option>Bahia</option>
+                                             <option>Rio de Janeiro</option>
+                                             <option>São Paulo</option>
+                                         </select>
                                     </div>
                                     <div class="col-xs-6">
                                         <p:outputLabel value="Cidade: " />
