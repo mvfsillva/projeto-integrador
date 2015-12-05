@@ -13,15 +13,9 @@ import com.ads.projetoIntegrador.entity.AddressEntity;
 import com.ads.projetoIntegrador.entity.EventsEntity;
 import com.ads.projetoIntegrador.entity.NecessityEntity;
 import com.ads.projetoIntegrador.entity.OngEntity;
-import com.ads.projetoIntegrador.repository.OngRepository;
 import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.List;
-import javax.faces.application.Application;
-import javax.faces.application.ViewHandler;
-import javax.faces.component.UIViewRoot;
-import javax.faces.context.FacesContext;
-import org.hibernate.Session;
 
 /**
  *
