@@ -14,10 +14,13 @@ import com.ads.projetoIntegrador.entity.EventsEntity;
 import com.ads.projetoIntegrador.entity.NecessityEntity;
 import com.ads.projetoIntegrador.entity.OngEntity;
 import com.ads.projetoIntegrador.repository.OngRepository;
-import com.ads.projetoIntegrador.utils.HibernateUtils;
 import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.List;
+import javax.faces.application.Application;
+import javax.faces.application.ViewHandler;
+import javax.faces.component.UIViewRoot;
+import javax.faces.context.FacesContext;
 import org.hibernate.Session;
 
 /**
@@ -28,35 +31,15 @@ import org.hibernate.Session;
 @SessionScoped
 public class CadOngController {
     
-    //private AddressApplicationService addressAppService = new AddressApplicationService();
-    //private OngRepository ongRepository = new OngRepository();
     private OngApplicationService ongAppService;
-    private OngRepository ongRepository;
     private AddressEntity address;
     private OngEntity ong;
-    private Session session;
     private List<OngEntity> ongs;
 
     public CadOngController() {
         this.ongAppService = new OngApplicationService();
         this.address = new AddressEntity();
         this.ong = new OngEntity();
-    }
-    
-    private void initialize() {
-        ongRepository = new OngRepository();
-        session = HibernateUtils.getSession();
-        session.beginTransaction();    	
-        ongRepository.setSession(session);
-    }
-    
-    private void commit() {
-    	session.getTransaction().commit();
-    }
-    
-    private void cleanUp() {
-    	session.flush();
-    	session.close();
     }
     
     public OngEntity getOng() {
@@ -68,11 +51,9 @@ public class CadOngController {
     }
 
     public List<OngEntity> getOngs() throws SQLException, ClassNotFoundException {
-        initialize();
         if(ongs == null){
-            this.ongs = ongRepository.find();
+            this.ongs = ongAppService.find();
         }
-        cleanUp();
         return ongs;
     }
 
