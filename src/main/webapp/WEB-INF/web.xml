@@ -27,7 +27,7 @@
     <!-- login filter --> 
     <filter> 
         <filter-name>LoginFilter</filter-name> 
-        <filter-class>com.ads.projetoIntegrador.filter.LoginFilter</filter-class> 
+        <filter-class>org.doando.filter.LoginFilter</filter-class> 
     </filter> 
     <filter-mapping> 
         <filter-name>LoginFilter</filter-name> 

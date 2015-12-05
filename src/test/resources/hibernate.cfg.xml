@@ -15,8 +15,8 @@
         <property name="hibernate.format_sql">false</property>
         <property name="hibernate.show_sql">false</property>
         
-        <mapping class="com.ads.projetoIntegrador.entity.PersonEntity"></mapping>
-        <mapping class="com.ads.projetoIntegrador.entity.UserEntity"></mapping>
+        <mapping class="org.doando.entity.PersonEntity"></mapping>
+        <mapping class="org.doando.entity.UserEntity"></mapping>
         
     </session-factory>
 </hibernate-configuration>

@@ -16,10 +16,10 @@
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.current_session_context_class">thread</property>
         
-        <mapping class="com.ads.projetoIntegrador.entity.AddressEntity"></mapping>
-        <mapping class="com.ads.projetoIntegrador.entity.NecessityEntity"></mapping>
-        <mapping class="com.ads.projetoIntegrador.entity.UserEntity"></mapping>
-        <mapping class="com.ads.projetoIntegrador.entity.OngEntity"></mapping>
-        <mapping class="com.ads.projetoIntegrador.entity.EventsEntity"></mapping>
+        <mapping class="org.doando.entity.AddressEntity"></mapping>
+        <mapping class="org.doando.entity.NecessityEntity"></mapping>
+        <mapping class="org.doando.entity.UserEntity"></mapping>
+        <mapping class="org.doando.entity.OngEntity"></mapping>
+        <mapping class="org.doando.entity.EventsEntity"></mapping>
     </session-factory>
 </hibernate-configuration>
