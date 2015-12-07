@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.doando.repository.IRepository;
 import org.hibernate.Session;
 
@@ -19,6 +20,7 @@ public abstract class AbstractBusiness<T extends Serializable, IdType extends Se
         implements IBusinessManager<T, IdType> {
 
     protected IRepository<T, IdType> repository;
+    //static Logger LOGGER = Logger.getLogger(AbstractBusiness.class.getDeclaringClass());
     
     @Override
     public void validate(T t) throws IllegalArgumentException {
