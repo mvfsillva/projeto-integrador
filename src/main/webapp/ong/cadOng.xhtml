@@ -16,18 +16,18 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="table-responsive">
-                        <table class="table table-bordered table-hover">
-                            <thead>
-                                <tr>
-                                    <th>Nome</th>
-                                    <th>Cidade</th>
-                                    <th>Bairro</th>
-                                    <th>Telefone</th>
-                                    <th>E-mail</th>
-                                    <th class="text-center">Ações</th>
-                                </tr>
-                            </thead>
-                            <h:form id="ongList"> 
+                           <h:form id="ongList">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Nome</th>
+                                        <th>Cidade</th>
+                                        <th>Bairro</th>
+                                        <th>Telefone</th>
+                                        <th>E-mail</th>
+                                        <th class="text-center">Ações</th>
+                                    </tr>
+                                </thead>
                                 <ui:repeat var="ong" value="#{cadOngController.ongs}">
                                     <tbody>
                                         <td><h:outputText value="#{ong.name}"/></td>
@@ -43,8 +43,8 @@
                                         </td>
                                     </tbody>
                                 </ui:repeat>
-                            </h:form>
-                        </table>      
+                            </table> 
+                        </h:form>  
                     </div>
                 </div>
             </div>

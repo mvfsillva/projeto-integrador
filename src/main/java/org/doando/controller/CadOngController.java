@@ -83,4 +83,8 @@ public class CadOngController {
         states = stateAppService.find();
     }
     
+    public void delete (OngEntity ong) {
+        ongAppService.delete(ong);
+    }
+    
 }
