@@ -35,7 +35,6 @@ public class CadOngController {
         this.address = new AddressEntity();
         this.ong = new OngEntity();
         this.stateAppService = new StateAppService();
-        loadCities();
     }
     
     public OngEntity getOng() {
@@ -58,6 +57,9 @@ public class CadOngController {
     }
     
     public List<StateEntity> getStates() {
+    	if (states == null) {
+    		this.states = stateAppService.find();
+		}
         return states;
     }
 
@@ -80,7 +82,7 @@ public class CadOngController {
     }
     
     public void loadCities() {
-        states = stateAppService.find();
+        
     }
     
     public void delete (OngEntity ong) {
