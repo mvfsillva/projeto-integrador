@@ -41,6 +41,9 @@ public class AddressEntity implements Serializable{
     @Column(name = "address_state")
     private String state;
     
+    @Column(name = "complement")
+    private String complement;
+    
     @Column(name = "address_neighborhood", nullable = false)
     private String neighborhood;
     
@@ -111,7 +114,15 @@ public class AddressEntity implements Serializable{
         this.state = state;
     }
 
-    public String getNeighborhood() {
+    public String getComplement() {
+		return complement;
+	}
+
+	public void setComplement(String complement) {
+		this.complement = complement;
+	}
+
+	public String getNeighborhood() {
         return neighborhood;
     }
 

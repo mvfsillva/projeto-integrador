@@ -94,31 +94,19 @@
                                 <div class="col-xs-6">
                                     <span style="color:red; font-size: 1em;">* </span>
                                     <p:outputLabel value="Estado: " />
-                                    <p:selectOneMenu id="state" value="#{cadOngController.address.state}" styleClass="form-control">
-                                        <p:ajax listener="#{cadOngController.address.city}" update="city" />
+                                    <h:selectOneMenu id="state" value="#{cadOngController.selectedState}" styleClass="form-control">
+                                        <p:ajax event="change" listener="#{cadOngController.onChooseState}" update="city" />
                                         <f:selectItem itemLabel="Selecione o estado" itemValue="" noSelectionOption="true" />
-                                        <f:selectItems value="#{cadOngController.states}" />
-                                    </p:selectOneMenu>
-<!--                                    <select class="form-control" id="estado">   
-                                        <option>Selecione</option>
-                                        <option>Bahia</option>
-                                        <option>Rio de Janeiro</option>
-                                        <option>SÃ£o Paulo</option>
-                                    </select>-->
+                                        <f:selectItems value="#{cadOngController.states}" var="state" itemLabel="#{state.description}" itemValue="#{state}" />
+                                    </h:selectOneMenu>
                                 </div>
                                 <div class="col-xs-6">
                                     <span style="color:red; font-size: 1em;">* </span>
                                     <p:outputLabel value="Cidade: " />
-                                    <p:selectOneMenu id="city" value="#{cadOngController.address.city}" styleClass="form-control">
-                                        <f:selectItem itemLabel="Selecione o estado" itemValue="" noSelectionOption="true" />
-<!--                                        <f:selectItems value="#{cadOngController.states}" />-->
-                                    </p:selectOneMenu>
-<!--                                    <select class="form-control" id="cidade">
-                                        <option>Selecione</option>
-                                        <option>Salvador</option>
-                                        <option>Rio de Janeiro</option>
-                                        <option>SÃ£o Paulo</option>
-                                    </select>-->
+                                    <h:selectOneMenu id="city" value="#" styleClass="form-control">
+                                        <f:selectItem itemLabel="Selecione a cidade" itemValue="" noSelectionOption="true" />
+                                        <f:selectItems value="#{cadOngController.cities}" var="city" itemLabel="#{city.description}" itemValue="#{city}"/>
+                                    </h:selectOneMenu>
                                 </div>  
                             </div>    
 
