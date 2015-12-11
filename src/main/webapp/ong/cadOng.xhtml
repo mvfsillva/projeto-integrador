@@ -73,40 +73,36 @@
                                 </div>
                             </div>                                
                             <div class="form-group row">
-                                <div class="col-xs-4">
+                            	<div class="col-xs-3">
+                                    <span style="color:red; font-size: 1em;">* </span>
+                                    <p:outputLabel value="CEP " />
+                                    <p:inputText styleClass="form-control" value="#{cadOngController.cep}" required="true"/>
+                                </div>
+                                <div class="col-xs-2">
+                                    <p:commandButton value="Buscar CEP" styleClass="btn btn-primary" action="#{cadOngController.findCep()}" />
+                                </div>
+                                <div class="col-xs-3">
                                     <span style="color:red; font-size: 1em;">* </span>
                                     <p:outputLabel value="Rua: " />
-                                    <p:inputText  styleClass="form-control" value="#{cadOngController.address.street}" required="true"/>
+                                    <p:inputText id="input_rua" styleClass="form-control" value="#{cadOngController.address.street}" required="true"/>
                                 </div>
-                                <div class="col-xs-4">
+                                <div class="col-xs-3">
                                     <span style="color:red; font-size: 1em;">* </span>
                                     <p:outputLabel value="Bairro: " />
                                     <p:inputText styleClass="form-control" value="#{cadOngController.address.neighborhood}" required="true"/>
-                                </div>
-                                <div class="col-xs-4">
-                                    <span style="color:red; font-size: 1em;">* </span>
-                                    <p:outputLabel value="CEP " />
-                                    <p:inputText styleClass="form-control" value="#{cadOngController.address.postalCode}" required="true"/>
                                 </div>
                             </div>
 
                             <div class="form-group row">                                    
                                 <div class="col-xs-6">
                                     <span style="color:red; font-size: 1em;">* </span>
-                                    <p:outputLabel value="Estado: " />
-                                    <h:selectOneMenu id="state" value="#{cadOngController.selectedState}" styleClass="form-control">
-                                        <p:ajax event="change" listener="#{cadOngController.onChooseState}" update="city" />
-                                        <f:selectItem itemLabel="Selecione o estado" itemValue="" noSelectionOption="true" />
-                                        <f:selectItems value="#{cadOngController.states}" var="state" itemLabel="#{state.description}" itemValue="#{state}" />
-                                    </h:selectOneMenu>
+                                    <p:outputLabel value="Cidade: " />
+                                    <p:inputText styleClass="form-control" value="#{cadOngController.address.neighborhood}" required="true"/>
                                 </div>
                                 <div class="col-xs-6">
                                     <span style="color:red; font-size: 1em;">* </span>
-                                    <p:outputLabel value="Cidade: " />
-                                    <h:selectOneMenu id="city" value="#" styleClass="form-control">
-                                        <f:selectItem itemLabel="Selecione a cidade" itemValue="" noSelectionOption="true" />
-                                        <f:selectItems value="#{cadOngController.cities}" var="city" itemLabel="#{city.description}" itemValue="#{city}"/>
-                                    </h:selectOneMenu>
+                                    <p:outputLabel value="Estado: " />
+                                    <p:inputText styleClass="form-control" value="#{cadOngController.address.neighborhood}" required="true"/>                                    
                                 </div>  
                             </div>    
 

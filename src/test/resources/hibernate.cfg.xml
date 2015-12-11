@@ -16,8 +16,6 @@
         
         <mapping class="org.doando.entity.PersonEntity"></mapping>
         <mapping class="org.doando.entity.UserEntity"></mapping>
-        <mapping class="org.doando.entity.StateEntity"></mapping>
-        <mapping class="org.doando.entity.CityEntity"></mapping>
         
     </session-factory>
 </hibernate-configuration>

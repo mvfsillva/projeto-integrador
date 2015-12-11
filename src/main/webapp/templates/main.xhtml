@@ -4,17 +4,29 @@
         <ui:include src="_head.xhtml"/>
         <h:outputStylesheet name="css/main.css"/>  
         <h:outputStylesheet name="css/bootstrap.min.css" />
-        <h:outputStylesheet name="css/freelancer.css" />        
+        <h:outputStylesheet name="css/freelancer.css" />    
+        <h:outputStylesheet name="css/card.css"/>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
-        <h:outputScript library="primefaces" name="jquery/jquery.js" />
-        
+
+
     </h:head>
     <h:body id="page-top" class="index">        
         <ui:include src="_header.xhtml"/>
-        
+
         <main id="container" role="main" class="main main-container">
             <ui:insert name="container" />
         </main>
-        <ui:include src="_footer.xhtml"/>        
+        <ui:include src="_footer.xhtml"/>               
+        <h:outputScript library="primefaces" name="jquery/jquery.js" />        
+        
+        <script>
+            $(document).ready(function ($) {
+                $('.card__share > a').on('click', function (e) {
+                    e.preventDefault();
+                    $(this).parent().find('div').toggleClass('card__social--active');
+                    $(this).toggleClass('share-expanded');
+                });
+            });
+        </script>
     </h:body>    
 </html>

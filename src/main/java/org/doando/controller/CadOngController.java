@@ -1,7 +1,6 @@
 package org.doando.controller;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
@@ -10,11 +9,9 @@ import javax.faces.bean.SessionScoped;
 
 import org.doando.appService.OngApplicationService;
 import org.doando.entity.AddressEntity;
-import org.doando.entity.CityEntity;
 import org.doando.entity.EventsEntity;
 import org.doando.entity.NecessityEntity;
 import org.doando.entity.OngEntity;
-import org.doando.entity.StateEntity;
 import org.doando.utils.PostalCodeService;
 
 /**
@@ -24,55 +21,73 @@ import org.doando.utils.PostalCodeService;
 @ManagedBean(name = "cadOngController")
 @SessionScoped
 public class CadOngController {
-    
-    private OngApplicationService ongAppService;
-    private AddressEntity address;
-    private OngEntity ong;
-    private List<OngEntity> ongs;
-    private PostalCodeService postalCodeService;
-	
-    public CadOngController() {
-        this.ongAppService = new OngApplicationService();
-        this.address = new AddressEntity();
-        this.ong = new OngEntity();
-        this.postalCodeService = new PostalCodeService();
-    }
-    
-    public OngEntity getOng() {
-        return ong;
-    }
+
+	private String cep;
+	private OngEntity ong;
+	private List<OngEntity> ongs;
+	private AddressEntity address;
+	private PostalCodeService postalCodeService;
+	private OngApplicationService ongAppService;
+
+	public CadOngController() {
+		this.ongAppService = new OngApplicationService();
+		this.address = new AddressEntity();
+		this.ong = new OngEntity();
+		this.postalCodeService = new PostalCodeService();
+		this.ongs = ongAppService.find();
+	}
+
+	public OngEntity getOng() {
+		return ong;
+	}
 
 	public AddressEntity getAddress() {
-        return address;
-    }
+		return address;
+	}
 
-    public List<OngEntity> getOngs() throws SQLException, ClassNotFoundException {
-        if(ongs == null){
-            this.ongs = ongAppService.find();
-        }
-        return ongs;
-    }
+	public List<OngEntity> getOngs() throws SQLException, ClassNotFoundException {
+		return ongs;
+	}
 
-    public void setOngs(List<OngEntity> ongs) {
-        this.ongs = ongs;
-    }
+	public String getCep() {
+		return cep;
+	}
 
-    public void clear (){
-        this.ong = null;
-        this.address = null;
-    }
-    
-    public void save() throws SQLException,  ClassNotFoundException{
-        address.setOng(ong);
-        ong.setAddress(address);
-        ong.setNecessities(new HashSet<NecessityEntity>());
-        ong.setEvents(new HashSet<EventsEntity>());
-        ongAppService.save(ong);
-        clear ();
-    }
-    
-    public void delete (OngEntity ong) {
-        ongAppService.delete(ong);
-    }
-    
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
+
+	public void setOngs(List<OngEntity> ongs) {
+		this.ongs = ongs;
+	}
+
+	public void clear() {
+		this.ong = new OngEntity();
+		this.address = new AddressEntity();
+	}
+
+	public String save() throws SQLException, ClassNotFoundException {
+		address.setOng(ong);
+		ong.setAddress(address);
+		ong.setNecessities(new HashSet<NecessityEntity>());
+		ong.setEvents(new HashSet<EventsEntity>());
+		ongAppService.save(ong);
+		this.ongs = ongAppService.find();
+		clear();
+		return "/ong/cadOng.xhtml?faces-redirect=true";
+	}
+
+	public void delete(OngEntity ong) {
+		ongAppService.delete(ong);
+	}
+
+	public String findCep() {
+		try {
+			postalCodeService.find(cep);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		this.address = postalCodeService.getAddress();
+		return "";
+	}
 }

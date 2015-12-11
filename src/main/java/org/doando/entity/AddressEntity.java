@@ -65,6 +65,13 @@ public class AddressEntity implements Serializable{
     private OngEntity ong;
 
     public AddressEntity() {
+    	 this.city = "";
+         this.state = "";
+         this.neighborhood = "";
+         this.street = "";
+         this.postalCode = "";
+         this.primaryPhone = "";
+         this.secondaryPhone = "";
     }
 
     public AddressEntity(String city, String state, String neighborhood, String street
