@@ -23,7 +23,7 @@
     });
 
   gulp.task('js', function(){
-	   return gulp.src('/_src/javascript/**/*.js')
+	   return gulp.src('assets/javascript/**/*.js')
 		.pipe(plumber())
 		.pipe(concat('main.js'))
 		.pipe(uglify())
