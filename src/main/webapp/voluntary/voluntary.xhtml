@@ -14,7 +14,44 @@
                 <button class="btn btn-success" data-toggle="modal" data-target="#myModal">Adicionar</button>
                 <hr />
                 <h3>Voluntarios Cadastrados</h3>       
-
+                
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="table-responsive">
+                            <h:form id="voluntaryList">
+                                <table class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Nome</th>
+                                            <th>Sexo</th>
+                                            <th>E-mail</th>
+                                            <th>Telefone</th>
+                                            <th>Disponibilidade</th>
+                                            <th>Interesse</th>
+                                            <th>Ação</th>
+                                        </tr>
+                                    </thead>
+                                    <ui:repeat var="voluntary" value="#{voluntaryController.voluntaries}">
+                                        <tbody>
+                                            <td><h:outputText value="#{voluntary.name}" /></td>
+                                            <td><h:outputText value="#{voluntary.sex}" /></td>
+                                            <td><h:outputText value="#{voluntary.email}" /></td>
+                                            <td><h:outputText value="#{voluntary.phone}" /></td>
+                                            <td><h:outputText value="#{voluntary.availability}" /></td>
+                                            <td><h:outputText value="#{voluntary.interest}" /></td>
+                                            <td colspan="2">
+                                                <div class="text-center">
+                                                    <p:commandButton styleClass="btn btn-danger btn-sm" value="Deletar" action="#{voluntaryController.delete(voluntary.name)}"/>
+                                                </div>
+                                            </td>
+                                        </tbody>
+                                    </ui:repeat>
+                                </table>
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="row">
                     <div class="col-sm-4 need-item">
                         <a href="#needModal1" class="need-link" data-toggle="modal">
@@ -26,7 +63,6 @@
                             <img src="../_src/assets/images/need/cabin.png" class="img-responsive" alt="" />
                         </a>
                     </div>
-
 
                     <div class="col-sm-4 need-item">
                         <a href="#needModal2" class="need-link" data-toggle="modal">
@@ -99,19 +135,17 @@
                         <small style="color:red;">Os campos com (*) são obrigatórios!</small>
                     </div>
                     <div class="modal-body">
-                        <h:form id="formCadOng" styleClass="">
+                        <h:form id="formVoluntary" styleClass="">
                             <div class="form-group row">
                                 <div class="col-xs-8">
                                     <span style="color:red; font-size: 1em;">* </span>
                                     <p:outputLabel value="Nome Completo " /> 
-                                    <p:inputText placeholder="Ex: José Yago" styleClass="form-control" value="" required="true"/>
+                                    <p:inputText placeholder="Ex: José Yago" styleClass="form-control" value="#{voluntaryController.voluntary.name}" required="true"/>
                                 </div>
-                                <div class="col-xs-4">                                        
+                                <div class="col-xs-4">
+                                    <span style="color:red; font-size: 1em;">* </span>
                                     <p:outputLabel value="Sexo" />
-                                    <select class="form-control" id="sexo">
-                                        <option>Masculino</option>
-                                        <option>Feminino</option>                                        
-                                    </select>
+                                    <p:inputText styleClass="form-control" value="#{voluntaryController.voluntary.sex}" required="true" />
                                 </div>
                             </div>                                
 
@@ -119,12 +153,12 @@
                                 <div class="col-xs-8">
                                     <span style="color:red; font-size: 1em;">* </span>
                                     <p:outputLabel value="E-mail " />
-                                    <p:inputText  styleClass="form-control" value="" required="true"/>
+                                    <p:inputText  styleClass="form-control" value="#{voluntaryController.voluntary.email}" required="true"/>
                                 </div>
                                 <div class="col-xs-4">
                                     <span style="color:red; font-size: 1em;">* </span>
                                     <p:outputLabel value="Telefone: " />
-                                    <p:inputText styleClass="form-control" value="" required="true"/>
+                                    <p:inputText styleClass="form-control" value="#{voluntaryController.voluntary.phone}" required="true"/>
                                 </div>
                             </div>
 
@@ -132,11 +166,12 @@
                                 <div class="col-xs-6">
                                     <span style="color:red; font-size: 1em;">* </span>
                                     <p:outputLabel value="Disponibilidade " />
-                                    <p:selectOneRadio id="disponibilidade" value="" styleClass="radio-inline">
+                                    <p:inputText styleClass="form-control" value="#{voluntaryController.voluntary.availability}" required="true" />
+                                    <!-- p:selectOneRadio id="disponibilidade" value="#{voluntaryController.voluntary.availability}" styleClass="radio-inline">
                                         <f:selectItem itemLabel="Manhã" itemValue="Manhã" />
                                         <f:selectItem itemLabel="Tarde" itemValue="Tarde" />
                                         <f:selectItem itemLabel="Noite" itemValue="Noite" />
-                                    </p:selectOneRadio>
+                                    </p:selectOneRadio-->
                                 </div>    
                             </div>
 
@@ -144,11 +179,6 @@
                                 <div class="col-xs-6">
                                     <span style="color:red; font-size: 1em;">* </span>
                                     <p:outputLabel value="Estado: " />
-                                   <!-- <p:selectOneMenu id="state" value="#{cadOngController.address.state}" styleClass="form-control">
-                                        <p:ajax listener="#{cadOngController.address.city}" update="city" />
-                                        <f:selectItem itemLabel="Selecione o estado" itemValue="" noSelectionOption="true" />
-                                        <f:selectItems value="#{cadOngController.address.state}" />
-                                    </p:selectOneMenu> -->
                                     <select class="form-control" id="estado">
                                         <option>Selecione</option>
                                         <option>Bahia</option>
@@ -171,17 +201,12 @@
                             <div class="form-group row">                                    
                                 <div class="col-xs-6">                                    
                                     <p:outputLabel value="Interesse " />                                   
-                                    <select class="form-control" id="interesse">
-                                        <option>Selecione</option>
-                                        <option>interesse 1</option>
-                                        <option>interesse 2</option>
-                                        <option>interesse 3</option>
-                                    </select>
+                                    <p:inputText styleClass="form-group" value="#{voluntaryController.voluntary.interest}"/>
                                 </div>
                             </div>
                             <div class="modal-footer">
                                 <div class="pull-left">
-                                    <p:commandButton value="Salvar ONG" styleClass="btn btn-success" action="#{cadOngController.save()}" update="formCadOng" />
+                                    <p:commandButton value="Salvar" styleClass="btn btn-success" action="#{voluntaryController.save()}" update="@form" />
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                                 </div>
                             </div>  
