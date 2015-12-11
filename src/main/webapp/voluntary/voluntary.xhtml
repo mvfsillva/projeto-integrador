@@ -14,115 +14,84 @@
                 <button class="btn btn-success" data-toggle="modal" data-target="#myModal">Adicionar</button>
                 <hr />
                 <h3>Voluntarios Cadastrados</h3>       
-                
+
                 <div class="row">
-                    <div class="col-xs-12">
-                        <div class="table-responsive">
-                            <h:form id="voluntaryList">
-                                <table class="table table-bordered table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>Nome</th>
-                                            <th>Sexo</th>
-                                            <th>E-mail</th>
-                                            <th>Telefone</th>
-                                            <th>Disponibilidade</th>
-                                            <th>Interesse</th>
-                                            <th>Ação</th>
-                                        </tr>
-                                    </thead>
-                                    <ui:repeat var="voluntary" value="#{voluntaryController.voluntaries}">
-                                        <tbody>
-                                            <td><h:outputText value="#{voluntary.name}" /></td>
-                                            <td><h:outputText value="#{voluntary.sex}" /></td>
-                                            <td><h:outputText value="#{voluntary.email}" /></td>
-                                            <td><h:outputText value="#{voluntary.phone}" /></td>
-                                            <td><h:outputText value="#{voluntary.availability}" /></td>
-                                            <td><h:outputText value="#{voluntary.interest}" /></td>
-                                            <td colspan="2">
-                                                <div class="text-center">
-                                                    <p:commandButton styleClass="btn btn-danger btn-sm" value="Deletar" action="#{voluntaryController.delete(voluntary.name)}"/>
-                                                </div>
-                                            </td>
-                                        </tbody>
-                                    </ui:repeat>
-                                </table>
-                            </h:form>
-                        </div>
-                    </div>
+                    <h:form id="voluntaryList">
+                        <ui:repeat var="voluntary" value="#{voluntaryController.voluntaries}">
+                            <div class="col-sm-4 need-item">
+                                <div class="card radius shadowDepth1">                            
+                                    <div class="card__image border-tlr-radius">
+                                        <!--<h3 class="card__title text-center">ACOPAMEC</h3>-->
+                                        <h3 class="card__title text-center"><h:outputText value="#{voluntary.name}" /></h3>
+                                        
+                                        <!--<h4 class="card_title text-center"><h:outputText value="#{voluntary.availability}" /></h4>-->
+                                    </div>
+                                    <div class="card__content card__padding">
+                                        <div class="card__share">
+                                            <div class="card__social">  
+                                                <a class="share-icon facebook"   href="#"><span class="fa fa-facebook"></span></a>
+                                                <a class="share-icon twitter"    href="#"><span class="fa fa-twitter"></span></a>
+                                                <a class="share-icon googleplus" href="#"><span class="fa fa-google-plus"></span></a>
+                                            </div>
+                                            <a id="share" class="share-toggle share-icon" href="#"></a>
+                                        </div>
+                                        <div class="card__meta">                                        
+                                            <small><h:outputText value="#{voluntary.sex}" /></small>
+                                        </div>
+                                        <article class="card__article">
+                                            <h4>Contato</h4>
+                                            <p><h:outputText value="#{voluntary.email}" /></p>
+                                            <p><h:outputText value="#{voluntary.phone}" /></p>
+                                            <h4>Área de Interesse</h4>
+                                            <p><h:outputText value="#{voluntary.interest}" /></p>
+                                        </article>
+                                    </div>
+                                    <div class="card__action">
+                                        <div class="card__author">                                    
+                                            <div class="card__author-content">
+                                                <button class="btn btn-info btn-sm">Entrar em Contato</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>                            
+                            </div>
+                        </ui:repeat>
+                    </h:form>
+
+                    <!--  <div class="col-xs-12">
+                          <div class="table-responsive">
+                              <h:form id="voluntaryList">
+                                  <table class="table table-bordered table-hover">
+                                      <thead>
+                                          <tr>
+                                              <th>Nome</th>
+                                              <th>Sexo</th>
+                                              <th>E-mail</th>
+                                              <th>Telefone</th>
+                                              <th>Disponibilidade</th>
+                                              <th>Interesse</th>
+                                              <th>Ação</th>
+                                          </tr>
+                                      </thead>
+                                      <ui:repeat var="voluntary" value="#{voluntaryController.voluntaries}">
+                                          <tbody>
+                                              <td><h:outputText value="#{voluntary.name}" /></td>
+                                              <td><h:outputText value="#{voluntary.sex}" /></td>
+                                              <td><h:outputText value="#{voluntary.email}" /></td>
+                                              <td><h:outputText value="#{voluntary.phone}" /></td>
+                                              <td><h:outputText value="#{voluntary.availability}" /></td>
+                                              <td><h:outputText value="#{voluntary.interest}" /></td>
+                                              <td colspan="2">
+                                                  <div class="text-center">
+                                                      <p:commandButton styleClass="btn btn-danger btn-sm" value="Deletar" action="#{voluntaryController.delete(voluntary.name)}"/>
+                                                  </div>
+                                              </td>
+                                          </tbody>
+                                      </ui:repeat>
+                                  </table>
+                              </h:form>-->
                 </div>
-                
-                <div class="row">
-                    <div class="col-sm-4 need-item">
-                        <a href="#needModal1" class="need-link" data-toggle="modal">
-                            <div class="caption">
-                                <div class="caption-content">
-                                    <i class="fa fa-search-plus fa-3x"></i>
-                                </div>
-                            </div>
-                            <img src="../_src/assets/images/need/cabin.png" class="img-responsive" alt="" />
-                        </a>
-                    </div>
-
-                    <div class="col-sm-4 need-item">
-                        <a href="#needModal2" class="need-link" data-toggle="modal">
-                            <div class="caption">
-                                <div class="caption-content">
-                                    <i class="fa fa-search-plus fa-3x"></i>
-                                </div>
-                            </div>
-                            <img src="../_src/assets/images/need/cake.png" class="img-responsive" alt="" />
-                        </a>
-                    </div>
-
-
-                    <div class="col-sm-4 need-item">
-                        <a href="#needModal1" class="need-link" data-toggle="modal">
-                            <div class="caption">
-                                <div class="caption-content">
-                                    <i class="fa fa-search-plus fa-3x"></i>
-                                </div>
-                            </div>
-                            <img src="../_src/assets/images/need/cabin.png" class="img-responsive" alt="" />
-                        </a>
-                    </div>
-
-
-                    <div class="col-sm-4 need-item">
-                        <a href="#needModal2" class="need-link" data-toggle="modal">
-                            <div class="caption">
-                                <div class="caption-content">
-                                    <i class="fa fa-search-plus fa-3x"></i>
-                                </div>
-                            </div>
-                            <img src="../_src/assets/images/need/cake.png" class="img-responsive" alt="" />
-                        </a>
-                    </div>
-
-                    <div class="col-sm-4 need-item">
-                        <a href="#needModal2" class="need-link" data-toggle="modal">
-                            <div class="caption">
-                                <div class="caption-content">
-                                    <i class="fa fa-search-plus fa-3x"></i>
-                                </div>
-                            </div>
-                            <img src="../_src/assets/images/need/cake.png" class="img-responsive" alt="" />
-                        </a>
-                    </div>
-
-
-                    <div class="col-sm-4 need-item">
-                        <a href="#needModal1" class="need-link" data-toggle="modal">
-                            <div class="caption">
-                                <div class="caption-content">
-                                    <i class="fa fa-search-plus fa-3x"></i>
-                                </div>
-                            </div>
-                            <img src="../_src/assets/images/need/cabin.png" class="img-responsive" alt="" />
-                        </a>
-                    </div>
-                </div>
-            </div>
+            </div>            
         </section>
 
         <!-- Modal -->
