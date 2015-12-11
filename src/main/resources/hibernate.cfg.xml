@@ -23,5 +23,6 @@
         <mapping class="org.doando.entity.EventsEntity"></mapping>
         <mapping class="org.doando.entity.StateEntity"></mapping>
         <mapping class="org.doando.entity.CityEntity"></mapping>
+        <mapping class="org.doando.entity.VoluntaryEntity"></mapping>
     </session-factory>
 </hibernate-configuration>
