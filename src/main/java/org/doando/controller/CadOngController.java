@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 
 import org.doando.appService.OngApplicationService;
 import org.doando.entity.AddressEntity;
@@ -20,7 +21,7 @@ import org.doando.utils.PostalCodeService;
  * @author arthur
  */
 @ManagedBean(name = "cadOngController")
-@SessionScoped
+@ViewScoped
 public class CadOngController implements Serializable {
 
 	/**
@@ -36,56 +37,57 @@ public class CadOngController implements Serializable {
 	private OngApplicationService ongAppService;
 
 	public CadOngController() {
-		this.ong = new OngEntity();
-		this.address = new AddressEntity();
-		this.ongAppService = new OngApplicationService();
-		this.postalCodeService = new PostalCodeService();
-		this.ongs = ongAppService.find();
+            this.ong = new OngEntity();
+            this.address = new AddressEntity();
+            this.ongAppService = new OngApplicationService();
+            this.postalCodeService = new PostalCodeService();
+            this.ongs = ongAppService.find();
 	}
 
 	public OngEntity getOng() {
-		return ong;
+            return ong;
 	}
 
 	public AddressEntity getAddress() {
-		return address;
+            return address;
 	}
 
 	public List<OngEntity> getOngs() throws SQLException, ClassNotFoundException {
-		return ongs;
+            return ongs;
 	}
 
 	public String getCep() {
-		return cep;
+            return cep;
 	}
 
 	public void setCep(String cep) {
-		this.cep = cep;
+            this.cep = cep;
 	}
 
 	public void setOngs(List<OngEntity> ongs) {
-		this.ongs = ongs;
+            this.ongs = ongs;
 	}
 
 	public void clear() {
-		this.ong = new OngEntity();
-		this.address = new AddressEntity();
+            this.ong = new OngEntity();
+            this.address = new AddressEntity();
 	}
 
 	public String save() throws SQLException, ClassNotFoundException {
-		address.setOng(ong);
-		ong.setAddress(address);
-		ong.setNecessities(new HashSet<NecessityEntity>());
-		ong.setEvents(new HashSet<EventsEntity>());
-		ongAppService.save(ong);
-		this.ongs = ongAppService.find();
-		clear();
-		return "/ong/cadOng.xhtml?faces-redirect=true";
+            address.setOng(ong);
+            ong.setAddress(address);
+            ong.setNecessities(new HashSet<NecessityEntity>());
+            ong.setEvents(new HashSet<EventsEntity>());
+            ongAppService.save(ong);
+            this.ongs = ongAppService.find();
+            clear();
+            return "/ong/cadOng.xhtml?faces-redirect=true";
 	}
 
-	public String delete(OngEntity ong) {
-		ongAppService.delete(ong);
-		return "/ong/cadOng.xhtml?faces-redirect=true";
+	public String delete(String ong) {
+            OngEntity ongToDelete = ongAppService.find(ong);
+            ongAppService.delete(ongToDelete);
+            return "/ong/cadOng.xhtml?faces-redirect=true";
 	}
 
 	public String findCep() throws Exception {
