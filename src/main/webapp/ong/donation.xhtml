@@ -58,15 +58,18 @@
                                             </div>
                                             <a id="share" class="share-toggle share-icon" href="#"></a>
                                         </div>
-                                        <div class="card__meta">                                        
-                                            <small><h:outputText value="#{voluntary.sex}" /></small>
-                                        </div>
                                         <article class="card__article">
-                                            <h4>Contato</h4>
-                                            <p><h:outputText value="#{ong.email}" /></p>
-                                            <p><h:outputText value="#{ong.address.primaryPhone}" /></p>
-                                            <h4>Cidade</h4>
-                                            <p><h:outputText value="#{ong.address.city}" /></p>
+                                            <p><h:outputText value="#{ong.address.city}" /> /<h:outputText value="#{ong.address.state}" /></p>
+                                            <h4>Contato: </h4>
+                                            <p>
+                                                E-mail: <h:outputText value=" #{ong.email}" />
+                                            </p>
+                                            <p>
+                                                Telefone: <h:outputText value=" #{ong.address.primaryPhone}" />
+                                            </p>
+                                            <p>
+                                                Site: <h:outputText value=" #{ong.website}" />
+                                            </p>
                                         </article>
                                     </div>
                                     <div class="card__action">
