@@ -10,8 +10,13 @@ import org.doando.entity.OngEntity;
  */
 public class OngApplicationService extends  AbstractApplicationService<OngEntity, Integer>{
 
+	private AddressApplicationService addressAppService;
+//	private NecessityAppService necessityAppService;
+//	private EventsAppSerice eventsAppService;
+	
     public OngApplicationService() {
         this.business = new OngBusiness();
     }
+    
     
 }
