@@ -90,7 +90,6 @@ public class CadOngController implements Serializable {
 
 	public String findCep() throws Exception {
 		postalCodeService.find(cep);
-		
 		this.address = postalCodeService.getAddress();
 		return "";
 	}
