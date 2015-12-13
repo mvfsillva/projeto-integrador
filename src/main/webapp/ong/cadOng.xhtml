@@ -30,17 +30,20 @@
                                 </thead>
                                 <ui:repeat var="ong" value="#{cadOngController.ongs}">
                                     <tbody>
-                                        <td><h:outputText value="#{ong.name}"/></td>
-                                        <td><h:outputText value="#{ong.address.city}" /></td>
-                                        <td><h:outputText value="#{ong.address.neighborhood}"/></td>
-                                        <td><h:outputText value="#{ong.address.primaryPhone}"/></td>
-                                        <td><h:outputText value="#{ong.email}"/></td>
-                                        <td colspan="2">
-                                            <div class="text-center"> 
-                                                <button class="btn btn-info btn-sm">Editar</button>
-                                                <button class="btn btn-danger btn-sm">Deletar</button>
-                                            </div>    
-                                        </td>
+                                    	<tr>
+	                                        <td><h:outputText value="#{ong.name}"/></td>
+	                                        <td><h:outputText value="#{ong.address.city}" /></td>
+	                                        <td><h:outputText value="#{ong.address.neighborhood}"/></td>
+	                                        <td><h:outputText value="#{ong.address.primaryPhone}"/></td>
+	                                        <td><h:outputText value="#{ong.email}"/></td>
+	                                        <td colspan="2">
+	                                            <div class="text-center"> 
+	                                                <!-- <button class="btn btn-info btn-sm">Editar</button>
+	                                                <button class="btn btn-danger btn-sm">Deletar</button> -->
+	                                                <p:commandButton value="Deletar" styleClass="btn btn-danger btn-sm" action="#{cadOngController.delete(ong)}" update="@form" />
+	                                            </div>    
+	                                        </td>
+                                        </tr>
                                     </tbody>
                                 </ui:repeat>
                             </table> 
@@ -69,27 +72,29 @@
                                 </div>
                                 <div class="col-xs-4">                                        
                                     <p:outputLabel value="E-mail: " />
-                                    <p:inputText type="email" placeholder="email@email.com" styleClass="form-control" value="#{cadOngController.ong.email}" required="true"/>
+                                    <p:inputText type="email" placeholder="Ex: email@email.com" styleClass="form-control" value="#{cadOngController.ong.email}" required="true"/>
                                 </div>
                             </div>                                
                             <div class="form-group row">
                             	<div class="col-xs-3">
                                     <span style="color:red; font-size: 1em;">* </span>
                                     <p:outputLabel value="CEP " />
-                                    <p:inputText styleClass="form-control" value="#{cadOngController.cep}" required="true"/>
+                                    <p:inputText id="inputCep" placeholder="Ex: 00000111" styleClass="form-control" value="#{cadOngController.cep}" required="true"/>
                                 </div>
                                 <div class="col-xs-2">
-                                    <p:commandButton value="Buscar CEP" styleClass="btn btn-primary" action="#{cadOngController.findCep()}" />
+                                    <h:commandButton value="Buscar CEP" styleClass="btn btn-primary" action="#{cadOngController.findCep()}">
+									    <f:ajax execute="inputCep" render="inputRua inputBairro inputCidade inputEstado" />
+									</h:commandButton>
                                 </div>
                                 <div class="col-xs-3">
                                     <span style="color:red; font-size: 1em;">* </span>
                                     <p:outputLabel value="Rua: " />
-                                    <p:inputText id="input_rua" styleClass="form-control" value="#{cadOngController.address.street}" required="true"/>
+                                    <p:inputText id="inputRua" disabled="true" styleClass="form-control" value="#{cadOngController.address.street}" required="true"/>
                                 </div>
                                 <div class="col-xs-3">
                                     <span style="color:red; font-size: 1em;">* </span>
                                     <p:outputLabel value="Bairro: " />
-                                    <p:inputText styleClass="form-control" value="#{cadOngController.address.neighborhood}" required="true"/>
+                                    <p:inputText id="inputBairro" disabled="true" styleClass="form-control" value="#{cadOngController.address.neighborhood}" required="true"/>
                                 </div>
                             </div>
 
@@ -97,12 +102,12 @@
                                 <div class="col-xs-6">
                                     <span style="color:red; font-size: 1em;">* </span>
                                     <p:outputLabel value="Cidade: " />
-                                    <p:inputText styleClass="form-control" value="#{cadOngController.address.neighborhood}" required="true"/>
+                                    <p:inputText id="inputCidade" disabled="true" styleClass="form-control" value="#{cadOngController.address.city}" required="true"/>
                                 </div>
                                 <div class="col-xs-6">
                                     <span style="color:red; font-size: 1em;">* </span>
                                     <p:outputLabel value="Estado: " />
-                                    <p:inputText styleClass="form-control" value="#{cadOngController.address.neighborhood}" required="true"/>                                    
+                                    <p:inputText id="inputEstado" disabled="true" styleClass="form-control" value="#{cadOngController.address.state}" required="true"/>                                    
                                 </div>  
                             </div>    
 
@@ -110,11 +115,11 @@
                                 <div class="col-xs-6">
                                     <span style="color:red; font-size: 1em;">* </span>
                                     <p:outputLabel value="CNPJ: " />
-                                    <p:inputText styleClass="form-control" value="#{cadOngController.ong.cnpj}" required="true"/>
+                                    <p:inputText styleClass="form-control" placeholder="Ex: 00.000.000/1111-11" value="#{cadOngController.ong.cnpj}" required="true"/>
                                 </div>                                    
                                 <div class="col-xs-6">
                                     <p:outputLabel value="Site: " />
-                                    <p:inputText styleClass="form-control" value="#{cadOngController.ong.website}"/>
+                                    <p:inputText styleClass="form-control" placeholder="Ex: www.minhaong.org.br" value="#{cadOngController.ong.website}"/>
                                 </div>
                             </div>
 

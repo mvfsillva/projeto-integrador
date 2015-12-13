@@ -1,5 +1,6 @@
 package org.doando.controller;
 
+import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.List;
@@ -20,8 +21,13 @@ import org.doando.utils.PostalCodeService;
  */
 @ManagedBean(name = "cadOngController")
 @SessionScoped
-public class CadOngController {
+public class CadOngController implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6006035867967167391L;
+	
 	private String cep;
 	private OngEntity ong;
 	private List<OngEntity> ongs;
@@ -30,9 +36,9 @@ public class CadOngController {
 	private OngApplicationService ongAppService;
 
 	public CadOngController() {
-		this.ongAppService = new OngApplicationService();
-		this.address = new AddressEntity();
 		this.ong = new OngEntity();
+		this.address = new AddressEntity();
+		this.ongAppService = new OngApplicationService();
 		this.postalCodeService = new PostalCodeService();
 		this.ongs = ongAppService.find();
 	}
@@ -77,16 +83,14 @@ public class CadOngController {
 		return "/ong/cadOng.xhtml?faces-redirect=true";
 	}
 
-	public void delete(OngEntity ong) {
+	public String delete(OngEntity ong) {
 		ongAppService.delete(ong);
+		return "/ong/cadOng.xhtml?faces-redirect=true";
 	}
 
-	public String findCep() {
-		try {
-			postalCodeService.find(cep);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	public String findCep() throws Exception {
+		postalCodeService.find(cep);
+		
 		this.address = postalCodeService.getAddress();
 		return "";
 	}
