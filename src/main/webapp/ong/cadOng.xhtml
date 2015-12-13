@@ -40,7 +40,7 @@
 	                                            <div class="text-center"> 
 	                                                <!-- <button class="btn btn-info btn-sm">Editar</button>
 	                                                <button class="btn btn-danger btn-sm">Deletar</button> -->
-	                                                <p:commandButton value="Deletar" styleClass="btn btn-danger btn-sm" action="#{cadOngController.delete(ong)}" update="@form" />
+                                                        <p:commandButton value="Deletar" styleClass="btn btn-danger btn-sm" action="#{cadOngController.delete(ong.name)}" update="@form" />
 	                                            </div>    
 	                                        </td>
                                         </tr>
@@ -76,15 +76,17 @@
                                 </div>
                             </div>                                
                             <div class="form-group row">
-                            	<div class="col-xs-3">
+                            	<div class="col-xs-6">
                                     <span style="color:red; font-size: 1em;">* </span>
                                     <p:outputLabel value="CEP " />
-                                    <p:inputText id="inputCep" placeholder="Ex: 00000111" styleClass="form-control" value="#{cadOngController.cep}" required="true"/>
-                                </div>
-                                <div class="col-xs-2">
-                                    <h:commandButton value="Buscar CEP" styleClass="btn btn-primary" action="#{cadOngController.findCep()}">
-									    <f:ajax execute="inputCep" render="inputRua inputBairro inputCidade inputEstado" />
-									</h:commandButton>
+                                    <div class="input-group">
+                                        <p:inputText id="inputCep" placeholder="Ex: 00000111" styleClass="form-control" value="#{cadOngController.cep}" required="true"/>
+                                        <span class="input-group-btn">
+                                            <h:commandButton value="Buscar CEP" styleClass="btn btn-primary" action="#{cadOngController.findCep()}">
+                                                <f:ajax execute="inputCep" render="inputRua inputBairro inputCidade inputEstado" />
+                                            </h:commandButton>
+                                        </span>
+                                    </div>
                                 </div>
                                 <div class="col-xs-3">
                                     <span style="color:red; font-size: 1em;">* </span>

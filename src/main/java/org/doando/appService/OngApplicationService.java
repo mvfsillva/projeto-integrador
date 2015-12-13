@@ -18,5 +18,10 @@ public class OngApplicationService extends  AbstractApplicationService<OngEntity
         this.business = new OngBusiness();
     }
     
-    
+    public OngEntity find(String name) {
+        initialize();
+        OngEntity p = ((OngBusiness) business).find(name);
+        cleanUp();
+        return p;
+    }
 }
