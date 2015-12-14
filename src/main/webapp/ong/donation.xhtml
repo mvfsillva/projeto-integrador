@@ -21,8 +21,12 @@
                                 <div class="card radius shadowDepth1">                            
                                     <div class="card__image border-tlr-radius">                                        
                                         <h3 class="card__title text-center"><h:outputText value="#{ong.name}" /></h3>
-                                        <small class="card__availability pull-left">Bairro: </small>
-                                        <small class="card__availability pull-left"><h:outputText value="#{ong.address.neighborhood}" /></small>
+                                        <small class="card__availability pull-left">Endereço: </small>
+                                        <small class="card__availability pull-left">
+                                            <h:outputText value="#{ong.address.street}"/>
+                                            <h:outputText value=" #{ong.address.num}" />,
+                                            <h:outputText value=" #{ong.address.neighborhood}" /> 
+                                        </small>
                                     </div>
                                     <div class="card__content card__padding">
                                         <div class="card__share">

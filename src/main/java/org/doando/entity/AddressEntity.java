@@ -41,8 +41,11 @@ public class AddressEntity implements Serializable{
     @Column(name = "address_state")
     private String state;
     
-    @Column(name = "complement")
+    @Column(name = "address_complement")
     private String complement;
+    
+    @Column (name = "address_num", nullable = false)
+    private String num;
     
     @Column(name = "address_neighborhood", nullable = false)
     private String neighborhood;
@@ -121,15 +124,23 @@ public class AddressEntity implements Serializable{
         this.state = state;
     }
 
+    public String getNum() {
+        return num;
+    }
+
+    public void setNum(String num) {
+        this.num = num;
+    }
+    
     public String getComplement() {
-		return complement;
-	}
+        return complement;
+    }
 
-	public void setComplement(String complement) {
-		this.complement = complement;
-	}
+    public void setComplement(String complement) {
+    	this.complement = complement;
+    }
 
-	public String getNeighborhood() {
+    public String getNeighborhood() {
         return neighborhood;
     }
 
