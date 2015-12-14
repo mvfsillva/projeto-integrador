@@ -1,13 +1,181 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" 
-    xmlns:h="http://java.sun.com/jsf/html" >
-    
-    <h:head>
-        <title>Eventos Beneficentes</title>
-    </h:head>
-    
-    <h:body>
-        <h1>Eventos</h1>
-    </h:body>
-    
-</html>
+<ui:composition 
+    template="../templates/main.xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+    <ui:define name="title">
+        <h:outputText value="Eventos" />
+    </ui:define>
+    <ui:define name="container">
+        <section id="need">            
+            <div class="container">
+                <button class="btn btn-success" data-toggle="modal" data-target="#myModal">Criar um Evento</button>
+                <hr />
+                <h3>Eventos Beneficentes</h3>       
+                <div class="row">
+                    <h:form id="voluntaryList">
+                        <ui:repeat var="voluntary" value="teste">
+                            <div class="col-sm-4 need-item">
+                                <div class="card radius shadowDepth1">                            
+                                    <div class="card__image border-tlr-radius">                                        
+                                        <h3 class="card__title text-center">
+                                            <h:outputText value="Teste" />
+                                        </h3>
+                                        <small class="card__availability pull-left">Disponibilidade:</small>
+                                        <small class="card__availability pull-left"><h:outputText value="Teste" /></small>
+                                    </div>
+                                    <div class="card__content card__padding">
+                                        <div class="card__share">
+                                            <div class="card__social">  
+                                                <!-- twitter -->
+                                                <!--<a class="share-icon twitter" 
+                                                       aria-label="Comparilhe no Twitter" 
+                                                       href="https://twitter.com/intent/tweet?text=&quot;{{ page.title }}&quot;%20{{ site.url }}{{ page.url }}%20via%20&#64;{{ site.twitter_username }}&hashtags={% for tag in page.tags %}{{tag}},{% endfor %}"
+                                                       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" 
+                                                       title="Compartilhe no Twitter">
+                                                    <span class="fa fa-twitter"></span>
+                                                </a>-->
+
+                                                <!-- facebook -->
+                                                <!--<a class="share-icon facebook"
+                                                   aria-label="Comparilhe no Facebook" 
+                                                   href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ page.url }}"
+                                                   onclick="window.open(this.href, 'facebook-share', 'width=580,height=296');return false;" 
+                                                   title="Compartilhe no Facebook">        
+                                                </a>-->
+
+                                                <!-- gplus -->
+                                                <!--<a class="share-icon googleplus" 
+                                                   aria-label="Comparilhe no Google Plus" 
+                                                   href="https://plus.google.com/share?url={{ site.url }}{{ page.url }}"
+                                                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;" 
+                                                   title="Compartilhe no Google+">           
+                                                </a>-->
+
+                                                <a class="share-icon facebook"   href="#"><span class="fa fa-facebook"></span></a>
+                                                <a class="share-icon twitter"    href="#"><span class="fa fa-twitter"></span></a>
+                                                <a class="share-icon googleplus" href="#"><span class="fa fa-google-plus"></span></a>
+                                            </div>
+                                            <a id="share" class="share-toggle share-icon" href="#"></a>
+                                        </div>
+                                        <div class="card__meta">                                        
+                                            <small><h:outputText value="teste" /></small>
+                                        </div>
+                                        <article class="card__article">
+                                            <h4>Contato</h4>
+                                            <p><h:outputText value="teste" /></p>
+                                            <p><h:outputText value="teste" /></p>
+                                            <h4>Área de Interesse</h4>
+                                            <p><h:outputText value="teste" /></p>
+                                        </article>
+                                    </div>
+                                    <div class="card__action">
+                                        <div class="card__author">                                    
+                                            <div class="card__author-content">
+                                                <button class="btn btn-info btn-sm">participar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>                            
+                            </div>
+                        </ui:repeat>
+                    </h:form>
+                    <!--<div class="text-center">
+                            <p:commandButton styleClass="btn btn-danger btn-sm" value="Deletar" action="#{voluntaryController.delete(voluntary.name)}"/>
+                        </div>-->
+                </div>
+            </div>            
+        </section>
+        
+        
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">x</button>
+                        <h4 class="modal-title">Novo Voluntario</h4>
+                        <small style="color:red;">Os campos com (*) são obrigatórios!</small>
+                    </div>
+                    <div class="modal-body">
+                        <h:form id="formVoluntary" styleClass="">
+                            <div class="form-group row">
+                                <div class="col-xs-8">
+                                    <span style="color:red; font-size: 1em;">* </span>
+                                    <p:outputLabel value="Nome Completo " /> 
+                                    <p:inputText placeholder="Ex: José Yago" styleClass="form-control" value="#{voluntaryController.voluntary.name}" required="true"/>
+                                </div>
+                                <div class="col-xs-4">
+                                    <span style="color:red; font-size: 1em;">* </span>
+                                    <p:outputLabel value="Sexo" />
+                                    <p:inputText styleClass="form-control" value="#{voluntaryController.voluntary.sex}" required="true" />
+                                </div>
+                            </div>                                
+
+                            <div class="form-group row">
+                                <div class="col-xs-8">
+                                    <span style="color:red; font-size: 1em;">* </span>
+                                    <p:outputLabel value="E-mail " />
+                                    <p:inputText  styleClass="form-control" value="#{voluntaryController.voluntary.email}" required="true"/>
+                                </div>
+                                <div class="col-xs-4">
+                                    <span style="color:red; font-size: 1em;">* </span>
+                                    <p:outputLabel value="Telefone: " />
+                                    <p:inputText styleClass="form-control" value="#{voluntaryController.voluntary.phone}" required="true"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">                                    
+                                <div class="col-xs-6">
+                                    <span style="color:red; font-size: 1em;">* </span>
+                                    <p:outputLabel value="Disponibilidade " />
+                                    <p:inputText styleClass="form-control" value="#{voluntaryController.voluntary.availability}" required="true" />
+                                </div>    
+                            </div>
+
+                            <div class="form-group row">                                    
+                                <div class="col-xs-6">
+                                    <span style="color:red; font-size: 1em;">* </span>
+                                    <p:outputLabel value="Estado: " />
+                                    <select class="form-control" id="estado">
+                                        <option>Selecione</option>
+                                        <option>Bahia</option>
+                                        <option>Rio de Janeiro</option>
+                                        <option>São Paulo</option>
+                                    </select>
+                                </div>
+                                <div class="col-xs-6">
+                                    <span style="color:red; font-size: 1em;">* </span>
+                                    <p:outputLabel value="Cidade: " />
+                                    <select class="form-control" id="cidade">
+                                        <option>Selecione</option>
+                                        <option>Salvador</option>
+                                        <option>Rio de Janeiro</option>
+                                        <option>São Paulo</option>
+                                    </select>
+                                </div>  
+                            </div>  
+
+                            <div class="form-group row">                                    
+                                <div class="col-xs-6">                                    
+                                    <p:outputLabel value="Interesse " />                                   
+                                    <p:inputText styleClass="form-control" value="#{voluntaryController.voluntary.interest}"/>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <div class="pull-left">
+                                    <p:commandButton value="Salvar" styleClass="btn btn-success" action="#{voluntaryController.save()}" update="@form" />
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                </div>
+                            </div>  
+                        </h:form>                    
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        
+    </ui:define>
+</ui:composition>
