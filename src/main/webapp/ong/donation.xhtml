@@ -1,5 +1,6 @@
 <ui:composition 
     template="../templates/main.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
     xmlns:ui="http://java.sun.com/jsf/facelets"
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:f="http://java.sun.com/jsf/core"
@@ -10,7 +11,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 text-center">
-                        <h3>Um minuto para doar, uma vida de mudanças!</h3>
+                        <h3>Um minuto para doar, uma vida de mudanÃ§as!</h3>
                         <hr class="star-primary" />
                     </div>
                 </div>
@@ -21,7 +22,7 @@
                                 <div class="card radius shadowDepth1">                            
                                     <div class="card__image border-tlr-radius">                                        
                                         <h3 class="card__title text-center"><h:outputText value="#{ong.name}" /></h3>
-                                        <small class="card__availability pull-left">Endereço: </small>
+                                        <small class="card__availability pull-left">EndereÃ§o: </small>
                                         <small class="card__availability pull-left">
                                             <h:outputText value="#{ong.address.street}"/>
                                             <h:outputText value=" #{ong.address.num}" />,
