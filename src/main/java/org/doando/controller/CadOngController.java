@@ -40,7 +40,7 @@ public class CadOngController implements Serializable {
             this.address = new AddressEntity();
             this.ongAppService = new OngApplicationService();
             this.postalCodeService = new PostalCodeService();
-            this.ongs = ongAppService.find();
+            init();
 	}
 
 	public OngEntity getOng() {
@@ -78,9 +78,13 @@ public class CadOngController implements Serializable {
             ong.setNecessities(new HashSet<NecessityEntity>());
             ong.setEvents(new HashSet<EventsEntity>());
             ongAppService.save(ong);
-            this.ongs = ongAppService.find();
+            init();
             clear();
             return "/ong/cadOng.xhtml?faces-redirect=true";
+	}
+
+	private void init() {
+		this.ongs = ongAppService.find();
 	}
 
 	public String delete(String ong) {
