@@ -258,7 +258,7 @@ section.success a.active {
     }
 }
 
-.btn-outline {
+/*.btn-outline {
     margin-top: 15px;
     border: solid 2px #fff;
     font-size: 20px;
@@ -274,7 +274,7 @@ section.success a.active {
     border: solid 2px #fff;
     color: #18bc9c;
     background: #fff;
-}
+}*/
 
 .floating-label-form-group {
     position: relative;
@@ -360,7 +360,7 @@ form .row:first-child .floating-label-form-group {
     height: 50px;
 }
 
-.scroll-top .btn {
+/*.scroll-top .btn {
     width: 50px;
     height: 50px;
     border-radius: 100%;
@@ -370,7 +370,7 @@ form .row:first-child .floating-label-form-group {
 
 .scroll-top .btn:focus {
     outline: 0;
-}
+}*/
 
 .need-modal .modal-content {
     padding: 100px 0;
