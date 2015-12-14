@@ -1,26 +1,26 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui">
-    <h:head> 
-    </h:head> 
-    <h:body> 
-        <p:growl autoUpdate="true" /> 
-            <h:form id="formLogin" enctype="multipart/form-data"> 
-                <p:growl autoUpdate="true" id="messages"/> 
-                <p:panelGrid columns="2"> 
-                    <h:outputText value="Login: " /> 
-                    <p:inputText value="#{loginController.user.username}" size="37" /> 
-                    <h:outputText value="Senha: " /> 
-                    <p:password value="#{loginController.user.password}" size="24" /> 
-                </p:panelGrid> 
-                <p:panelGrid columns="2"> 
-                    <p:commandButton icon="ui-icon-unlocked" value="Entrar" action="#{loginController.doLogin()}" />                     
-                </p:panelGrid> 
-            </h:form>        
-    </h:body>
-</html>
+<ui:composition 
+  template="../templates/main.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+    <ui:define name="container">
+        <h:body style="background: #ccc;"> 
+            <section class="container">
+                <p:growl autoUpdate="true" /> 
+                <h:form id="formLogin" enctype="multipart/form-data"> 
+                    <div class="form-signin login-card">
+                        <h1 class="login-title">Doado.org</h1>
+                        <p class="login-info">Projeto Integrador</p>
+                        <p:growl autoUpdate="true" id="messages"/> 
+
+                        <p:inputText value="#{loginController.user.username}" styleClass="form-control inpt-login" placeholder="Usuário"  />                     
+                        <p:password value="#{loginController.user.password}" styleClass="form-control inpt-login" placeholder="Senha" />                                 
+                        <p:commandButton styleClass="btn btn-sm btn-primary btn-block login-btn" value="Entrar" action="#{loginController.doLogin()}" />                     
+                    </div>
+                </h:form>                
+            </section>           
+        </h:body>
+    </ui:define>
+</ui:composition>
