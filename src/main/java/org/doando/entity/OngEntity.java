@@ -50,9 +50,15 @@ public class OngEntity implements Serializable {
 	@Column(name = "ong_email", nullable = false)
 	private String email;
 
+	@Column(name = "ong_password")
+    private String password;
+	
 	@Column(name = "ong_website")
 	private String website;
 
+	@Column(name = "ong_type")
+    private String type;
+	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "ong")
 	@Cascade(CascadeType.ALL)
 	private Collection<NecessityEntity> necessities;
@@ -62,32 +68,30 @@ public class OngEntity implements Serializable {
 	private Collection<EventsEntity> events;
 
 	public OngEntity() {
+		this.type = "";
 		this.cnpj = "";
 		this.name = "";
 		this.email = "";
 		this.website = "";
+		this.password = "";
 	}
-
-	public OngEntity(String cnpj, String name, String email, String website, Collection<NecessityEntity> necessities,
-			Collection<EventsEntity> events) {
-		this.cnpj = cnpj;
-		this.name = name;
-		this.email = email;
-		this.website = website;
-		this.necessities = necessities;
-		this.events = events;
-	}
-
-	public OngEntity(String cnpj, AddressEntity address, String name, String email, String website,
-			Collection<NecessityEntity> necessities, Collection<EventsEntity> events) {
+	
+	
+	
+	public OngEntity(String cnpj, AddressEntity address, String name, String email, String password, String website,
+			String type, Collection<NecessityEntity> necessities, Collection<EventsEntity> events) {
 		this.cnpj = cnpj;
 		this.address = address;
 		this.name = name;
 		this.email = email;
+		this.password = password;
 		this.website = website;
+		this.type = type;
 		this.necessities = necessities;
 		this.events = events;
 	}
+
+
 
 	public Integer getId() {
 		return id;
@@ -153,9 +157,30 @@ public class OngEntity implements Serializable {
 		this.events = events;
 	}
 
-	@Override
-	public String toString() {
-		return "nome: " + this.name + " email: " + this.email + " cnpj " + this.cnpj + " site " + this.website;
+
+
+	public String getPassword() {
+		return password;
 	}
 
+
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+
+
+	public String getType() {
+		return type;
+	}
+
+
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+
+	
 }

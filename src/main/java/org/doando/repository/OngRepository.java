@@ -16,12 +16,13 @@ public class OngRepository extends AbstractRepository<OngEntity, Integer>{
         super(OngEntity.class);
     }
     
-    public OngEntity find(String name) {
+    public OngEntity find(String email, String cnpj) {
         Session s = getSession();
         String tn = getTableName();
-        Query query = s.createQuery("from " + tn + " where name = :name");
+        Query query = s.createQuery("from " + tn + " where email = :email and cnpj = :cnpj");
         Map<String, String> m = new HashMap<>();
-        m.put("name", name);
+        m.put("email", email);
+        m.put("cnpj", cnpj);
         query.setProperties(m);
         return (OngEntity) query.uniqueResult();
     }

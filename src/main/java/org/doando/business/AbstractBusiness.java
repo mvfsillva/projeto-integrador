@@ -19,7 +19,6 @@ public abstract class AbstractBusiness<T extends Serializable, IdType extends Se
         implements IBusinessManager<T, IdType> {
 
     protected IRepository<T, IdType> repository;
-    //static Logger LOGGER = Logger.getLogger(AbstractBusiness.class.getDeclaringClass());
     
     @Override
     public void validate(T t) throws IllegalArgumentException {
@@ -35,11 +34,7 @@ public abstract class AbstractBusiness<T extends Serializable, IdType extends Se
     
     @Override
     public void setSession(Session session) {
-        try {
     	repository.setSession(session);
-        } catch (NullPointerException e) {
-            System.out.println();
-        }
     }
     
     @Override
