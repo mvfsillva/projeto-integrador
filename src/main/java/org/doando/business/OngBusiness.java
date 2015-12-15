@@ -35,6 +35,12 @@ public class OngBusiness extends AbstractBusiness<OngEntity, Integer>{
     	return ((OngRepository) getRepository()).find(name, cnpj);
     }
     
+     public List<OngEntity> search (String name){
+        Map<String, Object> m = new HashMap<>();
+        m.put("name", name);
+        return ((OngRepository) getRepository()).search(m);
+     }
+    
     @Override
 	public int save(OngEntity t) {
 		String oldPassword = t.getPassword();

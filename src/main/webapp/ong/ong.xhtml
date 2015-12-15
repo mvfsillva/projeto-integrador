@@ -9,9 +9,20 @@
         <h:outputText value="Ongs" />
     </ui:define>
     <ui:define name="container">
-
-        <section class="container">            
+        <section class="container">
             <button value="#{cadOngController.singUpButtonText}" class="btn btn-success btn-success-sui" data-toggle="modal" data-target="#myModal"></button>
+            <h:form id="search" class="pull-left">
+                <div class="row">
+                    <div class="col-lg-4 pull-right">
+                        <div class="input-group">
+                            <p:inputText styleClass="form-control" value="#{cadOngController.name}" placeholder="Procurar por..." />
+                            <span class="input-group-btn">                                
+                                <h:commandButton action="#{cadOngController.search()}" value="Buscar" styleClass="btn btn-default" />
+                            </span>                            
+                        </div>
+                    </div>
+                </div>                
+            </h:form>
             <hr />
             <h3>Ongs Cadastradas</h3>
             <div class="row">
@@ -70,7 +81,7 @@
 
         <!-- Modal -->
         <div class="modal fade" id="myModal" role="dialog">
-              <ui:include src="modal.ong.xhtml"/> 
+            <ui:include src="modal.ong.xhtml"/> 
         </div>
 
     </ui:define>
