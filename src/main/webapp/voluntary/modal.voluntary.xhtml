@@ -1,0 +1,104 @@
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui">          
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">x</button>
+                <h4 class="modal-title">Novo Voluntário</h4>
+                <small style="color:red;">Os campos com (*) são obrigatórios!</small>
+                <p class="text-info text-justify">Atenção: Ao concretizar seu cadastro, você fará parte da rede de voluntarios da Doando.org
+                    e para que seja possivel sua saída dessa lista, deverá entrar em contato conosco via e-mail!</p>
+            </div>
+            <div class="modal-body">
+                <h:form id="formVoluntary" styleClass="">
+                    <div class="form-group row">
+                        <div class="col-xs-8">
+                            <span style="color:red; font-size: 1em;">* </span>
+                            <p:outputLabel value="Nome Completo " /> 
+                            <p:inputText placeholder="Ex: Meu nome" styleClass="form-control" value="#{voluntaryController.voluntary.name}" required="true"/>
+                        </div>
+                        <div class="col-xs-4">
+                            <span style="color:red; font-size: 1em;">* </span>
+                            <p:outputLabel value="Sexo" />
+                            <p:inputText styleClass="form-control" value="#{voluntaryController.voluntary.sex}" required="true" />
+                        </div>
+                    </div>                                
+
+                    <div class="form-group row">
+                        <div class="col-xs-8">
+                            <span style="color:red; font-size: 1em;">* </span>
+                            <p:outputLabel value="E-mail " />
+                            <p:inputText id="email" styleClass="form-control" value="#{voluntaryController.voluntary.email}" 
+                                         requiredMessage="Por favor digite seu e-mail."
+                                         validatorMessage="E-mail invalido!">
+                                <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />                                        
+                            </p:inputText>
+                            <p:watermark for="email" value="Email Address *" />
+                            <p:message for="email" />
+                        </div>
+                        <div class="col-xs-4">
+                            <span style="color:red; font-size: 1em;">* </span>
+                            <p:outputLabel value="Telefone: " />
+                            <p:inputMask mask="(99) 99999-9999" styleClass="form-control" value="#{voluntaryController.voluntary.phone}" required="true"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-xs-6">
+                            <span style="color:red; font-size: 1em;">* </span>
+                            <p:outputLabel value="CEP " />
+                            <div class="input-group">
+                                <p:inputMask mask="99999-999" id="inputCep" placeholder="Ex: 00000111" styleClass="form-control" value="#{voluntaryController.cep}" required="true"/>
+                                <span class="input-group-btn">
+                                    <h:commandButton value="Buscar CEP" styleClass="btn btn-primary" action="#{voluntaryController.findCep()}">
+                                        <f:ajax execute="inputCep" render="inputRua inputBairro inputCidade inputEstado" />
+                                    </h:commandButton>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <span style="color:red; font-size: 1em;">* </span>
+                            <p:outputLabel value="Rua: " />
+                            <p:inputText id="inputRua" disabled="true" styleClass="form-control" value="#{voluntaryController.address.street}" required="true"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-xs-6">
+                            <span style="color:red; font-size: 1em;">* </span>
+                            <p:outputLabel value="Bairro: " />
+                            <p:inputText id="inputBairro" disabled="true" styleClass="form-control" value="#{voluntaryController.address.neighborhood}" required="true"/>
+                        </div>
+                        <div class="col-xs-4">
+                            <span style="color:red; font-size: 1em;">* </span>
+                            <p:outputLabel value="Cidade: " />
+                            <p:inputText id="inputCidade" disabled="true" styleClass="form-control" value="#{voluntaryController.address.city}" required="true"/>
+                        </div>
+                        <div class="col-xs-2">
+                            <span style="color:red; font-size: 1em;">* </span>
+                            <p:outputLabel value="Estado: " />
+                            <p:inputText id="inputEstado" disabled="true" styleClass="form-control" value="#{voluntaryController.address.state}" required="true"/>                                    
+                        </div>
+                    </div> 
+
+                    <div class="form-group row">                                    
+                        <div class="col-xs-6">                                    
+                            <p:outputLabel value="Interesse " />                                   
+                            <p:inputText styleClass="form-control" value="#{voluntaryController.voluntary.interest}"/>
+                        </div>                                    
+                        <div class="col-xs-6">
+                            <span style="color:red; font-size: 1em;">* </span>
+                            <p:outputLabel value="Disponibilidade " />
+                            <p:inputText styleClass="form-control" value="#{voluntaryController.voluntary.availability}" required="true" />
+                        </div>  
+                    </div>
+                    <div class="modal-footer">
+                        <div class="pull-left">
+                            <p:commandButton value="Salvar" styleClass="btn btn-success btn-success-sui" action="#{voluntaryController.save()}" update="@form" />
+                            <button type="button" class="btn btn-default-sui btn-lg" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>  
+                </h:form>                    
+            </div>
+        </div>
+    </div>
+</ui:composition>

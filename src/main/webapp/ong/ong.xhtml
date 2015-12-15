@@ -1,0 +1,77 @@
+<ui:composition 
+    template="../templates/main.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+    <ui:define name="title">
+        <h:outputText value="Ongs" />
+    </ui:define>
+    <ui:define name="container">
+
+        <section class="container">            
+            <button class="btn btn-success btn-success-sui" data-toggle="modal" data-target="#myModal">Ingressar no Doando.org</button>
+            <hr />
+            <h3>Ongs Cadastradas</h3>
+            <div class="row">
+                <h:form id="ongList">
+                    <ui:repeat var="ong" value="#{cadOngController.ongs}">
+                        <div class="col-sm-4 need-item">
+                            <div class="card radius shadowDepth1">                            
+                                <div class="card__image border-tlr-radius">                                        
+                                    <h3 class="card__title text-center"><h:outputText value="#{ong.name}" /></h3>
+                                    <small class="card__availability pull-left">Cidade:</small>
+                                    <small class="card__availability pull-left">
+                                        <h:outputText value="#{ong.address.city}" />
+                                    </small>
+                                    <br/>
+                                    <small class="card__availability pull-left">Cidade:</small>
+                                    <small class="card__availability pull-left">
+                                        <h:outputText value="#{ong.address.neighborhood}" />
+                                    </small>
+                                    <br/>
+                                    <small class="card__availability pull-left">CNPJ:</small>
+                                    <small class="card__availability pull-left"><h:outputText value="#{ong.cnpj}" /></small>
+                                </div>
+                                <div class="card__content card__padding">
+                                    <div class="card__share">
+                                        <div class="card__social">                                               
+                                            <a class="share-icon facebook"   href="#"><span class="fa fa-facebook"></span></a>
+                                            <a class="share-icon twitter"    href="#"><span class="fa fa-twitter"></span></a>
+                                            <a class="share-icon googleplus" href="#"><span class="fa fa-google-plus"></span></a>
+                                        </div>
+                                        <a id="share" class="share-toggle share-icon" href="#"></a>
+                                    </div>
+                                    <div class="card__meta">                                        
+                                        <small></small>
+                                    </div>
+                                    <article class="card__article">
+                                        <h4>Contato</h4>
+                                        <p><h:outputText value="#{ong.address.primaryPhone}" /></p>
+                                        <p><h:outputText value="#{ong.email}" /></p>
+                                        <h4>Área de Interesse</h4>
+                                        <p><h:outputText value="#{ong.type}" /></p>
+                                    </article>
+                                </div>
+                                <div class="card__action">
+                                    <div class="card__author">                                    
+                                        <div class="card__author-content">
+                                            <button class="btn btn-transparent-sui btn-sm">Entrar em Contato</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                            
+                        </div>
+                    </ui:repeat>                                                                            
+                </h:form>  
+            </div>
+        </section>
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+              <ui:include src="modal.ong.xhtml"/> 
+        </div>
+
+    </ui:define>
+</ui:composition>
