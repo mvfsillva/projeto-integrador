@@ -1,0 +1,50 @@
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" 
+                xmlns:h="http://java.sun.com/jsf/html" 
+                xmlns:f="http://java.sun.com/jsf/core" 
+                xmlns:p="http://primefaces.org/ui">
+    
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">x</button>
+                <h4 class="modal-title">Nova Necessidade</h4>
+                <small style="color:red;">Os campos com (*) são obrigatórios!</small>
+            </div>
+            <div class="modal-body">
+                <h:form id="formNecessity" styleClass="">
+                    <div class="form-group row">
+                        <div class="col-xs-6">
+                            <span style="color:red; font-size: 1em;">* </span>
+                            <p:outputLabel value="Titulo " /> 
+                            <p:inputText placeholder="Ex: Precisa-se.." styleClass="form-control" value="#{necessityController.necessity.title}" required="true"/>
+                        </div>
+                        <div class="col-xs-6">
+                            <span style="color:red; font-size: 1em;">* </span>
+                            <p:outputLabel value="Prioridade " />
+                            <p:inputText styleClass="form-control" value="#{necessityController.necessity.priority}" required="true" />
+                        </div>
+                    </div>                                
+
+                    <div class="form-group row">
+                        <div class="col-xs-8">
+                            <span style="color:red; font-size: 1em;">* </span>
+                            <p:outputLabel value="Descrição " />
+                            <p:inputText  styleClass="form-control" value="#{necessityController.necessity.description}" required="true"/>
+                        </div>
+                        <div class="col-xs-4">
+                            <span style="color:red; font-size: 1em;">* </span>
+                            <p:outputLabel value="Data " />
+                            <p:inputText styleClass="form-control" value="#{necessityController.necessity.date}" required="true"/>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="pull-left">
+                            <p:commandButton value="Salvar" styleClass="btn btn-success-sui" action="#{eventsController.save()}" update="@form" />
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>  
+                </h:form>                    
+            </div>
+        </div>
+    </div>
+</ui:composition>

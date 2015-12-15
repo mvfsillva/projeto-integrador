@@ -3,19 +3,7 @@ package org.doando.entity;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -39,6 +27,9 @@ public class EventsEntity implements Serializable{
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "id_event_sq")
     private Integer id;
     
+    @Column(name="event_name", nullable = false)
+    private String name;
+        
     @Column(name = "event_locality", nullable = false)
     private String locality;
     
@@ -57,13 +48,15 @@ public class EventsEntity implements Serializable{
     public EventsEntity() {
     }
 
-    public EventsEntity(String locality, String description, Date date) {
+    public EventsEntity(String name, String locality, String description, Date date) {
+        this.name = name;
         this.locality = locality;
         this.description = description;
         this.date = date;
     }
 
-    public EventsEntity(String locality, String description, Date date, OngEntity ong) {
+    public EventsEntity(String name, String locality, String description, Date date, OngEntity ong) {
+        this.name = name;
         this.locality = locality;
         this.description = description;
         this.date = date;
@@ -78,6 +71,14 @@ public class EventsEntity implements Serializable{
         this.id = id;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    
     public String getLocality() {
         return locality;
     }

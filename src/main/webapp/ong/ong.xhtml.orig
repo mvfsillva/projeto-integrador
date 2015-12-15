@@ -9,31 +9,29 @@
         <h:outputText value="Ongs" />
     </ui:define>
     <ui:define name="container">
-<<<<<<< HEAD
-
-        <section class="container">            
-            <button value="#{cadOngController.singUpButtonText}" class="btn btn-success btn-success-sui" data-toggle="modal" data-target="#myModal"></button>
-=======
         <section class="container">
+<<<<<<< HEAD
+            <button class="btn btn-success btn-success-sui" data-toggle="modal" data-target="#myModal">Ingressar no Doando.org</button>
+=======
+            <button class="btn btn-success btn-success-sui" data-toggle="modal" data-target="#myModal">Ingressar no Doando.org</button>            
+>>>>>>> f9979cd5cbd5291f74d05b9f4e8171a0304c75ef
             <h:form id="search" class="pull-left">
                 <div class="row">
                     <div class="col-lg-4 pull-right">
                         <div class="input-group">
-                            <p:inputText styleClass="form-control" value="#{cadOngController.name}" placeholder="Procurar por..." />
+                            <p:inputText styleClass="form-control" value="#{cardOngController.name}" placeholder="Procurar por..." />
                             <span class="input-group-btn">                                
-                                <h:commandButton action="#{cadOngController.search()}" value="Buscar" styleClass="btn btn-default" />
+                                <h:commandButton action="#{cardOngController.search()}" value="Buscar" styleClass="btn btn-default" />
                             </span>                            
                         </div>
                     </div>
                 </div>                
             </h:form>
-            <button class="btn btn-success btn-success-sui" data-toggle="modal" data-target="#myModal">Ingressar no Doando.org</button>
->>>>>>> f651f525b2a68bbbf9993f1aa4bc88026040fc7e
             <hr />
             <h3>Ongs Cadastradas</h3>
             <div class="row">
                 <h:form id="ongList">
-                    <ui:repeat var="ong" value="#{cadOngController.ongs}">
+                    <ui:repeat var="ong" value="#{cardOngController.ongs}">
                         <div class="col-sm-4 need-item">
                             <div class="card radius shadowDepth1">                            
                                 <div class="card__image border-tlr-radius">                                        

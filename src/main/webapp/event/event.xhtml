@@ -14,16 +14,16 @@
                 <hr />
                 <h3>Eventos Beneficentes</h3>       
                 <div class="row">
-                    <h:form id="voluntaryList">
-                        <ui:repeat var="voluntary" value="teste">
+                    <h:form id="ongList">
+                        <ui:repeat var="event" value="#{eventsController.events}">
                             <div class="col-sm-4 need-item">
                                 <div class="card radius shadowDepth1">                            
                                     <div class="card__image border-tlr-radius">                                        
-                                        <h3 class="card__title text-center">
-                                            <h:outputText value="Teste" />
-                                        </h3>
-                                        <small class="card__availability pull-left">Disponibilidade:</small>
-                                        <small class="card__availability pull-left"><h:outputText value="Teste" /></small>
+                                        <h3 class="card__title text-center"><h:outputText value="#{event.name}" /></h3>
+                                        <small class="card__availability pull-left">Dia: </small>
+                                        <small class="card__availability pull-left">
+                                            <h:outputText value="#{event.date}"/>
+                                        </small>
                                     </div>
                                     <div class="card__content card__padding">
                                         <div class="card__share">
@@ -59,21 +59,20 @@
                                             </div>
                                             <a id="share" class="share-toggle share-icon" href="#"></a>
                                         </div>
-                                        <div class="card__meta">                                        
-                                            <small><h:outputText value="teste" /></small>
-                                        </div>
                                         <article class="card__article">
-                                            <h4>Contato</h4>
-                                            <p><h:outputText value="teste" /></p>
-                                            <p><h:outputText value="teste" /></p>
-                                            <h4>Área de Interesse</h4>
-                                            <p><h:outputText value="teste" /></p>
+                                            <h4>Descrição: </h4>
+                                            <p>
+                                                <h:outputText value=" #{event.description}" />
+                                            </p>
+                                            <p>
+                                                Local: <h:outputText value=" #{event.locality}" />
+                                            </p>
                                         </article>
                                     </div>
                                     <div class="card__action">
                                         <div class="card__author">                                    
                                             <div class="card__author-content">
-                                                <button class="btn btn-info btn-sm">participar</button>
+                                                <button class="btn btn-info btn-sm">Entrar em Contato</button>
                                             </div>
                                         </div>
                                     </div>
@@ -81,11 +80,8 @@
                             </div>
                         </ui:repeat>
                     </h:form>
-                    <!--<div class="text-center">
-                            <p:commandButton styleClass="btn btn-danger btn-sm" value="Deletar" action="#{voluntaryController.delete(voluntary.name)}"/>
-                        </div>-->
                 </div>
-            </div>            
+            </div>     
         </section>
 
         <div class="modal fade" id="myModal" role="dialog">
