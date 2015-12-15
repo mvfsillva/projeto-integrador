@@ -80,7 +80,7 @@ public class CadOngController implements Serializable {
 		ongAppService.save(ong);
 		init();
 		clear();
-		return "/ong/cadOng.xhtml?faces-redirect=true";
+		return "/ong/ong.xhtml?faces-redirect=true";
 	}
 
 	private void init() {
@@ -89,7 +89,7 @@ public class CadOngController implements Serializable {
 
 	public String delete(OngEntity ong) {
 		ongAppService.delete(ong);
-		return "/ong/cadOng.xhtml?faces-redirect=true";
+		return "/ong/ong.xhtml?faces-redirect=true";
 	}
 
 	public String findCep() throws Exception {
