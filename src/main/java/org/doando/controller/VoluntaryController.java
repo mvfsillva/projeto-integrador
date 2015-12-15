@@ -15,22 +15,21 @@ import org.doando.utils.PostalCodeService;
  *
  * @author arthur
  */
-
 @ManagedBean(name = "voluntaryController")
 @ViewScoped
 public class VoluntaryController implements Serializable {
-    
+
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = -4873829598259678832L;
-	
-	private String cep;
-	private VoluntaryApplicationService voluntaryAppService;
+     *
+     */
+    private static final long serialVersionUID = -4873829598259678832L;
+
+    private String cep;
+    private VoluntaryApplicationService voluntaryAppService;
     private VoluntaryEntity voluntary;
-	private PostalCodeService postalCodeService;
+    private PostalCodeService postalCodeService;
     private List<VoluntaryEntity> voluntaries;
-	private AddressEntity address;
+    private AddressEntity address;
 
     public VoluntaryController() {
         this.voluntary = new VoluntaryEntity();
@@ -40,9 +39,9 @@ public class VoluntaryController implements Serializable {
     }
 
     private void init() {
-    	this.voluntaries = voluntaryAppService.find();
+        this.voluntaries = voluntaryAppService.find();
     }
-    
+
     public VoluntaryEntity getVoluntary() {
         return voluntary;
     }
@@ -58,43 +57,43 @@ public class VoluntaryController implements Serializable {
     public void setVoluntaries(List<VoluntaryEntity> voluntaries) {
         this.voluntaries = voluntaries;
     }
-    
+
     public String getCep() {
-		return cep;
-	}
+        return cep;
+    }
 
-	public void setCep(String cep) {
-		this.cep = cep;
-	}
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
 
-	public AddressEntity getAddress() {
-		return address;
-	}
+    public AddressEntity getAddress() {
+        return address;
+    }
 
-	public void setAddress(AddressEntity address) {
-		this.address = address;
-	}
+    public void setAddress(AddressEntity address) {
+        this.address = address;
+    }
 
-	public void clear (){
+    public void clear() {
         this.voluntary = null;
     }
-    
+
     public String save() {
-    	voluntary.setCity(address.getCity());
-    	voluntary.setState(address.getState());
+        voluntary.setCity(address.getCity());
+        voluntary.setState(address.getState());
         voluntaryAppService.save(voluntary);
-        clear ();
+        clear();
         return "/voluntary/voluntary.xhtml?faces-redirect=true";
     }
-    
-    public String delete (VoluntaryEntity v){
+
+    public String delete(VoluntaryEntity v) {
         voluntaryAppService.delete(v);
         return "/voluntary/voluntary.xhtml?faces-redirect=true";
     }
-    
+
     public String findCep() throws Exception {
-		postalCodeService.find(cep);
-		this.setAddress(postalCodeService.getAddress());
-		return "";
-	}
+        postalCodeService.find(cep);
+        this.setAddress(postalCodeService.getAddress());
+        return "";
+    }
 }
