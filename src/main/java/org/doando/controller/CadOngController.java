@@ -13,6 +13,7 @@ import org.doando.entity.AddressEntity;
 import org.doando.entity.EventsEntity;
 import org.doando.entity.NecessityEntity;
 import org.doando.entity.OngEntity;
+import org.doando.session.SessionContext;
 import org.doando.utils.PostalCodeService;
 
 /**
@@ -34,9 +35,9 @@ public class CadOngController implements Serializable {
 	private AddressEntity address;
 	private PostalCodeService postalCodeService;
 	private OngApplicationService ongAppService;
-
+	private String singUpButtonText;
+	
 	public CadOngController() {
-		this.ong = new OngEntity();
 		this.address = new AddressEntity();
 		this.ongAppService = new OngApplicationService();
 		this.postalCodeService = new PostalCodeService();
@@ -85,6 +86,13 @@ public class CadOngController implements Serializable {
 
 	private void init() {
 		this.ongs = ongAppService.find();
+		this.ong = 	SessionContext.getInstance().getLoggedInOng();	
+		if(this.ong == null) {
+			this.singUpButtonText = "Ingressar no Doando.org";
+			this.ong = new OngEntity();
+		} else {
+			this.singUpButtonText = "Ver detalhes de " + this.ong.getName();
+		}
 	}
 
 	public String delete(OngEntity ong) {
@@ -97,4 +105,13 @@ public class CadOngController implements Serializable {
 		this.address = postalCodeService.getAddress();
 		return "";
 	}
+
+	public String getSingUpButtonText() {
+		return singUpButtonText;
+	}
+
+	public void setSingUpButtonText(String singUpButtonText) {
+		this.singUpButtonText = singUpButtonText;
+	}
+	
 }
