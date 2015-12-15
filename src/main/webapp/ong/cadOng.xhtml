@@ -95,7 +95,14 @@
                                 <div class="col-xs-4">           
                                     <span style="color:red; font-size: 1em;">* </span>                             
                                     <p:outputLabel value="E-mail: " />
-                                    <p:inputText type="email" placeholder="Ex: email@email.com" styleClass="form-control" value="#{cadOngController.ong.email}" required="true"/>
+                                    <p:inputText id="email" placeholder="Ex: email@email.com" styleClass="form-control" 
+                                                 value="#{cadOngController.ong.email}"  
+                                                 requiredMessage="Por favor digite seu e-mail."
+                                                 validatorMessage="E-mail invalido!">
+                                        <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                                    </p:inputText>
+                                    <p:watermark for="email" value="Email Address *" />
+                                    <p:message for="email" />
                                 </div>
                                 <div class="col-xs-4">
                                     <span style="color:red; font-size: 1em;">* </span>
