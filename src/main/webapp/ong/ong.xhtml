@@ -9,8 +9,19 @@
         <h:outputText value="Ongs" />
     </ui:define>
     <ui:define name="container">
-
-        <section class="container">            
+        <section class="container">
+            <h:form id="search" class="pull-left">
+                <div class="row">
+                    <div class="col-xs-4">
+                        <div class="input-group">
+                            <p:inputText styleClass="form-control" value="#{cadOngController.name}" placeholder="Buscar" />
+                            <span class="input-group-btn">
+                                <p:commandButton styleClass="btn btn-primary" action="#{cadOngController.search()}" value="Buscar" update="ongList" />
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </h:form>
             <button class="btn btn-success btn-success-sui" data-toggle="modal" data-target="#myModal">Ingressar no Doando.org</button>
             <hr />
             <h3>Ongs Cadastradas</h3>

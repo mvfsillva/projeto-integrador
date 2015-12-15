@@ -29,6 +29,7 @@ public class CadOngController implements Serializable {
 	private static final long serialVersionUID = -6006035867967167391L;
 
 	private String cep;
+        private String name;
 	private OngEntity ong;
 	private List<OngEntity> ongs;
 	private AddressEntity address;
@@ -63,6 +64,14 @@ public class CadOngController implements Serializable {
 		this.cep = cep;
 	}
 
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+        
 	public void setOngs(List<OngEntity> ongs) {
 		this.ongs = ongs;
 	}
@@ -97,4 +106,13 @@ public class CadOngController implements Serializable {
 		this.address = postalCodeService.getAddress();
 		return "";
 	}
+        
+        public String search () throws Exception{
+            if(!"".equals(name)){
+              this.ongs = ongAppService.search(name);
+            }else{
+              this.ongs = ongAppService.find();  
+            }
+            return "";
+        }
 }

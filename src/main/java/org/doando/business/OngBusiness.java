@@ -1,5 +1,8 @@
 package org.doando.business;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import org.doando.entity.OngEntity;
 import org.doando.exception.InvallidEmailOrCnpjException;
 import org.doando.repository.OngRepository;
@@ -29,5 +32,11 @@ public class OngBusiness extends AbstractBusiness<OngEntity, Integer>{
     public OngEntity find(String name, String cnpj) {
     	return ((OngRepository) getRepository()).find(name, cnpj);
     }
+    
+     public List<OngEntity> search (String name){
+        Map<String, Object> m = new HashMap<>();
+        m.put("name", name);
+        return ((OngRepository) getRepository()).search(m);
+     }
     
 }

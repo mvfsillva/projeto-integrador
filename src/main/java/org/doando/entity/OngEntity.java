@@ -51,13 +51,13 @@ public class OngEntity implements Serializable {
 	private String email;
 
 	@Column(name = "ong_password")
-    private String password;
+        private String password;
 	
 	@Column(name = "ong_website")
 	private String website;
 
 	@Column(name = "ong_type")
-    private String type;
+        private String type;
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "ong")
 	@Cascade(CascadeType.ALL)
@@ -76,8 +76,6 @@ public class OngEntity implements Serializable {
 		this.password = "";
 	}
 	
-	
-	
 	public OngEntity(String cnpj, AddressEntity address, String name, String email, String password, String website,
 			String type, Collection<NecessityEntity> necessities, Collection<EventsEntity> events) {
 		this.cnpj = cnpj;
@@ -90,8 +88,6 @@ public class OngEntity implements Serializable {
 		this.necessities = necessities;
 		this.events = events;
 	}
-
-
 
 	public Integer getId() {
 		return id;
@@ -157,30 +153,20 @@ public class OngEntity implements Serializable {
 		this.events = events;
 	}
 
-
-
 	public String getPassword() {
 		return password;
 	}
-
-
 
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
-
-
 	public String getType() {
 		return type;
 	}
 
-
-
 	public void setType(String type) {
 		this.type = type;
 	}
-
-
 	
 }

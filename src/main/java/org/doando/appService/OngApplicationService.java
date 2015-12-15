@@ -1,6 +1,7 @@
 
 package org.doando.appService;
 
+import java.util.List;
 import org.doando.business.OngBusiness;
 import org.doando.entity.OngEntity;
 
@@ -20,5 +21,12 @@ public class OngApplicationService extends AbstractApplicationService<OngEntity,
 		cleanUp();
 		return p;
 	}
+        
+        public List<OngEntity> search (String name){
+            initialize();
+            List<OngEntity> p = ((OngBusiness) business).search(name);
+            cleanUp();
+            return p;
+        }
 	
 }
