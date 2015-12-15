@@ -8,12 +8,12 @@
                 <p:growl autoUpdate="true" /> 
                 <h:form id="formLogin" enctype="multipart/form-data"> 
                     <div class="form-signin login-card">
-                        <h1 class="login-title">Doado.org</h1>
+                        <h1 class="login-title">Doando.org</h1>
                         <p class="login-info">Projeto Integrador</p>
                         <p:growl autoUpdate="true" id="messages"/> 
 
-                        <p:inputText value="#{loginController.user.username}" styleClass="form-control inpt-login" placeholder="Usuário"  />                     
-                        <p:password value="#{loginController.user.password}" styleClass="form-control inpt-login" placeholder="Senha" />                                 
+                        <p:inputText value="#{loginController.ong.email}" styleClass="form-control inpt-login" placeholder="Email"  />                     
+                        <p:password value="#{loginController.ong.password}" styleClass="form-control inpt-login" placeholder="Senha" />                                 
                         <p:commandButton styleClass="btn btn-sm btn-primary btn-block login-btn" value="Entrar" action="#{loginController.doLogin()}" />                     
                     </div>
                 </h:form>                

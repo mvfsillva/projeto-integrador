@@ -10,24 +10,24 @@
     </ui:define>
     <ui:define name="container">
         <section class="container">
+            <button value="Ingressar no Doando.org" class="btn btn-success btn-success-sui" data-toggle="modal" data-target="#myModal"></button>
             <h:form id="search" class="pull-left">
                 <div class="row">
                     <div class="col-lg-4 pull-right">
                         <div class="input-group">
-                            <p:inputText styleClass="form-control" value="#{cadOngController.name}" placeholder="Procurar por..." />
+                            <p:inputText styleClass="form-control" value="#{cardOngController.name}" placeholder="Procurar por..." />
                             <span class="input-group-btn">                                
-                                <h:commandButton action="#{cadOngController.search()}" value="Buscar" styleClass="btn btn-default" />
+                                <h:commandButton action="#{cardOngController.search()}" value="Buscar" styleClass="btn btn-default" />
                             </span>                            
                         </div>
                     </div>
                 </div>                
             </h:form>
-            <button class="btn btn-success btn-success-sui" data-toggle="modal" data-target="#myModal">Ingressar no Doando.org</button>
             <hr />
             <h3>Ongs Cadastradas</h3>
             <div class="row">
                 <h:form id="ongList">
-                    <ui:repeat var="ong" value="#{cadOngController.ongs}">
+                    <ui:repeat var="ong" value="#{cardOngController.ongs}">
                         <div class="col-sm-4 need-item">
                             <div class="card radius shadowDepth1">                            
                                 <div class="card__image border-tlr-radius">                                        

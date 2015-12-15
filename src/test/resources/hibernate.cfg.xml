@@ -15,7 +15,6 @@
         <property name="hibernate.show_sql">false</property>
         
         <mapping class="org.doando.entity.PersonEntity"></mapping>
-        <mapping class="org.doando.entity.UserEntity"></mapping>
         
     </session-factory>
 </hibernate-configuration>

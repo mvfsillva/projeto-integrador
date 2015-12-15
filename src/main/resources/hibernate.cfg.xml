@@ -18,7 +18,6 @@
         
         <mapping class="org.doando.entity.AddressEntity"></mapping>
         <mapping class="org.doando.entity.NecessityEntity"></mapping>
-        <mapping class="org.doando.entity.UserEntity"></mapping>
         <mapping class="org.doando.entity.OngEntity"></mapping>
         <mapping class="org.doando.entity.EventsEntity"></mapping>
         <mapping class="org.doando.entity.VoluntaryEntity"></mapping>

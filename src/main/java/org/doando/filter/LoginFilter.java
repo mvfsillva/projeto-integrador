@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.doando.entity.UserEntity;
+import org.doando.entity.OngEntity;
 
 
 /**
@@ -29,10 +29,10 @@ public class LoginFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        UserEntity user = null;
+        OngEntity user = null;
         HttpSession sess = ((HttpServletRequest) request).getSession(false);
         if (sess != null) {
-            user = (UserEntity) sess.getAttribute("loggedInUser");
+            user = (OngEntity) sess.getAttribute("loggedInUser");
         }
         if (user == null) {
             String contextPath = ((HttpServletRequest) request).getContextPath();

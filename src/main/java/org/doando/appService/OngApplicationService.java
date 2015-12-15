@@ -29,4 +29,46 @@ public class OngApplicationService extends AbstractApplicationService<OngEntity,
             return p;
         }
 	
+	@Override
+	public void save(OngEntity t) {
+		initialize();
+		try {
+			beginTransaction();
+			try {
+				((OngBusiness) business).save(t);
+				commit();
+			} catch (Exception ex) {
+				// Log the exception here
+				rollback();
+				throw ex;
+			}
+		} finally {
+			cleanUp();
+		}
+	}
+	
+	@Override
+	public void update(OngEntity t) {
+		initialize();
+		try {
+			beginTransaction();
+			try {
+				((OngBusiness) business).update(t);
+				commit();
+			} catch (Exception ex) {
+				// Log the exception here
+				rollback();
+				throw ex;
+			}
+		} finally {
+			cleanUp();
+		}
+	}
+	
+	public OngEntity tryToLogin(String email, String password) throws Exception {
+		initialize();
+		OngEntity o = ((OngBusiness) business).tryToLogin(email, password);
+		cleanUp();
+		return o;
+	}
 }

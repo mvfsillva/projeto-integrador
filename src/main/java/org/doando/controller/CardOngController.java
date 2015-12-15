@@ -13,15 +13,16 @@ import org.doando.entity.AddressEntity;
 import org.doando.entity.EventsEntity;
 import org.doando.entity.NecessityEntity;
 import org.doando.entity.OngEntity;
+import org.doando.session.SessionContext;
 import org.doando.utils.PostalCodeService;
 
 /**
  *
  * @author arthur
  */
-@ManagedBean(name = "cadOngController")
+@ManagedBean(name = "cardOngController")
 @ViewScoped
-public class CadOngController implements Serializable {
+public class CardOngController implements Serializable {
 
 	/**
 	 * 
@@ -29,15 +30,15 @@ public class CadOngController implements Serializable {
 	private static final long serialVersionUID = -6006035867967167391L;
 
 	private String cep;
-        private String name;
+	private String name;
 	private OngEntity ong;
 	private List<OngEntity> ongs;
 	private AddressEntity address;
 	private PostalCodeService postalCodeService;
 	private OngApplicationService ongAppService;
+	private String singUpButtonText;
 
-	public CadOngController() {
-		this.ong = new OngEntity();
+	public CardOngController() {
 		this.address = new AddressEntity();
 		this.ongAppService = new OngApplicationService();
 		this.postalCodeService = new PostalCodeService();
@@ -64,14 +65,14 @@ public class CadOngController implements Serializable {
 		this.cep = cep;
 	}
 
-        public String getName() {
-            return name;
-        }
+	public String getName() {
+		return name;
+	}
 
-        public void setName(String name) {
-            this.name = name;
-        }
-        
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public void setOngs(List<OngEntity> ongs) {
 		this.ongs = ongs;
 	}
@@ -94,6 +95,13 @@ public class CadOngController implements Serializable {
 
 	private void init() {
 		this.ongs = ongAppService.find();
+		this.ong = SessionContext.getInstance().getLoggedInOng();
+		if (this.ong == null) {
+			this.singUpButtonText = "Ingressar no Doando.org";
+			this.ong = new OngEntity();
+		} else {
+			this.singUpButtonText = "Ver detalhes de " + this.ong.getName();
+		}
 	}
 
 	public String delete(OngEntity ong) {
@@ -106,13 +114,21 @@ public class CadOngController implements Serializable {
 		this.address = postalCodeService.getAddress();
 		return "";
 	}
-        
-        public String search () throws Exception{
-            if(!"".equals(name)){
-              this.ongs = ongAppService.search(name);
-            }else{
-              this.ongs = ongAppService.find();  
-            }
-            return "";
-        }
+
+	public String getSingUpButtonText() {
+		return singUpButtonText;
+	}
+
+	public void setSingUpButtonText(String singUpButtonText) {
+		this.singUpButtonText = singUpButtonText;
+	}
+
+	public String search() throws Exception {
+		if (!"".equals(name)) {
+			this.ongs = ongAppService.search(name);
+		} else {
+			this.ongs = ongAppService.find();
+		}
+		return "";
+	}
 }

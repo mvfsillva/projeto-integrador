@@ -3,7 +3,7 @@ package org.doando.session;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
-import org.doando.entity.UserEntity;
+import org.doando.entity.OngEntity;
 
 /**
  *
@@ -33,12 +33,12 @@ public class SessionContext {
         }
     }
 
-    public UserEntity getLoggedInUser() {
-        return (UserEntity) getAttribute("loggedInUser");
+    public OngEntity getLoggedInOng() {
+        return (OngEntity) getAttribute(OngEntity.LOGGED_IN_USER);
     }
 
-    public void setLoggedInUser(UserEntity user) {
-        setAttribute("loggedInUser", user);
+    public void setLoggedInOng(OngEntity user) {
+        setAttribute(OngEntity.LOGGED_IN_USER, user);
     }
 
     public void endSession() {

@@ -9,6 +9,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
@@ -22,6 +24,9 @@ import org.hibernate.annotations.CascadeType;
  * @author arthur
  */
 @Entity
+@NamedQueries(value = {
+	    @NamedQuery(name = "findByEmailPass",
+	            query = "SELECT c FROM OngEntity c WHERE c.email = :email AND c.password = :password")})
 @Table(name = "tb_ong", schema = "public")
 public class OngEntity implements Serializable {
 
@@ -30,6 +35,10 @@ public class OngEntity implements Serializable {
 	 */
 	private static final long serialVersionUID = 8348124056614554485L;
 
+	public static final String FIND_BY_EMAIL_PASS = "findByEmailPass";
+
+	public static final String LOGGED_IN_USER = "loggedInUser";
+	
 	@Id
 	@Column(name = "id_ong", nullable = false, unique = true)
 	@SequenceGenerator(name = "id_ong_sq", sequenceName = "sq_ong_id")

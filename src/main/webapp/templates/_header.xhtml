@@ -1,4 +1,4 @@
-<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui">          
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui" xmlns="http://www.w3.org/1999/xhtml">          
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">            
             <div class="navbar-header page-scroll">
@@ -14,11 +14,11 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <h:form>              
                     <ul id="menu" class="nav navbar-nav navbar-right">
-                        <li class="page-scroll"> <p:commandLink value="ONG's" action="/ong/ong.xhtml?faces-redirect=true" /></li>
-                        <li class="page-scroll"> <p:commandLink value="Faça uma doação" action="/donation/donation.xhtml?faces-redirect=true" /> </li>
-                        <li class="page-scroll"> <p:commandLink value="Seja um Voluntario" action="/voluntary/voluntary.xhtml?faces-redirect=true"/> </li>
+                        <li class="page-scroll"> <p:commandLink value="ONG's" action="/ong/cadOng.xhtml?faces-redirect=true" /></li>
+                        <li class="page-scroll"> <p:commandLink value="Faça uma doação" action="/ong/donation.xhtml?faces-redirect=true" /> </li>
+                        <li class="page-scroll"> <p:commandLink value="Seja um Voluntário" action="/voluntary/voluntary.xhtml?faces-redirect=true"/> </li>
                         <li class="page-scroll"> <p:commandLink value="Eventos Beneficentes" action="/event/event.xhtml?faces-redirect=true"/></li>
-                        <li class="page-scroll"> <p:commandLink value="Login" action="/security/login.xhtml?faces-redirect=true"/></li>
+                        <li class="page-scroll"> <p:commandLink value="#{loginController.externalTextForLoggedInUser}" action="/security/login.xhtml?faces-redirect=true"/></li>
                     </ul>            
                 </h:form>
             </div>                        
