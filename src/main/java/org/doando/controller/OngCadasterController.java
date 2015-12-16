@@ -23,6 +23,7 @@ public class OngCadasterController implements Serializable {
 	private static final long serialVersionUID = -7342160760556080297L;
 
 	private String cep;
+	private boolean loggedIn;
 	private OngEntity ong;
 	private List<OngEntity> ongs;
 	private AddressEntity address;
@@ -65,10 +66,14 @@ public class OngCadasterController implements Serializable {
 		this.ongs = ongs;
 	}
 	
-	public String save() throws SQLException, ClassNotFoundException {
+	public String saveOrUpdate() throws SQLException, ClassNotFoundException {
 		address.setOng(ong);
 		ong.setAddress(address);
-		ongAppService.save(ong);
+		if(loggedIn) {
+			ongAppService.update(ong);
+		} else {
+			ongAppService.save(ong);
+		}
 		init();
 		clear();
 		return "/ong/ong.xhtml?faces-redirect=true";
@@ -84,8 +89,10 @@ public class OngCadasterController implements Serializable {
 		this.ongs = ongAppService.find();
 		this.ong = SessionContext.getInstance().getLoggedInOng();
 		if (this.ong == null) {
+			this.loggedIn = false;
 			this.ong = new OngEntity();
 		} else {
+			this.loggedIn = true;
 			this.address = this.ong.getAddress();
 			this.cep = this.address.getPostalCode();
 			this.address.setPrimaryPhone(address.getPrimaryPhone());
