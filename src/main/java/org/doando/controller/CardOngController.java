@@ -30,6 +30,7 @@ public class CardOngController implements Serializable {
 
 	public CardOngController() {
 		this.ongAppService = new OngApplicationService();
+		this.ongs = ongAppService.find();
 	}
 
 	public List<OngEntity> getOngs() throws SQLException, ClassNotFoundException {
