@@ -8,8 +8,45 @@
     <ui:define name="title">
         <h:outputText value="Doações" />
     </ui:define>
-    
-    <h1>Editar</h1>
-    
-    
+    <ui:define name="container">
+        <section class="container">           
+            <h3>Minhas Necessidades</h3>
+            <hr/>
+            <div class="row">
+                <h:form id="formNecessity" styleClass="">
+                    <div class="form-group row">
+                        <div class="col-xs-6">
+                            <span style="color:red; font-size: 1em;">* </span>
+                            <p:outputLabel value="Titulo " /> 
+                            <p:inputText placeholder="Ex: Precisa-se.." styleClass="form-control" value="#{necessityController.necessity.title}" required="true"/>
+                        </div>
+                        <div class="col-xs-6">
+                            <span style="color:red; font-size: 1em;">* </span>
+                            <p:outputLabel value="Prioridade " />
+                            <p:inputText styleClass="form-control" value="#{necessityController.necessity.priority}" required="true" />
+                        </div>
+                    </div>                                
+
+                    <div class="form-group row">
+                        <div class="col-xs-8">
+                            <span style="color:red; font-size: 1em;">* </span>
+                            <p:outputLabel value="Descrição " />
+                            <p:inputText  styleClass="form-control" value="#{necessityController.necessity.description}" required="true"/>
+                        </div>
+                        <div class="col-xs-4">
+                            <span style="color:red; font-size: 1em;">* </span>
+                            <p:outputLabel value="Data " />
+                            <p:inputText styleClass="form-control" value="#{necessityController.necessity.date}" required="true"/>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="pull-left">
+                            <p:commandButton value="Salvar" styleClass="btn btn-success-sui" action="#{eventsController.save()}" update="@form" />
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>  
+                </h:form> 
+            </div>
+        </section>
+    </ui:define>
 </ui:composition>

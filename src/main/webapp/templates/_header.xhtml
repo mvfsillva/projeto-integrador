@@ -18,7 +18,7 @@
                         <li class="page-scroll"> <p:commandLink value="Faça uma doação" action="/donation/donation.xhtml?faces-redirect=true" /> </li>
                         <li class="page-scroll"> <p:commandLink value="Seja um Voluntário" action="/voluntary/voluntary.xhtml?faces-redirect=true"/> </li>
                         <li class="page-scroll"> <p:commandLink value="Eventos Beneficentes" action="/event/event.xhtml?faces-redirect=true"/></li>
-                        <li class="page-scroll"> <p:commandLink value="#{loginController.externalTextForLoggedInUser}" action="/security/login.xhtml?faces-redirect=true"/></li>
+                        <li class="page-scroll"> <p:commandLink value="#{loginController.externalTextForLoggedInUser}" action="#{loginController.getExternalLinkForLoggedInUser()}"/></li>
                     </ul>            
                 </h:form>
             </div>                        

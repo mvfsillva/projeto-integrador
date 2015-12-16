@@ -8,8 +8,130 @@
     <ui:define name="title">
         <h:outputText value="Ongs" />
     </ui:define>
-    
-    <h1>Editar</h1>
-    
-    
+    <ui:define name="container">
+        <section class="container">           
+            <h3>Minha ONG</h3>
+            <hr/>
+            <div class="row">
+                <h:form id="formCadOng" styleClass="">
+                    <div class="form-group row">
+                        <div class="col-xs-8">
+                            <span style="color:red; font-size: 1em;">* </span>
+                            <p:outputLabel value="Nome da instituição " /> 
+                            <p:inputText placeholder="Ex: Acopamec" styleClass="form-control" value="#{ongCadasterController.ong.name}" required="true"/>
+                        </div>
+                        <div class="col-xs-4">    
+                            <span style="color:red; font-size: 1em;">* </span>                                    
+                            <p:outputLabel value="Tipo/Área de Atuação: " />
+                            <p:inputText type="email" placeholder="Ex: Crianças Carentes" styleClass="form-control" value="#{ongCadasterController.ong.type}" required="true"/>
+                        </div>
+                    </div>    
+                    <div class="form-group row">
+                        <div class="col-xs-4">           
+                            <span style="color:red; font-size: 1em;">* </span>                             
+                            <p:outputLabel value="E-mail: " />
+                            <p:inputText id="email" placeholder="Ex: email@email.com" styleClass="form-control" 
+                                         value="#{ongCadasterController.ong.email}"  
+                                         requiredMessage="Por favor digite seu e-mail."
+                                         validatorMessage="E-mail invalido!">
+                                <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                            </p:inputText>
+                            <p:watermark for="email" value="Email Address *" />
+                            <p:message for="email" />
+                        </div>
+                        <div class="col-xs-4">
+                            <span style="color:red; font-size: 1em;">* </span>
+                            <p:outputLabel value="Senha: " /> 
+                            <p:inputText type="password" styleClass="form-control" value="#{ongCadasterController.ong.password}" required="true"/>
+                        </div>
+                        <div class="col-xs-4">        
+                            <span style="color:red; font-size: 1em;">* </span>                                
+                            <p:outputLabel value="Confirmacao de senha: " />
+                            <p:inputText type="password" styleClass="form-control" value="#" required="true"/>
+                        </div>
+                    </div>                              
+                    <div class="form-group row">
+                        <div class="col-xs-6">
+                            <span style="color:red; font-size: 1em;">* </span>
+                            <p:outputLabel value="CEP " />
+                            <div class="input-group">
+                                <p:inputMask id="inputCep" mask="99999-999" placeholder="Ex: 00000111" styleClass="form-control" value="#{ongCadasterController.cep}" required="true"/>
+                                <span class="input-group-btn">
+                                    <h:commandButton value="Buscar CEP" styleClass="btn btn-primary" action="#{ongCadasterController.findCep()}">
+                                        <f:ajax execute="inputCep" render="inputRua inputBairro inputCidade inputEstado" />
+                                    </h:commandButton>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <span style="color:red; font-size: 1em;">* </span>
+                            <p:outputLabel value="Rua: " />
+                            <p:inputText id="inputRua" disabled="true" styleClass="form-control" value="#{ongCadasterController.address.street}" required="true"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-xs-6">
+                            <span style="color:red; font-size: 1em;">* </span>
+                            <p:outputLabel value="Bairro: " />
+                            <p:inputText id="inputBairro" disabled="true" styleClass="form-control" value="#{ongCadasterController.address.neighborhood}" required="true"/>
+                        </div>
+                        <div class="col-xs-4">
+                            <span style="color:red; font-size: 1em;">* </span>
+                            <p:outputLabel value="Cidade: " />
+                            <p:inputText id="inputCidade" disabled="true" styleClass="form-control" value="#{ongCadasterController.address.city}" required="true"/>
+                        </div>
+                        <div class="col-xs-2">
+                            <span style="color:red; font-size: 1em;">* </span>
+                            <p:outputLabel value="Estado: " />
+                            <p:inputText id="inputEstado" disabled="true" styleClass="form-control" value="#{ongCadasterController.address.state}" required="true"/>                                    
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-xs-3">
+                            <span style="color:red; font-size: 1em;">* </span>
+                            <p:outputLabel value="Numero: "/>
+                            <p:inputMask mask="9?9999" id="inputNum" styleClass="form-control" value="#{ongCadasterController.address.num}" required="true"/>
+                        </div>
+                        <div class="col-xs-9">
+                            <p:outputLabel value="Complemento: " />
+                            <p:inputText id="inputComplemento" styleClass="form-control" value="#{ongCadasterController.address.complement}" />
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-xs-6">
+                            <span style="color:red; font-size: 1em;">* </span>
+                            <p:outputLabel value="CNPJ: " />
+                            <p:inputMask mask="99.999.999/9999-99" styleClass="form-control" placeholder="Ex: 00.000.000/1111-11" value="#{ongCadasterController.ong.cnpj}" required="true"/>
+                        </div>                                    
+                        <div class="col-xs-6">
+                            <p:outputLabel value="Site: " />
+                            <p:inputText styleClass="form-control" placeholder="Ex: www.minhaong.org.br" value="#{ongCadasterController.ong.website}"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-xs-6">
+                            <span style="color:red; font-size: 1em;">* </span>
+                            <p:outputLabel value="Telefone Fixo: " />
+                            <p:inputMask mask="(99) 9999-9999" styleClass="form-control" value="#{ongCadasterController.address.primaryPhone}" placeholder="Ex: (71) 1234-5678" required="true"/>
+                        </div>
+                        <div class="col-xs-6">
+                            <p:outputLabel value="Telefone Celular: " />
+                            <p:inputMask mask="(99) 99999-9999" styleClass="form-control" value="#{ongCadasterController.address.secondaryPhone}" placeholder="Ex: (71) 1234-5678"/> 
+                        </div>                                    
+                    </div>
+                    <div class="modal-footer">
+                        <div class="pull-left">
+                            <p:commandButton value="Editar ONG" styleClass="btn btn-edit-sui btn-lg" action="#{ongCadasterController.save()}" update="@form" />
+                            <button type="button" class="btn btn-default-sui btn-lg" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>                                
+                </h:form>
+            </div>
+        </section>
+    </ui:define>
+
 </ui:composition>

@@ -2,6 +2,8 @@ package org.doando.repository;
 
 import java.io.Serializable;
 import java.lang.annotation.Annotation;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -113,4 +115,29 @@ public abstract class AbstractRepository<T extends Serializable, IdType extends 
         }
         return "id_".concat(((Table) ann[i]).name());
     }
+    
+//    public List<T> find(T t, int o) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+//    	return null;
+//    }
+//    
+//    private Map<String, Object> getFieldValuesAsQueryParameters(T t) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+//    	Map<String, Object> out = new HashMap<>();
+//    	Method[] methods = classOfEntity.getMethods();
+//    	for (int i = 0; i < methods.length; i++) {
+//    		if(methods[i].getName().contains("get")) {
+//    			Object methodReturn = methods[i].invoke(t);
+//    			if(methodReturn instanceof String) {
+//    				String temp = (String) methodReturn;
+//    				out.put(key, value)
+//    			}
+//    		}
+//		}
+//    	return null;
+//    }
+//    
+//    private String getFieldNameByGetMethod(Method m) {
+//    	String name = m.getName();
+//    	name = name.substring(name.indexOf("get"));
+//    	name.
+//    }
 }
