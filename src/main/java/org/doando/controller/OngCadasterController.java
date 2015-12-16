@@ -31,7 +31,6 @@ public class OngCadasterController implements Serializable {
 	private AddressEntity address;
 	private PostalCodeService postalCodeService;
 	private OngApplicationService ongAppService;
-	private String singUpButtonText;
 	
 	public OngCadasterController() {
 		this.address = new AddressEntity();
@@ -69,14 +68,6 @@ public class OngCadasterController implements Serializable {
 		this.ongs = ongs;
 	}
 	
-	public String getSingUpButtonText() {
-		return singUpButtonText;
-	}
-
-	public void setSingUpButtonText(String singUpButtonText) {
-		this.singUpButtonText = singUpButtonText;
-	}
-
 	public String save() throws SQLException, ClassNotFoundException {
 		address.setOng(ong);
 		ong.setAddress(address);
@@ -98,10 +89,10 @@ public class OngCadasterController implements Serializable {
 		this.ongs = ongAppService.find();
 		this.ong = SessionContext.getInstance().getLoggedInOng();
 		if (this.ong == null) {
-			this.singUpButtonText = "Ingressar no Doando.org";
 			this.ong = new OngEntity();
 		} else {
-			this.singUpButtonText = "Ver detalhes de " + this.ong.getName();
+			this.address = this.ong.getAddress();
+			this.ong.setPassword("");
 		}
 	}
 	
