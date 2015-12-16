@@ -27,8 +27,11 @@ public class LoginController implements Serializable {
 	private OngEntity user;
     private OngApplicationService ongAppService;
     
+    private boolean loggedIn;
+    
     private String externalTextForLoggedInUser;
     private String externalLinkForLoggedInUser;
+    private String displayText;
     
     public LoginController() {
         this.ongAppService = new OngApplicationService();
@@ -38,10 +41,14 @@ public class LoginController implements Serializable {
     private void initLoggedInOng() {
     	this.user = getLoggedInOng();
         if(this.user == null) {
+        	loggedIn = false;
+        	displayText = "block";
         	externalTextForLoggedInUser = "Login";
         	externalLinkForLoggedInUser = "/security/login.xhtml?faces-redirect=true";
             this.user = new OngEntity();
         } else {
+        	loggedIn = true;
+        	displayText = "none";
         	externalTextForLoggedInUser = this.user.getName();
         	externalLinkForLoggedInUser = "/ong/config.ong.xhtml?faces-redirect=true";
         }
@@ -112,6 +119,22 @@ public class LoginController implements Serializable {
 
 	public String getExternalLinkForLoggedInUser() {
 		return externalLinkForLoggedInUser;
+	}
+
+	public boolean isLoggedIn() {
+		return loggedIn;
+	}
+
+	public void setLoggedIn(boolean isLoggedIn) {
+		this.loggedIn = isLoggedIn;
+	}
+
+	public String getDisplayText() {
+		return displayText;
+	}
+
+	public void setDisplayText(String displayText) {
+		this.displayText = displayText;
 	}
 
 }
