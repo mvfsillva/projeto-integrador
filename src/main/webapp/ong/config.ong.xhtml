@@ -131,7 +131,7 @@
                     <div class="modal-footer">
                         <div class="pull-left">
                             <p:commandButton value="Editar ONG" styleClass="btn btn-edit-sui btn-sm" action="#{ongCadasterController.save()}" update="@form" />
-                            <button type="button" class="btn btn-default-sui btn-sm" data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-default-sui btn-sm" data-dismiss="modal" onclick="history.go(-1);">Cancelar</button>
                         </div>
                     </div>                                
                 </h:form>
