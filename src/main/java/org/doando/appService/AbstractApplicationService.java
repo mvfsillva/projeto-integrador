@@ -8,6 +8,13 @@ import org.doando.business.IBusinessManager;
 import org.doando.utils.HibernateUtils;
 import org.hibernate.Session;
 
+/**
+ * Facade for business calls.
+ * @author Yago Ferreira
+ *
+ * @param <T>
+ * @param <IdType>
+ */
 public class AbstractApplicationService<T extends Serializable, IdType extends Serializable>
 		implements IApplicationService<T, IdType> {
 
@@ -18,6 +25,11 @@ public class AbstractApplicationService<T extends Serializable, IdType extends S
 		session = HibernateUtils.getSession();
 	}
 
+	/**
+	 * Get a Hibernate Session from HibernateUtils.
+	 * If it is closed or not connected, open another one and returns it.
+	 * @return The usable session from hibernate.
+	 */
 	public Session getSession() {
 		if (!session.isConnected() || !session.isOpen()) {
 			this.session = HibernateUtils.getSession();
@@ -45,7 +57,10 @@ public class AbstractApplicationService<T extends Serializable, IdType extends S
 		session.flush();
 		session.close();
 	}
-
+	
+	/**
+     * Gets a single entity from database by id.
+     */
 	@Override
 	public T find(IdType id) {
 		initialize();
@@ -54,6 +69,9 @@ public class AbstractApplicationService<T extends Serializable, IdType extends S
 		return t;
 	}
 
+	/**
+     * Selects all entities from a database's table .
+     */
 	@Override
 	public List<T> find() {
 		initialize();
@@ -62,6 +80,9 @@ public class AbstractApplicationService<T extends Serializable, IdType extends S
 		return list;
 	}
 
+	/**
+     * Get a list of entity from database by named query.
+     */
 	@Override
 	public List<T> find(String namedQuery, Map<String, Object> params) {
 		initialize();
@@ -70,6 +91,9 @@ public class AbstractApplicationService<T extends Serializable, IdType extends S
 		return list;
 	}
 
+	/**
+     * Save an entity into the database.
+     */
 	@Override
 	public void save(T t) {
 		initialize();
@@ -88,6 +112,9 @@ public class AbstractApplicationService<T extends Serializable, IdType extends S
 		}
 	}
 
+	/**
+     * Save a list of entities into the database.
+     */
 	@Override
 	public void save(List<T> tList) {
 		initialize();
@@ -105,7 +132,10 @@ public class AbstractApplicationService<T extends Serializable, IdType extends S
 			cleanUp();
 		}
 	}
-
+	
+	/**
+     * Update an entity into the database.
+     */
 	@Override
 	public void update(T t) {
 		initialize();
@@ -124,6 +154,9 @@ public class AbstractApplicationService<T extends Serializable, IdType extends S
 		}
 	}
 
+	/**
+     * Delete an entity from database.
+     */
 	@Override
 	public void delete(T t) {
 		initialize();
@@ -142,6 +175,9 @@ public class AbstractApplicationService<T extends Serializable, IdType extends S
 		}
 	}
 
+	/**
+     * Delete a list of entities from database.
+     */
 	@Override
 	public void delete(List<T> tList) {
 		initialize();
@@ -160,3 +196,4 @@ public class AbstractApplicationService<T extends Serializable, IdType extends S
 		}
 	}
 }
+

@@ -9,7 +9,8 @@ import org.hibernate.Session;
 
 
 /**
- * Class for generic business.
+ * Generic business class that calls the instantiated repository 
+ * at subclasses constructor.
  *
  * @author Yago Ferreira
  * @param <T>
@@ -20,6 +21,9 @@ public abstract class AbstractBusiness<T extends Serializable, IdType extends Se
 
     protected IRepository<T, IdType> repository;
     
+    /**
+     * Provides the generic validation that can be overwritten by subclasses.  
+     */
     @Override
     public void validate(T t) throws IllegalArgumentException {
         if (t == null) {
@@ -37,27 +41,42 @@ public abstract class AbstractBusiness<T extends Serializable, IdType extends Se
     	repository.setSession(session);
     }
     
+    /**
+     * Gets a single entity from database by id.
+     */
     @Override
     public T find(IdType id) {
         return (T) getRepository().find(id);
     }
 
+    /**
+     * Selects all entities from a database's table .
+     */
     @Override
     public List<T> find() {
         return getRepository().find();
     }
-
+    
+    /**
+     * Get a list of entity from database by named query.
+     */
     @Override
     public List<T> find(String namedQuery, Map<String, Object> params) {
         return getRepository().find(namedQuery, params);
     }
     
+    /**
+     * Save an entity into the database calling the validations method.
+     */
     @Override
     public int save(T t) {
         validate(t);
         return getRepository().save(t);
     }
     
+    /**
+     * Save a list of entities into the database.
+     */
     @Override
     public void save(List<T> tList) {
     	for (T t : tList) {
@@ -65,17 +84,26 @@ public abstract class AbstractBusiness<T extends Serializable, IdType extends Se
 		}
     }
 
+    /**
+     * Update an entity into the database.
+     */
     @Override
     public void update(T t) {
         validate(t);
         getRepository().update(t);
     }
 
+    /**
+     * Delete an entity from database.
+     */
     @Override
     public void delete(T t) {
         getRepository().delete(t);
     }
     
+    /**
+     * Delete a list of entities from database.
+     */
     @Override
     public void delete(List<T> tList) {
     	getRepository().delete(tList);    	

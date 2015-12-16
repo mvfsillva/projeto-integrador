@@ -2,8 +2,6 @@ package org.doando.repository;
 
 import java.io.Serializable;
 import java.lang.annotation.Annotation;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,7 +12,9 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 /**
- *
+ * Generalize the database data access into a single class.
+ * It can be extended to provide a full data by another classes.
+ * Uses Hibernate to simplify the data access calls.
  * @author Yago Ferreira
  * @param <T>
  * @param <IdType>
@@ -39,12 +39,18 @@ public abstract class AbstractRepository<T extends Serializable, IdType extends 
         return this.session;
     }
 
+    /**
+     * Save an entity into the database.
+     */
     @Override
     public int save(T t) {
         Session s = getSession();
         return (int) s.save(t);
     }
 
+    /**
+     * Save a list of entities into the database.
+     */
     @Override
     public void save(List<T> tList) {
         for (T t : tList) {
@@ -52,18 +58,27 @@ public abstract class AbstractRepository<T extends Serializable, IdType extends 
         }
     }
 
+    /**
+     * Update an entity into the database.
+     */
     @Override
     public void update(T t) {
         Session s = getSession();
         s.update(t);
     }
 
+    /**
+     * Delete an entity from database.
+     */
     @Override
     public void delete(T t) {
         Session s = getSession();
         s.delete(t);
     }
 
+    /**
+     * Delete a list of entities from database.
+     */
     @Override
     public void delete(List<T> tList) {
         for (T t : tList) {
@@ -71,6 +86,9 @@ public abstract class AbstractRepository<T extends Serializable, IdType extends 
         }
     }
 
+    /**
+     * Get a list of entity from database by named query.
+     */
     @Override
     public List<T> find(String namedQuery, Map<String, Object> params) {
         Session s = getSession();
@@ -79,6 +97,9 @@ public abstract class AbstractRepository<T extends Serializable, IdType extends 
         return query.list();
     }
 
+    /**
+     * Gets a single entity from database by id.
+     */
     @Override
     public T find(IdType id) {
         Session s = getSession();
@@ -90,6 +111,9 @@ public abstract class AbstractRepository<T extends Serializable, IdType extends 
         return (T) query.uniqueResult();
     }
 
+    /**
+     * Selects all entities from a database's table .
+     */
     @Override
     public List<T> find() {
         Session s = getSession();
