@@ -1,7 +1,9 @@
 
 package org.doando.appService;
 
+import java.io.Serializable;
 import java.util.List;
+
 import org.doando.business.OngBusiness;
 import org.doando.entity.OngEntity;
 
@@ -9,7 +11,12 @@ import org.doando.entity.OngEntity;
  *
  * @author MarcusSilva
  */
-public class OngApplicationService extends AbstractApplicationService<OngEntity, Integer> {
+public class OngApplicationService extends AbstractApplicationService<OngEntity, Integer> implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3362608207676880593L;
 
 	public OngApplicationService() {
 		this.business = new OngBusiness();
