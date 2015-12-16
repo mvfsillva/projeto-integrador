@@ -12,4 +12,11 @@ public class NecessityApplicationService extends AbstractApplicationService<Nece
     public NecessityApplicationService() {
 	this.business = new NecessityBusiness();
     }
+    
+    public NecessityEntity find(String ongName) {
+        initialize();
+        NecessityEntity p = ((NecessityBusiness) business).find(ongName);
+        cleanUp();
+        return p;
+    }
 }

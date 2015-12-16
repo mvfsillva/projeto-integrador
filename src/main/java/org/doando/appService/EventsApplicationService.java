@@ -12,4 +12,11 @@ public class EventsApplicationService extends AbstractApplicationService<EventsE
     public EventsApplicationService() {
 	this.business = new EventsBusiness();
     }
+    
+    public EventsEntity find(String name) {
+        initialize();
+        EventsEntity p = ((EventsBusiness) business).find(name);
+        cleanUp();
+        return p;
+    }
 }

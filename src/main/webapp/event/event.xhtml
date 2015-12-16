@@ -10,7 +10,7 @@
     <ui:define name="container">
         <section id="need">            
             <div class="container">
-                <button class="btn btn-success-sui" data-toggle="modal" data-target="#myModal">Criar um Evento</button>
+                <button class="btn btn-success-sui" data-toggle="modal" data-target="#myModal" style="display:#{loginController.displayTextForLogoutLabel}" >Criar um Evento</button>
                 <hr />
                 <h3>Eventos Beneficentes</h3>       
                 <div class="row">
@@ -78,7 +78,8 @@
                                         <div class="card__author">                                    
                                             <div class="card__author-content">
                                                 <button class="btn btn-info btn-sm">Entrar em Contato</button>
-                                                <p:commandButton value="Editar" styleClass="btn btn-info btn-sm" action="#{eventsController.teste(event)}" />
+                                                <p:commandButton value="Editar" style="display:#{loginController.displayTextForLogoutLabel}" styleClass="btn btn-info btn-sm" action="#{eventsController.teste(event)}" />
+                                                <p:commandButton value="Deletar" style="display:#{loginController.displayTextForLogoutLabel}" styleClass="btn btn-delete-sui btn-sm" action="#{eventsController.delete(event)}" />
                                             </div>
                                         </div>
                                     </div>

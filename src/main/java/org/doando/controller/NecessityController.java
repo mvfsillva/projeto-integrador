@@ -1,5 +1,6 @@
 package org.doando.controller;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
@@ -62,8 +63,25 @@ public class NecessityController implements Serializable{
         return "/donation/donation.xhtml?faces-redirect=true";
     }
     
+    public String teste(NecessityEntity entity) throws IOException{
+        this.necessity = necessityAppService.find(entity.getOngName());
+        if (this.necessity != null) {
+            this.necessity.getTitle();
+            this.necessity.getPriority();
+            this.necessity.getDescription();
+            this.necessity.getDate();
+        }
+        return "/donation/config.donation.xhtml?faces-redirect=true";
+    }
+    
     public void init(){
         this.necessities = necessityAppService.find();
+    }
+    
+    public String delete(NecessityEntity e) {
+        NecessityEntity necessityToDelete = necessityAppService.find(e.getOngName());
+        necessityAppService.delete(necessityToDelete);
+        return "/donation/donation.xhtml?faces-redirect=true";
     }
     
     public String cancel(){

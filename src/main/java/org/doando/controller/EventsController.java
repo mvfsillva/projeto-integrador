@@ -69,22 +69,24 @@ public class EventsController implements Serializable{
     }
     
     public String teste(EventsEntity entity) throws IOException{
-        if (entity != null) {
-           this.event.setName(entity.getName());
-            this.event.setLocality(entity.getLocality());
-            this.event.setDescription(entity.getDescription());
-            this.event.setDate(entity.getDate());
+        this.event = eventsAppService.find(entity.getName());
+        if (this.event != null) {
+            this.event.getName();
+            this.event.getDescription();
+            this.event.getLocality();
+            this.event.getDate();
         }
         return "/event/config.event.xhtml?faces-redirect=true";
     }
     
-      public String delete(EventsEntity e) {
-        eventsAppService.delete(e);
+    public String delete(EventsEntity e) {
+        EventsEntity eventToDelete = eventsAppService.find(e.getName());
+        eventsAppService.delete(eventToDelete);
         return "/event/event.xhtml?faces-redirect=true";
     }
       
     public String cancel(){
-        return "event/event.xhtml?faces-redirect=true";
+        return "/event/event.xhtml?faces-redirect=true";
     }
     
 }
