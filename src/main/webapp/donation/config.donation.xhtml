@@ -47,7 +47,7 @@
                     <div class="modal-footer">
                         <div class="pull-left">
                             <p:commandButton value="Editar" styleClass="btn btn-success-sui" action="#{necessityController.save()}" update="@form" />
-                            <p:commandButton value="Cancelar" styleClass="btn btn-default-sui" action="#{necessityController.cancel()}"/>
+                            <p:commandLink type="button" value="Cancelar" styleClass="btn btn-default-sui" action="/donation/donation.xhtml?faces-redirect=true"/>
                         </div>
                     </div>  
                 </h:form> 

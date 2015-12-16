@@ -84,9 +84,5 @@ public class EventsController implements Serializable{
         eventsAppService.delete(eventToDelete);
         return "/event/event.xhtml?faces-redirect=true";
     }
-      
-    public String cancel(){
-        return "/event/event.xhtml?faces-redirect=true";
-    }
     
 }

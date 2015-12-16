@@ -48,7 +48,7 @@
                     <div class="modal-footer">
                         <div class="pull-left">
                             <p:commandButton value="Editar" styleClass="btn btn-success-sui" action="#{eventsController.save()}" update="@form" />
-                            <p:commandButton value="Cancelar" styleClass="btn btn-default-sui" action="#{eventsController.cancel()}"/>
+                            <p:commandLink type="button" value="Cancelar" styleClass="btn btn-default-sui" action="/event/event.xhtml?faces-redirect=true"/>
                         </div>
                     </div>
                     <p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg" showEffect="fold">

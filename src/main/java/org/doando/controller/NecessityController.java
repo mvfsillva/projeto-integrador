@@ -84,8 +84,4 @@ public class NecessityController implements Serializable{
         return "/donation/donation.xhtml?faces-redirect=true";
     }
     
-    public String cancel(){
-        return "/donation/donation.xhtml?faces-redirect=true";
-    }
-    
 }
