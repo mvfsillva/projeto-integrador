@@ -14,12 +14,12 @@
                         <div class="col-xs-8">
                             <span style="color:red; font-size: 1em;">* </span>
                             <p:outputLabel value="Nome Completo " /> 
-                            <p:inputText placeholder="Ex: Meu nome" styleClass="form-control" value="#{voluntaryController.voluntary.name}" required="true"/>
+                            <p:inputText placeholder="Ex: Meu nome" styleClass="form-control form-sui" value="#{voluntaryController.voluntary.name}" required="true"/>
                         </div>
                         <div class="col-xs-4">
                             <span style="color:red; font-size: 1em;">* </span>
                             <p:outputLabel value="Sexo" />
-                            <p:inputText styleClass="form-control" value="#{voluntaryController.voluntary.sex}" required="true" />
+                            <p:inputText styleClass="form-control form-sui" value="#{voluntaryController.voluntary.sex}" required="true" />
                         </div>
                     </div>                                
 
@@ -27,7 +27,7 @@
                         <div class="col-xs-8">
                             <span style="color:red; font-size: 1em;">* </span>
                             <p:outputLabel value="E-mail " />
-                            <p:inputText id="email" styleClass="form-control" value="#{voluntaryController.voluntary.email}" 
+                            <p:inputText id="email" styleClass="form-control form-sui" value="#{voluntaryController.voluntary.email}" 
                                          requiredMessage="Por favor digite seu e-mail."
                                          validatorMessage="E-mail invalido!">
                                 <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />                                        
@@ -38,7 +38,7 @@
                         <div class="col-xs-4">
                             <span style="color:red; font-size: 1em;">* </span>
                             <p:outputLabel value="Telefone: " />
-                            <p:inputMask mask="(99) 99999-9999" styleClass="form-control" value="#{voluntaryController.voluntary.phone}" required="true"/>
+                            <p:inputMask mask="(99) 99999-9999" styleClass="form-control form-sui" value="#{voluntaryController.voluntary.phone}" required="true"/>
                         </div>
                     </div>
 
@@ -47,9 +47,9 @@
                             <span style="color:red; font-size: 1em;">* </span>
                             <p:outputLabel value="CEP " />
                             <div class="input-group">
-                                <p:inputMask mask="99999-999" id="inputCep" placeholder="Ex: 00000111" styleClass="form-control" value="#{voluntaryController.cep}" required="true"/>
+                                <p:inputMask mask="99999-999" id="inputCep" placeholder="Ex: 00000111" styleClass="form-control form-sui" value="#{voluntaryController.cep}" required="true"/>
                                 <span class="input-group-btn">
-                                    <h:commandButton value="Buscar CEP" styleClass="btn btn-primary" action="#{voluntaryController.findCep()}">
+                                    <h:commandButton value="Buscar CEP" styleClass="btn btn-date-sui btn-sm" action="#{voluntaryController.findCep()}">
                                         <f:ajax execute="inputCep" render="inputRua inputBairro inputCidade inputEstado" />
                                     </h:commandButton>
                                 </span>
@@ -58,7 +58,7 @@
                         <div class="col-xs-6">
                             <span style="color:red; font-size: 1em;">* </span>
                             <p:outputLabel value="Rua: " />
-                            <p:inputText id="inputRua" disabled="true" styleClass="form-control" value="#{voluntaryController.address.street}" required="true"/>
+                            <p:inputText id="inputRua" disabled="true" styleClass="form-control form-sui" value="#{voluntaryController.address.street}" required="true"/>
                         </div>
                     </div>
 
@@ -66,35 +66,35 @@
                         <div class="col-xs-6">
                             <span style="color:red; font-size: 1em;">* </span>
                             <p:outputLabel value="Bairro: " />
-                            <p:inputText id="inputBairro" disabled="true" styleClass="form-control" value="#{voluntaryController.address.neighborhood}" required="true"/>
+                            <p:inputText id="inputBairro" disabled="true" styleClass="form-control form-sui" value="#{voluntaryController.address.neighborhood}" required="true"/>
                         </div>
                         <div class="col-xs-4">
                             <span style="color:red; font-size: 1em;">* </span>
                             <p:outputLabel value="Cidade: " />
-                            <p:inputText id="inputCidade" disabled="true" styleClass="form-control" value="#{voluntaryController.address.city}" required="true"/>
+                            <p:inputText id="inputCidade" disabled="true" styleClass="form-control form-sui" value="#{voluntaryController.address.city}" required="true"/>
                         </div>
                         <div class="col-xs-2">
                             <span style="color:red; font-size: 1em;">* </span>
                             <p:outputLabel value="Estado: " />
-                            <p:inputText id="inputEstado" disabled="true" styleClass="form-control" value="#{voluntaryController.address.state}" required="true"/>                                    
+                            <p:inputText id="inputEstado" disabled="true" styleClass="form-control form-sui" value="#{voluntaryController.address.state}" required="true"/>                                    
                         </div>
                     </div> 
 
                     <div class="form-group row">                                    
                         <div class="col-xs-6">                                    
                             <p:outputLabel value="Interesse " />                                   
-                            <p:inputText styleClass="form-control" value="#{voluntaryController.voluntary.interest}"/>
+                            <p:inputText styleClass="form-control form-sui" value="#{voluntaryController.voluntary.interest}"/>
                         </div>                                    
                         <div class="col-xs-6">
                             <span style="color:red; font-size: 1em;">* </span>
                             <p:outputLabel value="Disponibilidade " />
-                            <p:inputText styleClass="form-control" value="#{voluntaryController.voluntary.availability}" required="true" />
+                            <p:inputText styleClass="form-control form-sui" value="#{voluntaryController.voluntary.availability}" required="true" />
                         </div>  
                     </div>
                     <div class="modal-footer">
                         <div class="pull-left">
-                            <p:commandButton value="Salvar" styleClass="btn btn-success btn-success-sui" action="#{voluntaryController.save()}" update="@form" />
-                            <button type="button" class="btn btn-default-sui btn-lg" data-dismiss="modal">Cancelar</button>
+                            <p:commandButton value="Salvar" styleClass="btn btn-success-sui btn-sm" action="#{voluntaryController.save()}" update="@form" />
+                            <button type="button" class="btn btn-default-sui btn-sm" data-dismiss="modal">Cancelar</button>
                         </div>
                     </div>  
                 </h:form>                    

@@ -34,7 +34,6 @@
                                                    title="Compartilhe no Twitter">
                                                     <span class="fa fa-twitter"></span>
                                                 </a>
-
                                             </div>
                                         </div>
                                         <div class="card__meta">                                        
@@ -50,18 +49,15 @@
                                     </div>
                                     <div class="card__action">
                                         <div class="card__author">                                    
-                                            <div class="card__author-content">
-                                                <button class="btn btn-transparent-sui btn-sm">Entrar em Contato</button>
+                                            <div class="card__author-content">                                                
+                                                <button type="button" class="btn btn-transparent-sui btn-sm" data-toggle="modal" data-target=".bd-example-modal-sm">Entrar em Contato</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>                            
                             </div>
                         </ui:repeat>
-                    </h:form>
-                    <!--<div class="text-center">
-                            <p:commandButton styleClass="btn btn-danger btn-sm" value="Deletar" action="#{voluntaryController.delete(voluntary.name)}"/>
-                        </div>-->
+                    </h:form>                   
                 </div>
             </div>            
         </section>
@@ -69,6 +65,52 @@
         <!-- Modal -->
         <div class="modal fade" id="myModal" role="dialog">
             <ui:include src="modal.voluntary.xhtml"/> 
+        </div>
+
+
+        <!-- Contact Modal -->        
+        <div class="modal  fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">x</button>
+                        <h4 class="modal-title">Entre em Contato</h4>
+                        <small style="color:red;">Os campos com (*) são obrigatórios!</small>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">                            
+                            <div class="col-md-12">
+                                <div class="col-md-6">
+                                    <span style="color:red; font-size: 1em;">* </span>
+                                    <p:outputLabel value="Nome" /> 
+                                    <p:inputText styleClass="form-control form-sui" value="" />
+                                </div>
+                                <div class="col-md-6">
+                                    <span style="color:red; font-size: 1em;">* </span>
+                                    <p:outputLabel value="E-mail" />
+                                    <p:inputText styleClass="form-control form-sui" value="#{necessityController.necessity.priority}" required="true" />
+                                </div>
+                                <div class="col-md-6">
+                                    <span style="color:red; font-size: 1em;">* </span>
+                                    <p:outputLabel value="Assunto" /> 
+                                    <p:inputText styleClass="form-control form-sui" value="" />
+                                </div>
+                                <div class="col-md-8">
+                                    <span style="color:red; font-size: 1em;">* </span>
+                                    <p:outputLabel value="Descrição" /> 
+                                    <p:inputTextarea styleClass="form-control form-sui" rows="10" cols="50" queryDelay="750" minQueryLength="4"/>
+                                </div>
+                            </div>
+                        </div>         
+                    </div>
+                    <div class="modal-footer">
+                        <div class="pull-left">
+                            <p:commandButton value="Salvar" styleClass="btn btn-success-sui btn-sm"/>
+                            <button type="button" class="btn btn-default-sui btn-sm" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>  
+                </div>
+            </div>
         </div>
     </ui:define>
 </ui:composition>
