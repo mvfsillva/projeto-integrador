@@ -46,8 +46,8 @@
                     </div>
                     <div class="modal-footer">
                         <div class="pull-left">
-                            <p:commandButton value="Editar" styleClass="btn btn-success-sui" action="#{necessityController.save()}" update="@form" />
-                            <p:commandLink type="button" value="Cancelar" styleClass="btn btn-default-sui" action="/donation/donation.xhtml?faces-redirect=true"/>
+                            <p:commandButton value="Editar" styleClass="btn btn-success-sui btn-sm" action="#{necessityController.save()}" update="@form" />
+                            <p:commandButton type="button" value="Cancelar" styleClass="btn btn-default-sui btn-sm" onclick="history.go(-1);"/>
                         </div>
                     </div>  
                 </h:form> 

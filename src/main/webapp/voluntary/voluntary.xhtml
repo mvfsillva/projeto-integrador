@@ -26,12 +26,16 @@
                                     </div>
                                     <div class="card__content card__padding">
                                         <div class="card__share">
-                                            <div class="card__social">  
-                                                <a class="share-icon facebook"   href="#"><span class="fa fa-facebook"></span></a>
-                                                <a class="share-icon twitter"    href="#"><span class="fa fa-twitter"></span></a>
-                                                <a class="share-icon googleplus" href="#"><span class="fa fa-google-plus"></span></a>
+                                            <div class="card__share">
+                                                <a class="share-icon twitter" 
+                                                   aria-label="Comparilhe no Twitter" 
+                                                   href="https://twitter.com/intent/tweet?text=&quot;Obrigado #{voluntary.name} por acreditar em um mundo melhor!&quot;%20http://doando.org/donation%20via%20&#64;doandoorg"
+                                                   onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" 
+                                                   title="Compartilhe no Twitter">
+                                                    <span class="fa fa-twitter"></span>
+                                                </a>
+
                                             </div>
-                                            <a id="share" class="share-toggle share-icon" href="#"></a>
                                         </div>
                                         <div class="card__meta">                                        
                                             <small><h:outputText value="#{voluntary.sex}" /></small>
@@ -64,7 +68,7 @@
 
         <!-- Modal -->
         <div class="modal fade" id="myModal" role="dialog">
-           <ui:include src="modal.voluntary.xhtml"/> 
+            <ui:include src="modal.voluntary.xhtml"/> 
         </div>
     </ui:define>
 </ui:composition>
