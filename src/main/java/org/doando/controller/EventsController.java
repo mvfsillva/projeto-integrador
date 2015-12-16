@@ -22,6 +22,7 @@ public class EventsController implements Serializable{
     
     private String ong;
     private String email;
+    private boolean loggedIn;
     private EventsEntity event;
     private List<EventsEntity> events;
     private EventsApplicationService eventsAppService;
@@ -29,6 +30,7 @@ public class EventsController implements Serializable{
     public EventsController() {
         this.event = new EventsEntity();
         this.eventsAppService = new EventsApplicationService();
+        this.loggedIn = true;
         init();
     }
 
@@ -55,9 +57,15 @@ public class EventsController implements Serializable{
     public String save(){
         ong = SessionContext.getInstance().getLoggedInOng().getName();
         email =  SessionContext.getInstance().getLoggedInOng().getEmail();
-        event.setOngName(ong);
-        event.setEmailOng(email);
-        eventsAppService.save(event);
+        if(loggedIn){
+            event.setOngName(ong);
+            event.setEmailOng(email);
+            eventsAppService.update(event);
+        }else{
+            event.setOngName(ong);
+            event.setEmailOng(email);
+            eventsAppService.save(event);
+        }
         init();
         clear();
         return "/event/event.xhtml?faces-redirect=true";
@@ -70,6 +78,7 @@ public class EventsController implements Serializable{
     public String teste(EventsEntity entity) throws IOException{
         this.event = eventsAppService.find(entity.getName());
         if (this.event != null) {
+            this.loggedIn = true;
             this.event.getName();
             this.event.getDescription();
             this.event.getLocality();
