@@ -5,7 +5,9 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import org.doando.appService.EventsApplicationService;
+import org.doando.appService.OngApplicationService;
 import org.doando.entity.EventsEntity;
+import org.doando.entity.OngEntity;
 import org.doando.session.SessionContext;
 
 /**
@@ -18,9 +20,11 @@ public class EventsController implements Serializable{
     
     public static final long serialVersionUID = 0L;
     
+    private OngEntity ong;
     private EventsEntity event;
     private List<EventsEntity> events;
     private EventsApplicationService eventsAppService;
+    private OngApplicationService ongAppService;
 
     public EventsController() {
         this.event = new EventsEntity();
@@ -43,11 +47,16 @@ public class EventsController implements Serializable{
         this.events = events;
     }
     
+    public void clear(){
+        this.event = new EventsEntity();
+    }
+    
     public String save(){
-        //ong = SessionContext.getInstance().getLoggedInUser();
-        //TODO pegar currentOng.getEvents().add(event);
-        eventsAppService.save(event);
-        return "";
+        ong = SessionContext.getInstance().getLoggedInOng();
+        ong.getEvents().add(event);
+        ongAppService.save(ong);
+        clear();
+        return "/event/event.xhtml?faces-redirect=true";
     }
     
 }
