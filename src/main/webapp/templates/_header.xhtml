@@ -20,7 +20,7 @@
                         <li class="page-scroll"> <p:commandLink value="Eventos Beneficentes" action="/event/event.xhtml?faces-redirect=true"/></li>
                         <li class="page-scroll"> <p:commandLink value="#{loginController.externalTextForLoggedInUser}" action="#{loginController.getExternalLinkForLoggedInUser()}"/></li>
                         <li class="page-scroll"> 
-                            <p:commandLink value="Sair" style="color:yellow"/>
+                            <p:commandLink value="Sair" style="color:yellow; display:#{loginController.displayTextForLogoutLabel}" action="#{loginController.doLogout}"/>
                         </li>
                     </ul>            
                 </h:form>

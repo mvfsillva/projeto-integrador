@@ -92,6 +92,9 @@ public class OngCadasterController implements Serializable {
 			this.ong = new OngEntity();
 		} else {
 			this.address = this.ong.getAddress();
+			this.cep = this.address.getPostalCode();
+			this.address.setPrimaryPhone(address.getPrimaryPhone());
+			this.address.setSecondaryPhone(address.getSecondaryPhone());
 			this.ong.setPassword("");
 		}
 	}
