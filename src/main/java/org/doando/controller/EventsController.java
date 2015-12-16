@@ -5,7 +5,6 @@ import java.io.Serializable;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
 import org.doando.appService.EventsApplicationService;
 import org.doando.entity.EventsEntity;
 import org.doando.session.SessionContext;
@@ -30,7 +29,7 @@ public class EventsController implements Serializable{
     public EventsController() {
         this.event = new EventsEntity();
         this.eventsAppService = new EventsApplicationService();
-        this.loggedIn = true;
+        this.loggedIn = false;
         init();
     }
 
@@ -90,6 +89,7 @@ public class EventsController implements Serializable{
     public String delete(EventsEntity e) {
         EventsEntity eventToDelete = eventsAppService.find(e.getName());
         eventsAppService.delete(eventToDelete);
+        init();
         return "/event/event.xhtml?faces-redirect=true";
     }
     

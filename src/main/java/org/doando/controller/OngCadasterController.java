@@ -6,8 +6,6 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
-
 import org.doando.appService.OngApplicationService;
 import org.doando.entity.AddressEntity;
 import org.doando.entity.OngEntity;

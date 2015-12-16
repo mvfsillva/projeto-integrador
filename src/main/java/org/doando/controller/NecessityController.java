@@ -5,7 +5,6 @@ import java.io.Serializable;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
 import org.doando.appService.NecessityApplicationService;
 import org.doando.entity.NecessityEntity;
 import org.doando.session.SessionContext;
@@ -91,6 +90,7 @@ public class NecessityController implements Serializable{
     public String delete(NecessityEntity e) {
         NecessityEntity necessityToDelete = necessityAppService.find(e.getOngName());
         necessityAppService.delete(necessityToDelete);
+        init();
         return "/donation/donation.xhtml?faces-redirect=true";
     }
     
