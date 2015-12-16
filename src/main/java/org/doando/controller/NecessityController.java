@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import org.doando.appService.NecessityApplicationService;
 import org.doando.entity.NecessityEntity;
@@ -15,7 +16,7 @@ import org.doando.session.SessionContext;
  */
 
 @ManagedBean(name="necessityController")
-@ViewScoped
+@SessionScoped
 public class NecessityController implements Serializable{
     
     public static final long serialVersionUID = 0L;
@@ -24,11 +25,13 @@ public class NecessityController implements Serializable{
     private String email;
     private NecessityEntity necessity;
     private List<NecessityEntity> necessities;
+    private boolean loggedIn;
     private NecessityApplicationService necessityAppService;
 
     public NecessityController() {
         this.necessity = new NecessityEntity();
         this.necessityAppService = new NecessityApplicationService();
+        this.loggedIn = false;
         init();
     }
     
@@ -55,9 +58,15 @@ public class NecessityController implements Serializable{
     public String save (){
         ong = SessionContext.getInstance().getLoggedInOng().getName();
         email = SessionContext.getInstance().getLoggedInOng().getEmail();
-        necessity.setOngName(ong);
-        necessity.setEmailOng(email);
-        necessityAppService.save(necessity);
+        if(loggedIn){
+            necessity.setOngName(ong);
+            necessity.setEmailOng(email);
+            necessityAppService.update(necessity);
+        }else{
+            necessity.setOngName(ong);
+            necessity.setEmailOng(email);
+            necessityAppService.save(necessity);
+        }
         init();
         clear();
         return "/donation/donation.xhtml?faces-redirect=true";
@@ -66,6 +75,7 @@ public class NecessityController implements Serializable{
     public String teste(NecessityEntity entity) throws IOException{
         this.necessity = necessityAppService.find(entity.getOngName());
         if (this.necessity != null) {
+            this.loggedIn = true;
             this.necessity.getTitle();
             this.necessity.getPriority();
             this.necessity.getDescription();

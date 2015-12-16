@@ -40,8 +40,8 @@
                         </div>
                         <div class="col-xs-4">
                             <span style="color:red; font-size: 1em;">* </span>
-                            <p:outputLabel value="Data " />
-                            <p:inputText styleClass="form-control form-sui" value="#{necessityController.necessity.date}" required="true"/>
+                            <p:outputLabel for="popup" value="Data " />
+                            <p:inputText styleClass="form-control form-sui" id="popup" value="#{necessityController.necessity.date}" required="true"/>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -49,7 +49,13 @@
                             <p:commandButton value="Editar" styleClass="btn btn-success-sui btn-sm" action="#{necessityController.save()}" update="@form" />
                             <p:commandButton type="button" value="Cancelar" styleClass="btn btn-default-sui btn-sm" onclick="history.go(-1);"/>
                         </div>
-                    </div>  
+                    </div>
+                    <p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg" showEffect="fold">
+                        <h:outputText value="Popup:" />
+                        <h:outputText value="#{necessityController.necessity.date}">
+                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                        </h:outputText>
+                    </p:dialog>
                 </h:form> 
             </div>
         </section>

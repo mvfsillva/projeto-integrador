@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import org.doando.appService.EventsApplicationService;
 import org.doando.entity.EventsEntity;
@@ -14,7 +15,7 @@ import org.doando.session.SessionContext;
  * @author arthur
  */
 @ManagedBean(name="eventsController")
-@ViewScoped
+@SessionScoped
 public class EventsController implements Serializable{
     
     public static final long serialVersionUID = 0L;
