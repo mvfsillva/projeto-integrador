@@ -442,3 +442,8 @@ div[id="ui-datepicker-div"]{
     background: #fff;
     border:1px solid #ccc;
 }
+
+.intro-text {
+    top: -13rem;
+    position: relative;
+}

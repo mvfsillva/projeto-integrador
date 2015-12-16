@@ -1,19 +1,26 @@
 <ui:composition template="../templates/main.xhtml"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:h="http://java.sun.com/jsf/html"      
-                xmlns:p="http://primefaces.org/ui">
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:define name="container">
         <h:body style="background: #ccc;"> 
-            <section class="container">
-                <p:growl autoUpdate="true" /> 
+            <section class="container">                
                 <h:form id="formLogin" enctype="multipart/form-data"> 
                     <div class="form-signin login-card">
                         <h1 class="login-title">Doando.org</h1>
                         <p class="login-info">Projeto Integrador</p>
-                        <p:growl autoUpdate="true" id="messages"/> 
-
-                        <p:inputText value="#{loginController.ong.email}" styleClass="form-control inpt-login" placeholder="Email"  />                     
-                        <p:password value="#{loginController.ong.password}" styleClass="form-control inpt-login" placeholder="Senha" />                                 
+                        <p:inputText id="email" value="#{loginController.ong.email}" 
+                                     styleClass="form-control inpt-login" placeholder="Email" 
+                                     requiredMessage="Por favor digite seu e-mail."
+                                     validatorMessage="E-mail invalido!">
+                            <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />                            
+                        </p:inputText>
+                        <p:watermark for="email" value="suaong@email.com" />
+                        <p:message for="email" />
+                        <p:password id="senha" value="#{loginController.ong.password}" styleClass="form-control inpt-login" placeholder="Senha" required="true">                                 
+                            <f:validateLength minimum="4" />                            
+                        </p:password>                        
                         <p:commandButton styleClass="btn btn-sm btn-primary btn-block login-btn" value="Entrar" action="#{loginController.doLogin()}" />                     
                     </div>
                 </h:form>                
