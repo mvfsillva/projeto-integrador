@@ -22,7 +22,9 @@
                                         <h3 class="card__title text-center"><h:outputText value="#{event.name}" /></h3>
                                         <small class="card__availability pull-left">Dia: </small>
                                         <small class="card__availability pull-left">
-                                            <h:outputText value="#{event.date}"/>
+                                            <h:outputText value="#{event.date}">
+                                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                                            </h:outputText>
                                         </small>
                                     </div>
                                     <div class="card__content card__padding">
@@ -67,12 +69,16 @@
                                             <p>
                                                 Local: <h:outputText value=" #{event.locality}" />
                                             </p>
+                                            Ong Responsável: <h:outputText value=" #{event.ongName}"/>
+                                            <br/>
+                                            E-mail: <h:outputText value=" #{event.emailOng}"/>
                                         </article>
                                     </div>
                                     <div class="card__action">
                                         <div class="card__author">                                    
                                             <div class="card__author-content">
                                                 <button class="btn btn-info btn-sm">Entrar em Contato</button>
+                                                <p:commandButton value="Editar" styleClass="btn btn-info btn-sm" action="#{eventsController.teste(event)}" />
                                             </div>
                                         </div>
                                     </div>

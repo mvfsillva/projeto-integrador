@@ -5,9 +5,6 @@ import java.util.Date;
 
 import javax.persistence.*;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-
 /**
  *
  * @author arthur.hage
@@ -41,10 +38,11 @@ public class NecessityEntity implements Serializable{
     @Column(name = "necessity_date", nullable = false, length = 10)
     private Date date;
     
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name="ong_id", insertable=true, updatable=true)
-    @Fetch(FetchMode.JOIN)
-    private OngEntity ong;
+    @Column(name = "necessity_ongName")
+    private String ongName;
+    
+    @Column(name = "necessity_emailOng")
+    private String emailOng;
 
     public NecessityEntity() {
     }
@@ -56,23 +54,6 @@ public class NecessityEntity implements Serializable{
         this.date = date;
     }
     
-     public NecessityEntity(String description, String title, String priority
-             , Date date, OngEntity ong) {
-        this.description = description;
-        this.title = title;
-        this.priority = priority;
-        this.date = date;
-        this.ong = ong;
-    }
-    
-    public OngEntity getOng() {
-        return this.ong;
-    }
-
-    public void setOng(OngEntity ong) {
-        this.ong = ong;
-    }
-
     public Integer getId() {
         return id;
     }
@@ -112,10 +93,21 @@ public class NecessityEntity implements Serializable{
     public void setDate(Date date) {
         this.date = date;
     }
-    
-    @Override
-    public String toString() {
-        return "Description: " + this.description + " title: " + this.title 
-                + " priority: " + this.priority + " date: " + this.date;
+
+    public String getOngName() {
+        return ongName;
     }
+
+    public void setOngName(String ongName) {
+        this.ongName = ongName;
+    }
+
+    public String getEmailOng() {
+        return emailOng;
+    }
+
+    public void setEmailOng(String emailOng) {
+        this.emailOng = emailOng;
+    }
+    
 }

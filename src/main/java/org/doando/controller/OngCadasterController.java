@@ -2,7 +2,6 @@ package org.doando.controller;
 
 import java.io.Serializable;
 import java.sql.SQLException;
-import java.util.HashSet;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -10,8 +9,6 @@ import javax.faces.bean.ViewScoped;
 
 import org.doando.appService.OngApplicationService;
 import org.doando.entity.AddressEntity;
-import org.doando.entity.EventsEntity;
-import org.doando.entity.NecessityEntity;
 import org.doando.entity.OngEntity;
 import org.doando.session.SessionContext;
 import org.doando.utils.PostalCodeService;
@@ -71,8 +68,6 @@ public class OngCadasterController implements Serializable {
 	public String save() throws SQLException, ClassNotFoundException {
 		address.setOng(ong);
 		ong.setAddress(address);
-		ong.setNecessities(new HashSet<NecessityEntity>());
-		ong.setEvents(new HashSet<EventsEntity>());
 		ongAppService.save(ong);
 		init();
 		clear();

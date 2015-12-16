@@ -5,9 +5,6 @@ import java.util.Date;
 
 import javax.persistence.*;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-
 /**
  *
  * @author arthur.hage
@@ -40,10 +37,11 @@ public class EventsEntity implements Serializable{
     @Column(name = "event_date", nullable = false, length = 10)
     private Date date;
     
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name="ong_id", insertable=true, updatable=true)
-    @Fetch(FetchMode.JOIN)
-    private OngEntity ong;
+    @Column(name = "event_ongName")
+    private String ongName;
+    
+    @Column(name = "event_emailOng")
+    private String emailOng;
 
     public EventsEntity() {
     }
@@ -53,14 +51,6 @@ public class EventsEntity implements Serializable{
         this.locality = locality;
         this.description = description;
         this.date = date;
-    }
-
-    public EventsEntity(String name, String locality, String description, Date date, OngEntity ong) {
-        this.name = name;
-        this.locality = locality;
-        this.description = description;
-        this.date = date;
-        this.ong = ong;
     }
 
     public Integer getId() {
@@ -103,12 +93,20 @@ public class EventsEntity implements Serializable{
         this.date = date;
     }
 
-    public OngEntity getOng() {
-        return ong;
+    public String getEmailOng() {
+        return emailOng;
+    }
+    
+    public void setEmailOng(String emailOng) {
+        this.emailOng = emailOng;
     }
 
-    public void setOng(OngEntity ong) {
-        this.ong = ong;
+    public String getOngName() {
+        return ongName;
+    }
+
+    public void setOngName(String ongName) {
+        this.ongName = ongName;
     }
     
 }

@@ -1,7 +1,6 @@
 package org.doando.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,7 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -67,14 +65,6 @@ public class OngEntity implements Serializable {
 
 	@Column(name = "ong_type")
         private String type;
-	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "ong")
-	@Cascade(CascadeType.ALL)
-	private Collection<NecessityEntity> necessities;
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "ong")
-	@Cascade(CascadeType.ALL)
-	private Collection<EventsEntity> events;
 
 	public OngEntity() {
 		this.type = "";
@@ -85,8 +75,7 @@ public class OngEntity implements Serializable {
 		this.password = "";
 	}
 	
-	public OngEntity(String cnpj, AddressEntity address, String name, String email, String password, String website,
-			String type, Collection<NecessityEntity> necessities, Collection<EventsEntity> events) {
+	public OngEntity(String cnpj, AddressEntity address, String name, String email, String password, String website, String type) {
 		this.cnpj = cnpj;
 		this.address = address;
 		this.name = name;
@@ -94,8 +83,6 @@ public class OngEntity implements Serializable {
 		this.password = password;
 		this.website = website;
 		this.type = type;
-		this.necessities = necessities;
-		this.events = events;
 	}
 
 	public Integer getId() {
@@ -137,29 +124,13 @@ public class OngEntity implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-	public Collection<NecessityEntity> getNecessities() {
-		return necessities;
-	}
-
-	public void setNecessities(Collection<NecessityEntity> necessities) {
-		this.necessities = necessities;
-	}
-
+        
 	public String getWebsite() {
 		return website;
 	}
 
 	public void setWebsite(String website) {
 		this.website = website;
-	}
-
-	public Collection<EventsEntity> getEvents() {
-		return events;
-	}
-
-	public void setEvents(Collection<EventsEntity> events) {
-		this.events = events;
 	}
 
 	public String getPassword() {

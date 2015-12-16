@@ -5,9 +5,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import org.doando.appService.NecessityApplicationService;
-import org.doando.appService.OngApplicationService;
 import org.doando.entity.NecessityEntity;
-import org.doando.entity.OngEntity;
 import org.doando.session.SessionContext;
 
 /**
@@ -21,15 +19,16 @@ public class NecessityController implements Serializable{
     
     public static final long serialVersionUID = 0L;
     
-    private OngEntity ong;
+    private String ong;
+    private String email;
     private NecessityEntity necessity;
     private List<NecessityEntity> necessities;
     private NecessityApplicationService necessityAppService;
-    private OngApplicationService ongAppService;
 
     public NecessityController() {
         this.necessity = new NecessityEntity();
         this.necessityAppService = new NecessityApplicationService();
+        init();
     }
     
     public NecessityEntity getNecessity() {
@@ -53,12 +52,22 @@ public class NecessityController implements Serializable{
     }
     
     public String save (){
-        ong = SessionContext.getInstance().getLoggedInOng();
-        ong.getNecessities().add(necessity);
-        ongAppService.save(ong);
+        ong = SessionContext.getInstance().getLoggedInOng().getName();
+        email = SessionContext.getInstance().getLoggedInOng().getEmail();
+        necessity.setOngName(ong);
+        necessity.setEmailOng(email);
+        necessityAppService.save(necessity);
+        init();
         clear();
         return "/donation/donation.xhtml?faces-redirect=true";
     }
     
+    public void init(){
+        this.necessities = necessityAppService.find();
+    }
+    
+    public String cancel(){
+        return "/donation/donation.xhtml?faces-redirect=true";
+    }
     
 }

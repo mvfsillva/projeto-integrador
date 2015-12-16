@@ -25,7 +25,9 @@
                                         <h3 class="card__title text-center"><h:outputText value="#{necessity.title}" /></h3>
                                         <small class="card__availability pull-left">Dia: </small>
                                         <small class="card__availability pull-left">
-                                            <h:outputText value="#{necessity.date}"/>
+                                            <h:outputText value="#{necessity.date}">
+                                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                                            </h:outputText>
                                         </small>
                                     </div>
                                     <div class="card__content card__padding">
